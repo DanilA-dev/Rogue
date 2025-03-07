@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3000194390292091561}
   - component: {fileID: 5140777596550749075}
+  - component: {fileID: 6028508248699521088}
   m_Layer: 0
   m_Name: BaseCharacter_Prefab
   m_TagString: Untagged
@@ -45,10 +46,24 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &6028508248699521088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456966870965895341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdc5300222145c393d90bbbb6ad5657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tags:
+  - {fileID: 11400000, guid: 47ac4af9118d440409d81a5ddd559f8c, type: 2}
 --- !u!1 &1156140218542725205
 GameObject:
   m_ObjectHideFlags: 0

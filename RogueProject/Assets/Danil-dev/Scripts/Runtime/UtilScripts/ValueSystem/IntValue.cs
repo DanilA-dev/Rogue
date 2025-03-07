@@ -7,11 +7,11 @@ namespace D_Dev.UtilScripts.ValueSystem
     {
         public override int Value
         {
-            get => _value;
+            get => _defaultValue;
             set
             {
-                _value = (int)Mathf.Clamp(value, 0, Mathf.Infinity);
-                OnValueChanged?.Invoke(_value);
+                _defaultValue = (int)Mathf.Clamp(value, 0, Mathf.Infinity);
+                OnValueChanged?.Invoke(_defaultValue);
             }
         }
     }

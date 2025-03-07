@@ -7,8 +7,7 @@ namespace D_Dev.UtilScripts.ValueSystem
     {
         #region Fields
 
-        [SerializeField] protected T _value;
-        
+        [SerializeField] protected T _defaultValue;
 
         public Action<T> OnValueChanged;
         #endregion
@@ -17,11 +16,11 @@ namespace D_Dev.UtilScripts.ValueSystem
 
         public virtual T Value
         {
-            get => _value;
+            get => _defaultValue;
             set
             {
-                _value = value;
-                OnValueChanged?.Invoke(_value);
+                _defaultValue = value;
+                OnValueChanged?.Invoke(_defaultValue);
             }
         }
 

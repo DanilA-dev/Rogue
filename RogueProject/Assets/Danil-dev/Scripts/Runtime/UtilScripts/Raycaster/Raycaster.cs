@@ -46,9 +46,21 @@ namespace D_Dev.UtilScripts.Raycaster
             #endregion
 
             #region Properties
-
-            public Transform RaycastTransformPoint => _raycastTransformPoint;
-            public RaycastPointType PointType => _raycastPointType;
+            public RaycastPointType PointType
+            {
+                get => _raycastPointType;
+                set => _raycastPointType = value;
+            }
+            public Vector3 RaycastVectorPoint
+            {
+                get => _raycastVectorPoint;
+                set => _raycastVectorPoint = value;
+            }
+            public Transform RaycastTransformPoint
+            {
+                get => _raycastTransformPoint;
+                set => _raycastTransformPoint = value;
+            }
 
             #endregion
 

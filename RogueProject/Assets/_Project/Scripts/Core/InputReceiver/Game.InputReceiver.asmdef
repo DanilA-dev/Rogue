@@ -1,7 +1,10 @@
 {
-    "name": "Game.Core",
+    "name": "Game.InputReceiver",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:adf3757dee9f5eb4580f73a8545c7603",
+        "Game.Movers"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
