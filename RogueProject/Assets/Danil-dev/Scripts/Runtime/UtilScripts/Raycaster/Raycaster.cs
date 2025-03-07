@@ -1,96 +1,28 @@
-﻿using System;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace D_Dev.UtilScripts.Raycaster
 {
+    public enum RaycastPointType
+    {
+        Vector,
+        Transform
+    }
+            
+    public enum LocalTransformDirection
+    {
+        Self = 0,
+        Up = 1,
+        Down = 2,
+        Right = 3,
+        Left = 4,
+        Forward = 5,
+        Back = 7
+    }
+
     [System.Serializable]
     public class Raycaster
     {
-        #region Classes
-
-         [System.Serializable]
-        public class RaycastPoint
-        {
-            #region Enums
-
-            public enum RaycastPointType
-            {
-                Vector,
-                Transform
-            }
-            
-            public enum LocalTransformDirection
-            {
-                None = 0,
-                Up = 1,
-                Down = 2,
-                Right = 3,
-                Left = 4,
-                Forward = 5,
-                Back = 7
-            }
-
-            #endregion
-
-            #region Fields
-
-            [SerializeField] private RaycastPointType _raycastPointType;
-            [ShowIf(nameof(_raycastPointType), RaycastPointType.Vector)] 
-            [SerializeField] private Vector3 _raycastVectorPoint;
-            [ShowIf(nameof(_raycastPointType), RaycastPointType.Transform)] 
-            [SerializeField] private Transform _raycastTransformPoint;
-            [ShowIf(nameof(_raycastPointType), RaycastPointType.Transform)] 
-            [SerializeField] private LocalTransformDirection _localTransformDirection;
-
-            #endregion
-
-            #region Properties
-            public RaycastPointType PointType
-            {
-                get => _raycastPointType;
-                set => _raycastPointType = value;
-            }
-            public Vector3 RaycastVectorPoint
-            {
-                get => _raycastVectorPoint;
-                set => _raycastVectorPoint = value;
-            }
-            public Transform RaycastTransformPoint
-            {
-                get => _raycastTransformPoint;
-                set => _raycastTransformPoint = value;
-            }
-
-            #endregion
-
-            #region Public
-
-            public Vector3 GetPoint()
-            {
-                return _raycastPointType switch
-                {
-                    RaycastPointType.Vector => _raycastVectorPoint,
-                    RaycastPointType.Transform => _localTransformDirection switch
-                    {
-                        LocalTransformDirection.None => _raycastTransformPoint.position,
-                        LocalTransformDirection.Up => _raycastTransformPoint.up,
-                        LocalTransformDirection.Down => -_raycastTransformPoint.up,
-                        LocalTransformDirection.Right => _raycastTransformPoint.right,
-                        LocalTransformDirection.Left => -_raycastTransformPoint.right,
-                        LocalTransformDirection.Forward => _raycastTransformPoint.forward,
-                        LocalTransformDirection.Back => -_raycastTransformPoint.forward,
-                        _ => throw new ArgumentOutOfRangeException()
-                    },
-                    _ => throw new ArgumentOutOfRangeException()
-                };
-            }
-
-            #endregion
-        }
-
-        #endregion
-
         #region Fields
 
         [Title("Ray settings")]
@@ -104,6 +36,9 @@ namespace D_Dev.UtilScripts.Raycaster
         [Title("Gizmos")] 
         [SerializeField] private Color _debugColor;
 
+        private Ray _ray = new();
+        private RaycastHit[] _hits;
+        
         #endregion
 
         #region Properties
@@ -138,16 +73,17 @@ namespace D_Dev.UtilScripts.Raycaster
 
         public bool IsHit()
         {
-            var results = new RaycastHit[_collidersBuffer];
-            var ray = new Ray(_origin.GetPoint(), _direction.GetPoint());
-            var hitsAmount = Physics.RaycastNonAlloc(ray, results, _distance);
-            Debug.DrawRay(ray.origin, ray.direction, _debugColor);
+            _hits ??= new RaycastHit[_collidersBuffer];
+            _ray.origin = _origin.GetPoint();
+            _ray.direction = _direction.GetPoint();
+            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance);
+            Debug.DrawRay(_ray.origin, _ray.direction, _debugColor);
             if (hitsAmount > 0)
             {
-                for (var i = 0; i < results.Length; i++)
+                for (var i = 0; i < _hits.Length; i++)
                 {
-                    if (results[i].collider != null
-                        && _colliderChecker.IsColliderPassed(results[i].collider))
+                    if (_hits[i].collider != null
+                        && _colliderChecker.IsColliderPassed(_hits[i].collider))
                         return true;
                 }
             }
@@ -156,18 +92,19 @@ namespace D_Dev.UtilScripts.Raycaster
 
         public bool IsHit(out Collider collider)
         {
-            var results = new RaycastHit[_collidersBuffer];
-            var ray = new Ray(_origin.GetPoint(), _direction.GetPoint());
-            var hitsAmount = Physics.RaycastNonAlloc(ray, results, _distance);
-            Debug.DrawRay(ray.origin, ray.direction, _debugColor);
+            _hits ??= new RaycastHit[_collidersBuffer];
+            _ray.origin = _origin.GetPoint();
+            _ray.direction = _direction.GetPoint();
+            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance);
+            Debug.DrawRay(_ray.origin, _ray.direction, _debugColor);
             if (hitsAmount > 0)
             {
-                for (var i = 0; i < results.Length; i++)
+                for (var i = 0; i < _hits.Length; i++)
                 {
-                    if (results[i].collider != null
-                        && _colliderChecker.IsColliderPassed(results[i].collider))
+                    if (_hits[i].collider != null
+                        && _colliderChecker.IsColliderPassed(_hits[i].collider))
                     {
-                        collider = results[i].collider;
+                        collider = _hits[i].collider;
                         return true;
                     }
                 }
@@ -182,9 +119,9 @@ namespace D_Dev.UtilScripts.Raycaster
 
         public void OnGizmos()
         {
-            if(_origin.PointType == RaycastPoint.RaycastPointType.Transform &&
+            if(_origin.PointType == RaycastPointType.Transform &&
                _origin.RaycastTransformPoint == null ||
-               _direction.PointType == RaycastPoint.RaycastPointType.Transform &&
+               _direction.PointType == RaycastPointType.Transform &&
                _direction.RaycastTransformPoint == null)
                 return;
             

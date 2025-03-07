@@ -94,6 +94,7 @@ MonoBehaviour:
       m_Bits: 0
     _ignoreTag: 0
     _ignoreTags: []
+    _debugColliders: 0
   _checkEnter: 1
   _checkExit: 1
   _onEnter:
@@ -102,7 +103,6 @@ MonoBehaviour:
   _onExit:
     m_PersistentCalls:
       m_Calls: []
-  _debugColliders: 0
 --- !u!1 &1856547206088846029
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ GameObject:
   m_Layer: 0
   m_Name: Point_
   m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -277,11 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3922711be14871b3d7d50ea950f4c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _checkForObstacle: 1
   _trigger: {fileID: 3618801988571155843}
-  _obstacleRaycaster:
-    _distance: 7
-    _collidersBuffer: 5
+  _obstacleLinecaster:
     _origin:
       _raycastPointType: 1
       _raycastVectorPoint: {x: 0, y: 0, z: 0}
@@ -297,9 +294,10 @@ MonoBehaviour:
       _checkLayerMask:
         serializedVersion: 2
         m_Bits: 0
-      _checkTag: 0
-      _checkTags: []
-      _ignoreTrigger: 0
+      _checkTag: 1
+      _checkTags:
+      - {fileID: 11400000, guid: 47ac4af9118d440409d81a5ddd559f8c, type: 2}
+      _ignoreTrigger: 1
       _ignoreColliders: 0
       _ignoredColliders: []
       _ignoreLayer: 0
@@ -308,7 +306,7 @@ MonoBehaviour:
         m_Bits: 0
       _ignoreTag: 0
       _ignoreTags: []
-    _debugColor: {r: 0.6415094, g: 0, b: 0, a: 1}
+      _debugColliders: 0
 --- !u!1 &3932242621332789714
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4827303974818147113}
   - component: {fileID: 3911298781822663101}
+  - component: {fileID: 4865402320146047835}
   - component: {fileID: 2100664406318732833}
   - component: {fileID: 537693267585044077}
   m_Layer: 0
@@ -451,6 +450,18 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4865402320146047835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4827303974818147112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc800909eaa14d3a88416b21201cfcb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2100664406318732833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,8 +484,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _enemyVision: {fileID: 7479185268049289410}
-  _stoppingDistance: 1.5
-  _idleTime: 0
+  _stoppingDistance: 3
+  _idleTime: 3
   _patrolMovementSpeed: 1
   _patrolPoints:
   - {fileID: 6338740378007889086}
@@ -506,7 +517,7 @@ GameObject:
   m_Layer: 0
   m_Name: Point_ (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -566,6 +577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2339827369436595137}
+  - component: {fileID: 3168057048111665379}
   m_Layer: 0
   m_Name: Patrol Points
   m_TagString: Untagged
@@ -590,3 +602,18 @@ Transform:
   m_Father: {fileID: 4827303974818147113}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3168057048111665379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9039470890978338322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3cfe54367449dbbca50a5fe4c74782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onAwake: 0
+  _onStart: 1
+  _destroyComponentOnUnparented: 1

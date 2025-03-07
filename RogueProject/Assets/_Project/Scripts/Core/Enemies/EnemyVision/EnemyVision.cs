@@ -8,11 +8,10 @@ namespace _Project.Scripts.Core.Enemies.EnemyVision
     {
         #region Fields
 
-        [SerializeField] private bool _checkForObstacle;
         [SerializeField] private TriggerColliderEvents _trigger;
-        [SerializeField] private Raycaster _obstacleRaycaster;
+        [SerializeField] private Linecaster _obstacleLinecaster;
 
-        private Raycaster.RaycastPoint _endRaycastPoint;
+        private RaycastPoint _targetRayPoint;
         
         #endregion
 
@@ -27,7 +26,7 @@ namespace _Project.Scripts.Core.Enemies.EnemyVision
 
         private void OnEnable()
         {
-            _endRaycastPoint = new();
+            _targetRayPoint = new();
             _trigger.OnEnter.AddListener(OnTargetEnter);
             _trigger.OnExit.AddListener(OnTargetExit);
         }
@@ -42,9 +41,8 @@ namespace _Project.Scripts.Core.Enemies.EnemyVision
         {
             if(!Target)
                 return;
-
          
-            IsTargetVisible = !_obstacleRaycaster.IsHit();
+            IsTargetVisible = _obstacleLinecaster.IsIntersect();
         }
 
         #endregion
@@ -64,15 +62,14 @@ namespace _Project.Scripts.Core.Enemies.EnemyVision
         private void OnTargetEnter(Collider target)
         {
             Target = target;
-            _endRaycastPoint.PointType = Raycaster.RaycastPoint.RaycastPointType.Transform;
-            _endRaycastPoint.RaycastTransformPoint = Target.transform;
-            _obstacleRaycaster.Direction = _endRaycastPoint;
+            _targetRayPoint.PointType = RaycastPointType.Transform;
+            _targetRayPoint.RaycastTransformPoint = Target.transform;
+            _obstacleLinecaster.Direction = _targetRayPoint;
         }
 
         private void OnTargetExit(Collider target) => Target = null;
 
         #endregion
-        
        
     }
 }

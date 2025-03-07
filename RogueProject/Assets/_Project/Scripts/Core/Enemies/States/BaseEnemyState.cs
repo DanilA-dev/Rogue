@@ -12,11 +12,6 @@ namespace _Project.Scripts.Core.Enemies.States
         {
             _enemyBehaviour = enemyBehaviour;
         }
-
-        protected bool IsTargetReached(Vector3 targetPosition, float distance)
-        {
-            return Vector3.Distance(_enemyBehaviour.transform.position, targetPosition) < distance;
-        }
         
         public virtual void OnEnter() {}
         public virtual void OnUpdate() {}

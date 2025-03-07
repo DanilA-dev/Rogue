@@ -45,7 +45,6 @@ namespace _Project.Scripts.Core.Enemies
             get => _patrolMovementSpeed;
             set => _patrolMovementSpeed = value;
         }
-
         protected float IdleTime
         {
             get => _idleTime;
@@ -81,15 +80,45 @@ namespace _Project.Scripts.Core.Enemies
             AddState(EnemyState.Attack, new AttackEnemyState(this));
             AddState(EnemyState.Retreat, new RetreatEnemyState(this));
             AddState(EnemyState.Dead, new DeadEnemyState(this));
+
+            InitTransitions();
             ChangeState(_startState);
+        }
+        
+        #endregion
+
+        #region Private
+
+        private void InitTransitions()
+        {
+            AddTransition(new[] { EnemyState.Idle }, EnemyState.Patrol, new DelayCondition(_idleTime));
+            AddTransition(new [] { EnemyState.Patrol}, EnemyState.Idle, new FuncCondition(() 
+                => IsTargetReached(PatrolPoints[PatrolPointIndex].position, _stoppingDistance)));
             
             AddTransition(new []
             {
                 EnemyState.Idle,
                 EnemyState.Patrol,
                 
-            }, EnemyState.ChasePlayer, new FuncCondition(() => _enemyVision.IsTargetFound(out var c)));
+            }, EnemyState.ChasePlayer, new FuncCondition(IsTargetFound));
+            
+            AddTransition(new []
+            {
+                EnemyState.ChasePlayer,
+                EnemyState.Attack,
+                
+            }, EnemyState.Idle, new FuncCondition(() => !IsTargetFound()));
         }
+        
+        private bool IsTargetFound() 
+            => _enemyVision.IsTargetFound(out var c);
+
+        #endregion
+        
+        #region Public
+        public bool IsTargetReached(Vector3 targetPosition, float distance)
+            => Vector3.Distance(transform.position, targetPosition) < distance;
+
         #endregion
     }
 }

@@ -45,7 +45,6 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour
             {
                 OnStateEnter?.Invoke(state);
                 _currentState = state;
-                StateChangedDebug(state);
             };
             _stateMachine.OnStateExit -= state => OnStateExit?.Invoke(state);
         }
@@ -84,7 +83,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour
         protected void ChangeState(TStateEnum stateName) => _stateMachine.ChangeState(stateName);
         
         #endregion
-
+        
         #region Debug
 
         protected void StateChangedDebug(TStateEnum stateName)
@@ -94,6 +93,5 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour
         }
 
         #endregion
-        
     }
 }

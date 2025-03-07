@@ -6,11 +6,11 @@ namespace D_Dev.UtilScripts.ValueSystem
     {
         public override double Value
         {
-            get => _defaultValue;
+            get => _value;
             set
             {
-                _defaultValue = Mathf.Clamp((float)value, 0, Mathf.Infinity);
-                OnValueChanged?.Invoke(_defaultValue);
+                _value = Mathf.Clamp((float)value, 0, Mathf.Infinity);
+                OnValueChanged?.Invoke(_value);
             }
         }
     }

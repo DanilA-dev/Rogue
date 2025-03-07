@@ -25,6 +25,8 @@ namespace _Project.Scripts.Core
         [Title("Debug"),ShowInInspector, DisplayAsString]
         public float Speed { get; set; }
 
+        public float StoppingDistance { get; set; }
+
         public float MovementMaxForce
         {
             get => _movementMaxForce;

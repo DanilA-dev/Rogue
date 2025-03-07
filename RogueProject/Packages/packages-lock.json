@@ -11,8 +11,10 @@
       "version": "https://github.com/DanilA-dev/Danil-dev.git?path=Package",
       "depth": 0,
       "source": "git",
-      "dependencies": {},
-      "hash": "647b85fb8ca0cd8f2e68d97ae717264584ebf400"
+      "dependencies": {
+        "com.unity.inputsystem": "1.7.0"
+      },
+      "hash": "b8a44fdca7ee0d39ffe72c35fe02813b0f5271dc"
     },
     "com.unity.cinemachine": {
       "version": "2.10.3",

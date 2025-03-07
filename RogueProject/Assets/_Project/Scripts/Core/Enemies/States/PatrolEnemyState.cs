@@ -1,32 +1,45 @@
+using System.Linq;
 using UnityEngine;
 
 namespace _Project.Scripts.Core.Enemies.States
 {
     public class PatrolEnemyState : BaseEnemyState
     {
+        #region Fields
+
         private IMover _mover;
-        private Transform[] _path;
+        private Vector3[] _path;
         private Vector3 _targetPosition;
-        public override float ExitTime { get; }
+
+        #endregion
+
+        #region Overrides
+
+        public override float ExitTime => 0.5f;
         public PatrolEnemyState(EnemyBehaviour enemyBehaviour) : base(enemyBehaviour)
         {
-            _path = _enemyBehaviour.PatrolPoints;
+            _path = _enemyBehaviour.PatrolPoints.Select(p => p.position).ToArray();
             _mover = _enemyBehaviour.EnemyMover;
         }
 
         public override void OnEnter()
         {
-            _targetPosition = _path[_enemyBehaviour.PatrolPointIndex].position;
+            _targetPosition = _path[_enemyBehaviour.PatrolPointIndex];
             _mover.Speed = _enemyBehaviour.PatrolMovementSpeed;
+            _mover.StoppingDistance = _enemyBehaviour.StoppingDistance;
         }
 
         public override void OnUpdate()
         {
-            if (IsTargetReached(_targetPosition, _enemyBehaviour.StoppingDistance))
+            if (_enemyBehaviour.IsTargetReached(_targetPosition, _enemyBehaviour.StoppingDistance))
                 ChangePathIndex();
             
             _mover.Move(_targetPosition);
         }
+
+        #endregion
+
+        #region Private
 
         private void ChangePathIndex()
         {
@@ -34,5 +47,7 @@ namespace _Project.Scripts.Core.Enemies.States
             if(_enemyBehaviour.PatrolPointIndex >= _path.Length)
                 _enemyBehaviour.PatrolPointIndex = 0;
         }
+
+        #endregion
     }
 }
