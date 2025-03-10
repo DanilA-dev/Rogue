@@ -25,7 +25,7 @@ namespace _Project.Scripts.Core.Enemies.States
         public override void OnEnter()
         {
             _targetPosition = _path[_enemyBehaviour.PatrolPointIndex];
-            _mover.Speed = _enemyBehaviour.PatrolMovementSpeed;
+            _mover.MoveSpeed = _enemyBehaviour.PatrolMovementSpeed;
             _mover.StoppingDistance = _enemyBehaviour.StoppingDistance;
         }
 

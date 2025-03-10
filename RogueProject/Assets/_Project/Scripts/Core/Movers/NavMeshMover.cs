@@ -6,10 +6,20 @@ namespace _Project.Scripts.Core
     [RequireComponent(typeof(NavMeshAgent))]
     public class NavMeshMover : MonoBehaviour, IMover
     {
+        #region Fields
+
+        [SerializeField] private float _defaultMoveSpeed;
+        [SerializeField] private float _defaultRotationSpeed;
+        [SerializeField] private float _defautStoppingDistance;
+
+        #endregion
+        
         #region Properties
 
-        public float Speed { get; set; }
-        public float StoppingDistance { get; set; }
+        public float MoveSpeed { get => _defaultMoveSpeed; set => _defaultMoveSpeed = value; }
+        public float RotationSpeed { get => _defaultRotationSpeed; set => _defaultRotationSpeed = value; }
+        public float StoppingDistance { get => _defautStoppingDistance; set => _defautStoppingDistance = value; }
+        public bool EnableDirectionRotation { get; set; } = true;
         public NavMeshAgent Agent {get; private set;}
         
         #endregion
@@ -20,8 +30,10 @@ namespace _Project.Scripts.Core
 
         public void Move(Vector3 movement)
         {
-            Agent.speed = Speed;
+            Agent.speed = MoveSpeed;
             Agent.stoppingDistance = StoppingDistance;
+            Agent.updateRotation = EnableDirectionRotation;
+            Agent.angularSpeed = RotationSpeed;
             Agent.destination = movement;
         }
 

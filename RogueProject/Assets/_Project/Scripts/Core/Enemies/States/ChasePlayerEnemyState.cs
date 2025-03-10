@@ -23,7 +23,7 @@ namespace _Project.Scripts.Core.Enemies.States
         public override void OnEnter()
         {
             _target = _enemyBehaviour.Vision.Target.transform;
-            _mover.Speed = _enemyBehaviour.ChaseMovementSpeed;
+            _mover.MoveSpeed = _enemyBehaviour.ChaseMovementSpeed;
             _mover.StoppingDistance = _enemyBehaviour.StoppingDistance;
         }
 
