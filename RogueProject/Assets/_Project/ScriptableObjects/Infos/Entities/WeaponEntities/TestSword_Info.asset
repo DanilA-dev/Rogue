@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ae0f542f6746e69f3458cd485fc375, type: 3}
+  m_Name: TestSword_Info
+  m_EditorClassIdentifier: 
+  <EntityPrefab>k__BackingField: {fileID: 3322608377540105650, guid: bb0581673edcef34da8dfeef6871c260, type: 3}
+  <Config>k__BackingField:
+    _damage:
+      rid: -2
+    _isChargable: 0
+    _preAttackTime: 0
+    _attackingTime: 0
+    _cooldownTime: 0
+    _animations: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

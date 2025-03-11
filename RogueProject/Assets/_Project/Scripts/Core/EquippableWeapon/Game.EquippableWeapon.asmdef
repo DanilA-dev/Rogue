@@ -1,0 +1,19 @@
+{
+    "name": "Game.EquippableWeapon",
+    "rootNamespace": "",
+    "references": [
+        "GUID:ce2b898ae95920f4ba24cb64995a3989",
+        "GUID:7b69a8ff26bc0024fa6e42def227750b",
+        "GUID:6a50307629a80fd4090ca6d93dbe1f7e",
+        "GUID:ab2e430d573bb8b4ea6f18b178880bf7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
