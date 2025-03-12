@@ -14,7 +14,7 @@
       "dependencies": {
         "com.unity.inputsystem": "1.7.0"
       },
-      "hash": "46eca1ff45b3cbe7c30ccf36cb69bff689487323"
+      "hash": "c3b49d218b91dab2d2d53d62785a37db6fd62eea"
     },
     "com.unity.cinemachine": {
       "version": "2.10.3",

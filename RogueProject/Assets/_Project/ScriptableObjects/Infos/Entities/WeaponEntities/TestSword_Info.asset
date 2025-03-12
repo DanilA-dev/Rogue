@@ -15,14 +15,17 @@ MonoBehaviour:
   <EntityPrefab>k__BackingField: {fileID: 3322608377540105650, guid: bb0581673edcef34da8dfeef6871c260, type: 3}
   <Config>k__BackingField:
     _damage:
-      rid: -2
+      rid: 1123452685490847744
     _isChargable: 0
-    _preAttackTime: 0
-    _attackingTime: 0
-    _cooldownTime: 0
+    _preAttackTime: 0.2
+    _attackingTime: 0.15
+    _cooldownTime: 0.5
     _animations: []
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 1123452685490847744
+      type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes, asm: D-Dev.DamagableSystem}
+      data:
+        _damageAmount:
+          _value: 5

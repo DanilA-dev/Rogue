@@ -77,10 +77,9 @@ namespace D_Dev.UtilScripts.Raycaster
             _hits ??= new RaycastHit[_collidersBuffer];
             _ray.origin = _origin.GetPoint();
             _ray.direction = _direction.GetPoint();
-            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance, _colliderChecker.CheckLayer 
+            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance,  _colliderChecker.CheckLayer 
                 ? _colliderChecker.CheckLayerMask 
                 : ~0, _queryTriggerInteraction);
-            Debug.DrawRay(_ray.origin, _ray.direction, _debugColor);
             if (hitsAmount > 0)
             {
                 for (var i = 0; i < _hits.Length; i++)
@@ -98,7 +97,7 @@ namespace D_Dev.UtilScripts.Raycaster
             _hits ??= new RaycastHit[_collidersBuffer];
             _ray.origin = origin;
             _ray.direction = direction;
-            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance, _colliderChecker.CheckLayer 
+            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance,  _colliderChecker.CheckLayer 
                 ? _colliderChecker.CheckLayerMask 
                 : ~0, _queryTriggerInteraction);
             if (hitsAmount > 0)
@@ -118,7 +117,7 @@ namespace D_Dev.UtilScripts.Raycaster
             _hits ??= new RaycastHit[_collidersBuffer];
             _ray.origin = origin;
             _ray.direction = direction;
-            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance, _colliderChecker.CheckLayer 
+            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance,  _colliderChecker.CheckLayer 
                 ? _colliderChecker.CheckLayerMask 
                 : ~0, _queryTriggerInteraction);
             if (hitsAmount > 0)
@@ -142,7 +141,7 @@ namespace D_Dev.UtilScripts.Raycaster
             _hits ??= new RaycastHit[_collidersBuffer];
             _ray.origin = _origin.GetPoint();
             _ray.direction = _direction.GetPoint();
-            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance, _colliderChecker.CheckLayer 
+            var hitsAmount = Physics.RaycastNonAlloc(_ray, _hits, _distance,  _colliderChecker.CheckLayer 
                 ? _colliderChecker.CheckLayerMask 
                 : ~0, _queryTriggerInteraction);
             if (hitsAmount > 0)

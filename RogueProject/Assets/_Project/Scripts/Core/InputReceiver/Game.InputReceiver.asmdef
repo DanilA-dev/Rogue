@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "GUID:adf3757dee9f5eb4580f73a8545c7603",
-        "Game.Movers"
+        "GUID:f1a0103337dcf9e4e93084ccf04ca7d7",
+        "GUID:14b522e660fda2f48b507d96db8a82ed"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

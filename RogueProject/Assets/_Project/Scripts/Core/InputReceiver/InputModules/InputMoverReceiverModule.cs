@@ -1,17 +1,14 @@
 using UnityEngine;
-using Danil_dev.Scripts.Runtime.UtilScripts.InputSystem;
 using Sirenix.OdinInspector;
 
 namespace _Project.Scripts.Core
 {
-    public class InputMoverReceiver : MonoBehaviour
+    [System.Serializable]
+    public class InputMoverReceiverModule : BaseInputReceiverModule
     {
         #region Fields
 
-        [SerializeField] private InputRouter _router;
-
         private IMover _mover;
-
 
         #endregion
 
@@ -22,31 +19,39 @@ namespace _Project.Scripts.Core
 
         #endregion
 
-        #region Monobehavior
+        #region Overrides
 
-        private void Awake() => TryGetComponent(out _mover);
-
-        private void OnEnable()
+        public override void OnInit()
         {
-            _router.Enable();
-            _router.Move += (direction) =>
+            var root = _baseTransform;
+            _mover = root.GetComponentInChildren<IMover>();
+        }
+
+        public override void OnInputEnable()
+        {
+            if(_mover == null)
+                return;
+            
+            _inputRouter.Move += (direction) =>
             {
                 var movement = new Vector3(direction.x, 0, direction.y);
                 MovementDirection = movement;
             };
         }
 
-        private void OnDisable()
+        public override void OnInputDisable()
         {
-            _router.Disable();
-            _router.Move -= (direction) =>
+            if(_mover == null)
+                return;
+            
+            _inputRouter.Move -= (direction) =>
             {
                 var movement = new Vector3(direction.x, 0, direction.y);
                 MovementDirection = movement;
             };
         }
 
-        private void Update()
+        public override void OnUpdate()
         {
             _mover?.Move(MovementDirection);
         }

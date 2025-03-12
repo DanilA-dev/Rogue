@@ -1,3 +1,4 @@
+using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using UnityEngine;
 
@@ -8,8 +9,9 @@ namespace _Project.Scripts.Core.EquippableWeapon
         Equipping = -1,
         Idle = 0,
         Attack = 1,
-        Charge = 2,
-        Cooldown = 3
+        ChargeStart = 2,
+        ChargeEnd = 3,
+        Cooldown = 4
     }
     
     public class EquippableWeaponBehaviour : StateMachineBehaviour<EquippableWeaponState>
@@ -24,12 +26,14 @@ namespace _Project.Scripts.Core.EquippableWeapon
         #endregion
 
         #region Properties
-
+        
         public bool LoadConfigFromInfo
         {
             get => _loadConfigFromInfo;
             set => _loadConfigFromInfo = value;
         }
+        public EquippableWeaponConfig WeaponConfig => _equippableWeaponConfig;
+        public EquippableWeaponView WeaponView => _equippableWeaponView;
 
         #endregion
 
@@ -37,23 +41,37 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         protected override void InitStates()
         {
+            AddState(EquippableWeaponState.Equipping,new EquippingEquippableWeaponState(this));
+            AddState(EquippableWeaponState.Idle, new IdleEquippableWeaponState(this));
+            AddState(EquippableWeaponState.Attack, new AttackEquippableWeaponState(this));
+            AddState(EquippableWeaponState.ChargeStart, new ChargeStartEquippableWeaponState(this));
+            AddState(EquippableWeaponState.ChargeEnd, new ChargeEndEquippableWeaponState(this));
+            AddState(EquippableWeaponState.Cooldown, new CooldownEquippableWeaponState(this));
             
+            AddTransition(new [] { EquippableWeaponState.Attack }, EquippableWeaponState.Cooldown,
+                new DelayCondition(_equippableWeaponConfig.AttackingTime));
+            
+            AddTransition(new [] { EquippableWeaponState.ChargeStart}, EquippableWeaponState.ChargeEnd,
+                new DelayCondition(_equippableWeaponConfig.ChargeTime));
+            
+            AddTransition(new [] { EquippableWeaponState.Cooldown }, EquippableWeaponState.Idle,
+                new DelayCondition(_equippableWeaponConfig.CooldownTime));
         }
 
         #endregion
 
         #region Public
 
-        public void Equip(EquippableWeaponConfig equippableWeaponConfig)
+        public void Equip(Animator animator,EquippableWeaponConfig equippableWeaponConfig)
         {
             gameObject.SetActive(true);
-            
+            _equippableWeaponView.Init(animator);
             _equippableWeaponConfig = _loadConfigFromInfo 
                 ? equippableWeaponConfig 
                 : _equippableWeaponConfig;
             
             ChangeState(_startState);
-            ChangeAnimation(equippableWeaponConfig, _startState);
+            ChangeAnimation(_startState);
         }
        
         public void Unequip()
@@ -64,23 +82,38 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         public void Use()
         {
+            if(_currentState != EquippableWeaponState.Idle)
+                return;
             
+            ChangeEquippableWeaponState(_equippableWeaponConfig.IsChargable
+                ? EquippableWeaponState.ChargeStart
+                : EquippableWeaponState.Attack);
         }
 
         public void ChangeEquippableWeaponState(EquippableWeaponState equippableWeaponState) 
             => ChangeState(equippableWeaponState);
 
-        #endregion
-
-        #region Private
-
-        private void ChangeAnimation(EquippableWeaponConfig equippableWeaponConfig, EquippableWeaponState state)
+        public void ChangeAnimation(EquippableWeaponState state)
         {
-            var anim = equippableWeaponConfig.GetAnimation(state);
+            var anim = _equippableWeaponConfig.GetAnimation(state);
+            if(anim == null)
+                return;
+            
             _equippableWeaponView.ChangeAnimation(anim.AnimationClip, anim.CrossFadeTime);
         }
-
+        
+        public void PlayAnimation(EquippableWeaponState state)
+        {
+            var anim = _equippableWeaponConfig.GetAnimation(state);
+            if(anim == null)
+                return;
+            
+            _equippableWeaponView.PlayAnimation(anim.AnimationClip);
+        }
+            
         #endregion
+
+       
         
     }
 }

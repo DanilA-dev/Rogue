@@ -13,6 +13,9 @@ namespace _Project.Scripts.Core.EquippableWeapon
         [SerializeField] private EquippableWeaponInfo _startEquipmentEquippableWeaponInfo;
         [SerializeField, ReadOnly] private EquippableWeaponInfo _currentEquippableWeaponInfo;
         [SerializeField] private PositionConfig _equippableWeaponPosition;
+        [Space]
+        [Title("View Settings")]
+        [SerializeField] private Animator _mainAnimator;
 
         private Dictionary<EquippableWeaponInfo, EquippableWeaponBehaviour> _equippableWeapons = new();
         
@@ -44,6 +47,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             if(_startEquipmentEquippableWeaponInfo == null)
                 return;
             
+            SetEquippableWeapon(_startEquipmentEquippableWeaponInfo);
         }
 
         private void SetEquippableWeapon(EquippableWeaponInfo info)
@@ -59,15 +63,16 @@ namespace _Project.Scripts.Core.EquippableWeapon
             
             if (_equippableWeapons.TryGetValue(info, out var equippableWeaponBehaviour))
             {
-                equippableWeaponBehaviour.Equip(info.Config);
+                equippableWeaponBehaviour.Equip(_mainAnimator,info.Config);
                 _currentEquippableWeaponInfo = info;
                 return;
             }
 
-            var newEquippableWeapon = Instantiate(info.EntityPrefab, _equippableWeaponPosition.GetPosition(),
-                _equippableWeaponPosition.GetRotation()).GetComponent<EquippableWeaponBehaviour>();
-            
-            newEquippableWeapon.Equip(info.Config);
+            var newEquippableWeapon = Instantiate(info.EntityPrefab).GetComponent<EquippableWeaponBehaviour>();
+            var newEquippableWeaponTransform = newEquippableWeapon.transform;
+            _equippableWeaponPosition.SetPosition(ref newEquippableWeaponTransform);
+            _equippableWeaponPosition.SetRotation(ref newEquippableWeaponTransform);
+            newEquippableWeapon.Equip(_mainAnimator,info.Config);
             _currentEquippableWeaponInfo = info;
             _equippableWeapons.TryAdd(info, newEquippableWeapon);
         }

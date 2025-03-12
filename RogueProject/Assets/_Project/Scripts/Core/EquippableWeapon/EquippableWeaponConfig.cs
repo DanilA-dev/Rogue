@@ -1,4 +1,6 @@
+using System.Linq;
 using D_Dev.UtilScripts.DamagableSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Project.Scripts.Core.EquippableWeapon
@@ -11,6 +13,8 @@ namespace _Project.Scripts.Core.EquippableWeapon
         [SerializeReference] private IDamage _damage;
         [Space]
         [SerializeField] private bool _isChargable;
+        [ShowIf(nameof(_isChargable))]
+        [SerializeField] private float _chargeTime;
         [Space]
         [SerializeField] private float _preAttackTime;
         [SerializeField] private float _attackingTime;
@@ -28,12 +32,16 @@ namespace _Project.Scripts.Core.EquippableWeapon
         public float CooldownTime => _cooldownTime;
         public bool IsChargable => _isChargable;
         public EquippableWeaponAnimation[] Animations => _animations;
+        public float ChargeTime => _chargeTime;
 
         #endregion
 
         #region Public
 
-        public EquippableWeaponAnimation GetAnimation(EquippableWeaponState state) => _animations[(int)state];
+        public EquippableWeaponAnimation GetAnimation(EquippableWeaponState state)
+        {
+            return _animations.FirstOrDefault(a => a.State == state);
+        }
 
         #endregion
     }

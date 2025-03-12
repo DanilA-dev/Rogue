@@ -1459,6 +1459,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _equippableWeaponPosition._localPosTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4861927267316665373, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: _linecaster._colliderChecker._debugColliders
       value: 0

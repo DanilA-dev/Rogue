@@ -8,8 +8,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
     public class EquippableWeaponView : MonoBehaviour
     {
         #region Fields
-
-        [SerializeField] private Animator _animatorController;
+        
         [FoldoutGroup("Events")]
         public UnityEvent<string> OnAnimationChage;
         
@@ -17,19 +16,27 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         #endregion
 
+        #region Properties
+
+        public Animator AnimatorController { get; private set; }
+
+        #endregion
+
         #region Public
 
+        public void Init(Animator animatorController) => AnimatorController = animatorController;
+        
         public void ChangeAnimation(AnimationClip clip, float crossFadeDuration)
         {
             if (_animationsHashes.TryGetValue(clip, out var animationHash))
             {
-                _animatorController.CrossFadeInFixedTime(animationHash, crossFadeDuration);
+                AnimatorController?.CrossFadeInFixedTime(animationHash, crossFadeDuration);
                 OnAnimationChage?.Invoke(clip.name);
                 return;
             }
             
             var newAnimationHash = Animator.StringToHash(clip.name);
-            _animatorController.CrossFadeInFixedTime(newAnimationHash, crossFadeDuration);
+            AnimatorController?.CrossFadeInFixedTime(newAnimationHash, crossFadeDuration);
             _animationsHashes.Add(clip, newAnimationHash);
         }
 
@@ -37,7 +44,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
         {
             if (_animationsHashes.TryGetValue(clip, out var animationHash))
             {
-                _animatorController.Play(animationHash);
+                AnimatorController?.Play(animationHash);
                 return;
             }
         }

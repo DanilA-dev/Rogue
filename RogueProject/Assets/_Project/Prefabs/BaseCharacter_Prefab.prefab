@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3000194390292091561}
   - component: {fileID: 5140777596550749075}
   - component: {fileID: 6124393274545432462}
-  - component: {fileID: 8180398723597397670}
+  - component: {fileID: 2516580539598497796}
   - component: {fileID: 4514954205295447601}
   - component: {fileID: 312791083777510423}
   - component: {fileID: 724749709405138123}
@@ -72,7 +72,7 @@ CapsuleCollider:
   m_Height: 2.11
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8180398723597397670
+--- !u!114 &2516580539598497796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,10 +81,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 456966870965895341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab899a681904392896b312eec7c1e0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bf998182cf548b3b23747e7324a3298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _router: {fileID: 11400000, guid: b299fe18b864a6a448ae3ab79bd7d358, type: 2}
+  _root: {fileID: 3000194390292091561}
+  _inputRouter: {fileID: 11400000, guid: b299fe18b864a6a448ae3ab79bd7d358, type: 2}
+  _inputReceiverModules:
+  - rid: 1123452685490847754
+  - rid: 1123452685490847755
+  references:
+    version: 2
+    RefIds:
+    - rid: 1123452685490847754
+      type: {class: InputMoverReceiverModule, ns: _Project.Scripts.Core, asm: Game.InputReceiver}
+      data: 
+    - rid: 1123452685490847755
+      type: {class: InputEquippableWeaponReceiverModule, ns: _Project.Scripts.Core, asm: Game.InputReceiver}
+      data:
+        _equippableWeapon: {fileID: 4764944347595774760}
 --- !u!114 &4514954205295447601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +230,8 @@ MonoBehaviour:
   _startEquipmentEquippableWeaponInfo: {fileID: 11400000, guid: 249c959e02dc81c4aa2dd6e6acc4034a, type: 2}
   _currentEquippableWeaponInfo: {fileID: 0}
   _equippableWeaponPosition:
-    _positionType: 1
+    _positionType: 0
+    _parent: {fileID: 1355294050899149840}
     _vectorPos: {x: 0, y: 0, z: 0}
     _localPosTransform: 0
     _transformPos: {fileID: 2111284470853244396}
@@ -228,6 +243,7 @@ MonoBehaviour:
     _eulerAngles: {x: 0, y: 0, z: 0}
     _localRotTransform: 0
     _transformRot: {fileID: 0}
+  _mainAnimator: {fileID: 5187791278353149764}
 --- !u!1 &1170804383800424603
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +451,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+--- !u!4 &1355294050899149840 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6706717728282381547, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+  m_PrefabInstance: {fileID: 5755025276196964603}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2111284470853244396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5949605804790045975, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
@@ -443,5 +464,10 @@ Transform:
 --- !u!4 &5101085678662632492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 655069900873239767, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+  m_PrefabInstance: {fileID: 5755025276196964603}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5187791278353149764 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 586391890124253119, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
   m_PrefabInstance: {fileID: 5755025276196964603}
   m_PrefabAsset: {fileID: 0}
