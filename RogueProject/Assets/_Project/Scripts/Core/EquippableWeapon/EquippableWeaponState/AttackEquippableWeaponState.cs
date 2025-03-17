@@ -6,10 +6,5 @@ namespace _Project.Scripts.Core.EquippableWeapon
         public AttackEquippableWeaponState(EquippableWeaponBehaviour weaponBehaviour) : base(weaponBehaviour)
         {
         }
-
-        public override void OnEnter()
-        {
-            _weaponBehaviour.PlayAnimation(EquippableWeaponState.Attack);
-        }
     }
 }

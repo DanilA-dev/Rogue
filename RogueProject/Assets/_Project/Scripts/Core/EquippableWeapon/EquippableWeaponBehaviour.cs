@@ -37,6 +37,12 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         #endregion
 
+        #region Monobehaviour
+
+        private void OnDisable() => OnAnyStateEnter.RemoveListener(ChangeAnimation);
+
+        #endregion
+
         #region Overrides
 
         protected override void InitStates()
@@ -48,14 +54,6 @@ namespace _Project.Scripts.Core.EquippableWeapon
             AddState(EquippableWeaponState.ChargeEnd, new ChargeEndEquippableWeaponState(this));
             AddState(EquippableWeaponState.Cooldown, new CooldownEquippableWeaponState(this));
             
-            AddTransition(new [] { EquippableWeaponState.Attack }, EquippableWeaponState.Cooldown,
-                new DelayCondition(_equippableWeaponConfig.AttackingTime));
-            
-            AddTransition(new [] { EquippableWeaponState.ChargeStart}, EquippableWeaponState.ChargeEnd,
-                new DelayCondition(_equippableWeaponConfig.ChargeTime));
-            
-            AddTransition(new [] { EquippableWeaponState.Cooldown }, EquippableWeaponState.Idle,
-                new DelayCondition(_equippableWeaponConfig.CooldownTime));
         }
 
         #endregion
@@ -71,12 +69,22 @@ namespace _Project.Scripts.Core.EquippableWeapon
                 : _equippableWeaponConfig;
             
             ChangeState(_startState);
-            ChangeAnimation(_startState);
+            OnAnyStateEnter.AddListener(ChangeAnimation);
+            
+            AddTransition(new [] { EquippableWeaponState.Attack }, EquippableWeaponState.Cooldown,
+                new DelayCondition(_equippableWeaponConfig.AttackingTime));
+            
+            AddTransition(new [] { EquippableWeaponState.ChargeStart}, EquippableWeaponState.ChargeEnd,
+                new DelayCondition(_equippableWeaponConfig.ChargeTime));
+            
+            AddTransition(new [] { EquippableWeaponState.Cooldown }, EquippableWeaponState.Idle,
+                new DelayCondition(_equippableWeaponConfig.CooldownTime));
         }
        
         public void Unequip()
         {
             ChangeEquippableWeaponState(EquippableWeaponState.Idle);
+            OnAnyStateEnter.RemoveListener(ChangeAnimation);
             gameObject.SetActive(false);
         }
 
@@ -112,8 +120,5 @@ namespace _Project.Scripts.Core.EquippableWeapon
         }
             
         #endregion
-
-       
-        
     }
 }

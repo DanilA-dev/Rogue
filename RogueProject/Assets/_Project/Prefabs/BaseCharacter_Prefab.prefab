@@ -231,7 +231,7 @@ MonoBehaviour:
   _currentEquippableWeaponInfo: {fileID: 0}
   _equippableWeaponPosition:
     _positionType: 0
-    _parent: {fileID: 1355294050899149840}
+    _parent: {fileID: 2111284470853244396}
     _vectorPos: {x: 0, y: 0, z: 0}
     _localPosTransform: 0
     _transformPos: {fileID: 2111284470853244396}
@@ -451,11 +451,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
---- !u!4 &1355294050899149840 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6706717728282381547, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
-  m_PrefabInstance: {fileID: 5755025276196964603}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2111284470853244396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5949605804790045975, guid: 35553a9d863ac584098b3353833e8cba, type: 3}

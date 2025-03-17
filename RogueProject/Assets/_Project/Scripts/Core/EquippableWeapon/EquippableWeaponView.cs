@@ -10,7 +10,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
         #region Fields
         
         [FoldoutGroup("Events")]
-        public UnityEvent<string> OnAnimationChage;
+        public UnityEvent<string> OnAnimationChange;
         
         private Dictionary<AnimationClip, int> _animationsHashes = new();
 
@@ -31,7 +31,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             if (_animationsHashes.TryGetValue(clip, out var animationHash))
             {
                 AnimatorController?.CrossFadeInFixedTime(animationHash, crossFadeDuration);
-                OnAnimationChage?.Invoke(clip.name);
+                OnAnimationChange?.Invoke(clip.name);
                 return;
             }
             
@@ -43,10 +43,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
         public void PlayAnimation(AnimationClip clip)
         {
             if (_animationsHashes.TryGetValue(clip, out var animationHash))
-            {
                 AnimatorController?.Play(animationHash);
-                return;
-            }
         }
 
         #endregion

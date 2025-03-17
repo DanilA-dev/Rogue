@@ -14,17 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EntityPrefab>k__BackingField: {fileID: 3322608377540105650, guid: bb0581673edcef34da8dfeef6871c260, type: 3}
   <Config>k__BackingField:
-    _damage:
-      rid: 1123452685490847744
+    _damageInfo:
+      <DamageDealer>k__BackingField: {fileID: 0}
+      <Damage>k__BackingField:
+        rid: 1123452753682366470
     _isChargable: 0
-    _preAttackTime: 0.2
-    _attackingTime: 0.15
+    _chargeTime: 0
+    _attackingTime: 0.25
     _cooldownTime: 0.5
-    _animations: []
+    _animations:
+    - <State>k__BackingField: 1
+      <AnimationClip>k__BackingField: {fileID: 7400000, guid: cffd81437fbd38649820f44ddae319b9, type: 2}
+      <CrossFadeTime>k__BackingField: 0.1
+      <Loop>k__BackingField: 0
+      <AnimationTime>k__BackingField: 1
+    - <State>k__BackingField: 0
+      <AnimationClip>k__BackingField: {fileID: 7400000, guid: ce1b64133c8e6c0429022218311459bb, type: 2}
+      <CrossFadeTime>k__BackingField: 0.1
+      <Loop>k__BackingField: 1
+      <AnimationTime>k__BackingField: 1
+    - <State>k__BackingField: 4
+      <AnimationClip>k__BackingField: {fileID: 7400000, guid: ce1b64133c8e6c0429022218311459bb, type: 2}
+      <CrossFadeTime>k__BackingField: 0.1
+      <Loop>k__BackingField: 0
+      <AnimationTime>k__BackingField: 1
   references:
     version: 2
     RefIds:
-    - rid: 1123452685490847744
+    - rid: 1123452753682366470
       type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes, asm: D-Dev.DamagableSystem}
       data:
         _damageAmount:

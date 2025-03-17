@@ -10,13 +10,12 @@ namespace _Project.Scripts.Core.EquippableWeapon
     {
         #region Fields
 
-        [SerializeReference] private IDamage _damage;
+        [SerializeField] private DamageInfo _damageInfo;
         [Space]
         [SerializeField] private bool _isChargable;
         [ShowIf(nameof(_isChargable))]
         [SerializeField] private float _chargeTime;
         [Space]
-        [SerializeField] private float _preAttackTime;
         [SerializeField] private float _attackingTime;
         [SerializeField] private float _cooldownTime;
         [Space]
@@ -26,8 +25,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         #region Properties
 
-        public IDamage Damage => _damage;
-        public float PreAttackTime => _preAttackTime;
+        public DamageInfo DamageInfo => _damageInfo;
         public float AttackingTime => _attackingTime;
         public float CooldownTime => _cooldownTime;
         public bool IsChargable => _isChargable;
