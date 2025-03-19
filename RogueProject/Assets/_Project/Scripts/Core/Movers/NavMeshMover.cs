@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,17 +10,18 @@ namespace _Project.Scripts.Core
         #region Fields
 
         [SerializeField] private float _defaultMoveSpeed;
-        [SerializeField] private float _defaultRotationSpeed;
         [SerializeField] private float _defautStoppingDistance;
 
+        public Vector3 Velocity { get; set; }
+        public event Action<Vector3> OnMove;
+
+        
         #endregion
         
         #region Properties
 
         public float MoveSpeed { get => _defaultMoveSpeed; set => _defaultMoveSpeed = value; }
-        public float RotationSpeed { get => _defaultRotationSpeed; set => _defaultRotationSpeed = value; }
         public float StoppingDistance { get => _defautStoppingDistance; set => _defautStoppingDistance = value; }
-        public bool EnableDirectionRotation { get; set; } = true;
         public NavMeshAgent Agent {get; private set;}
         
         #endregion
@@ -28,15 +30,17 @@ namespace _Project.Scripts.Core
 
         private void Awake() => Agent = GetComponent<NavMeshAgent>();
 
-        public void Move(Vector3 movement)
+        #endregion
+
+        #region Public
+
+        public void Move()
         {
             Agent.speed = MoveSpeed;
             Agent.stoppingDistance = StoppingDistance;
-            Agent.updateRotation = EnableDirectionRotation;
-            Agent.angularSpeed = RotationSpeed;
-            Agent.destination = movement;
+            Agent.destination = Velocity;
+            OnMove?.Invoke(Velocity);
         }
-
 
         #endregion
     }

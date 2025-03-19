@@ -1,13 +1,14 @@
+using System;
 using UnityEngine;
 
 namespace _Project.Scripts.Core
 {
     public interface IMover
     {
-        public void Move(Vector3 movement);
+        public Vector3 Velocity { get; set; }
+        public void Move();
+        public event Action<Vector3> OnMove; 
         public float MoveSpeed { get; set; }
-        public float RotationSpeed { get; set; }
         public float StoppingDistance { get; set; }
-        public bool EnableDirectionRotation { get; set; }
     }
 }

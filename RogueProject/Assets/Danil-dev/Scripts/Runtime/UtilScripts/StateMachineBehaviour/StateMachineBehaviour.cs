@@ -5,15 +5,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class StateEvent<TStateEnum> where TStateEnum : Enum
-{
-    [field : SerializeField] public TStateEnum State { get; private set; }
-    [FoldoutGroup("Events")]
-    public UnityEvent<TStateEnum> OnStateEnter;
-    [FoldoutGroup("Events")]
-    public UnityEvent<TStateEnum> OnStateExit;
-}
 
 namespace D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour
 {

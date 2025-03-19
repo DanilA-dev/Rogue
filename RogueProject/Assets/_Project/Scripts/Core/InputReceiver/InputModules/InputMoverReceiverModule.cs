@@ -35,7 +35,8 @@ namespace _Project.Scripts.Core
             _inputRouter.Move += (direction) =>
             {
                 var movement = new Vector3(direction.x, 0, direction.y);
-                MovementDirection = movement;
+               _mover.Velocity = movement;
+               MovementDirection = movement;
             };
         }
 
@@ -47,13 +48,14 @@ namespace _Project.Scripts.Core
             _inputRouter.Move -= (direction) =>
             {
                 var movement = new Vector3(direction.x, 0, direction.y);
+                _mover.Velocity = movement;
                 MovementDirection = movement;
             };
         }
 
         public override void OnUpdate()
         {
-            _mover?.Move(MovementDirection);
+            _mover?.Move();
         }
 
         #endregion

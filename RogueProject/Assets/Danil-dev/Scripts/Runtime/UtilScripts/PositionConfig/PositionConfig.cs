@@ -186,13 +186,13 @@ namespace D_Dev.UtilScripts.PositionConfig
         public void SetPosition(ref Transform target)
         {
             target.parent = _parent;
-            target.localPosition = GetPosition();
+            target.position = GetPosition();;
         }
         
         public void SetRotation(ref Transform target)
         {
             target.parent = _parent;
-            target.localRotation = GetRotation();
+            target.rotation = GetRotation();
         }
 
         #endregion

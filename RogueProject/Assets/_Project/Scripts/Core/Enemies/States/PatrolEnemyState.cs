@@ -33,8 +33,9 @@ namespace _Project.Scripts.Core.Enemies.States
         {
             if (_enemyBehaviour.IsTargetReached(_targetPosition, _enemyBehaviour.StoppingDistance))
                 ChangePathIndex();
-            
-            _mover.Move(_targetPosition);
+
+            _mover.Velocity = _targetPosition;
+            _mover.Move();
         }
 
         #endregion

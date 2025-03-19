@@ -1,4 +1,4 @@
-using D_Dev.UtilScripts.Extensions;
+using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -12,10 +12,9 @@ namespace _Project.Scripts.Core
         [Title("Movement")]
         [SerializeField] private float _movementMaxForce;
         [SerializeField] private float _movementAcceleration;
-        [Space]
-        [SerializeField] private float _rotationSpeed;
         
         private Rigidbody _rigidbody;
+        public event Action<Vector3> OnMove;
 
         #endregion
 
@@ -24,17 +23,10 @@ namespace _Project.Scripts.Core
         [Title("Debug"),ShowInInspector, DisplayAsString]
         public float MoveSpeed { get; set; }
         public float StoppingDistance { get; set; }
-        public bool EnableDirectionRotation { get; set; } = true;
         public float MovementMaxForce
         {
             get => _movementMaxForce;
             set => _movementMaxForce = value;
-        }
-
-        public float RotationSpeed
-        {
-            get => _rotationSpeed;
-            set => _rotationSpeed = value;
         }
 
         #endregion
@@ -47,26 +39,17 @@ namespace _Project.Scripts.Core
 
         #region Public
 
-        public void Move(Vector3 movement)
+        public Vector3 Velocity { get; set; }
+
+        public void Move()
         {
-            if (movement != Vector3.zero)
-            {
-                if (EnableDirectionRotation)
-                    Rotate(movement, Vector3.up);
-            }
-            
-            MoveSpeed = Mathf.MoveTowards(MoveSpeed, movement == Vector3.zero 
+            MoveSpeed = Mathf.MoveTowards(MoveSpeed, Velocity == Vector3.zero 
                 ? 0 
                 : _movementMaxForce, _movementAcceleration * Time.deltaTime);
-            _rigidbody.velocity = movement * MoveSpeed;
+            _rigidbody.velocity = Velocity * MoveSpeed;
+            OnMove?.Invoke(Velocity * MoveSpeed);
         }
 
-
-        public void Rotate(Vector3 forwards, Vector3 upwards)
-        {
-           transform.RotateTowards(forwards, upwards, _rotationSpeed * Time.deltaTime);
-        }
-        
         #endregion
     }
 }

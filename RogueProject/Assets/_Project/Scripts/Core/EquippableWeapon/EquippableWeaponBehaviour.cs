@@ -39,7 +39,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         #region Monobehaviour
 
-        private void OnDisable() => OnAnyStateEnter.RemoveListener(ChangeAnimation);
+        private void OnDisable() => OnAnyStateEnter.RemoveListener(PlayAnimation);
 
         #endregion
 
@@ -63,13 +63,13 @@ namespace _Project.Scripts.Core.EquippableWeapon
         public void Equip(Animator animator,EquippableWeaponConfig equippableWeaponConfig)
         {
             gameObject.SetActive(true);
-            _equippableWeaponView.Init(animator);
+            _equippableWeaponView.Animator = animator;
             _equippableWeaponConfig = _loadConfigFromInfo 
                 ? equippableWeaponConfig 
                 : _equippableWeaponConfig;
             
             ChangeState(_startState);
-            OnAnyStateEnter.AddListener(ChangeAnimation);
+            OnAnyStateEnter.AddListener(PlayAnimation);
             
             AddTransition(new [] { EquippableWeaponState.Attack }, EquippableWeaponState.Cooldown,
                 new DelayCondition(_equippableWeaponConfig.AttackingTime));
@@ -84,7 +84,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
         public void Unequip()
         {
             ChangeEquippableWeaponState(EquippableWeaponState.Idle);
-            OnAnyStateEnter.RemoveListener(ChangeAnimation);
+            OnAnyStateEnter.RemoveListener(PlayAnimation);
             gameObject.SetActive(false);
         }
 
@@ -101,14 +101,6 @@ namespace _Project.Scripts.Core.EquippableWeapon
         public void ChangeEquippableWeaponState(EquippableWeaponState equippableWeaponState) 
             => ChangeState(equippableWeaponState);
 
-        public void ChangeAnimation(EquippableWeaponState state)
-        {
-            var anim = _equippableWeaponConfig.GetAnimation(state);
-            if(anim == null)
-                return;
-            
-            _equippableWeaponView.ChangeAnimation(anim.AnimationClip, anim.CrossFadeTime);
-        }
         
         public void PlayAnimation(EquippableWeaponState state)
         {
@@ -116,7 +108,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             if(anim == null)
                 return;
             
-            _equippableWeaponView.PlayAnimation(anim.AnimationClip);
+            _equippableWeaponView.PlayAnimation(anim.AnimationConfig);
         }
             
         #endregion

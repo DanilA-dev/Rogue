@@ -1,51 +1,9 @@
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
-using UnityEngine;
-using UnityEngine.Events;
+using Danil_dev.Scripts.Runtime.UtilScripts.AnimatorView;
 
 namespace _Project.Scripts.Core.EquippableWeapon
 { 
-    public class EquippableWeaponView : MonoBehaviour
+    public class EquippableWeaponView : AnimatorView
     {
-        #region Fields
         
-        [FoldoutGroup("Events")]
-        public UnityEvent<string> OnAnimationChange;
-        
-        private Dictionary<AnimationClip, int> _animationsHashes = new();
-
-        #endregion
-
-        #region Properties
-
-        public Animator AnimatorController { get; private set; }
-
-        #endregion
-
-        #region Public
-
-        public void Init(Animator animatorController) => AnimatorController = animatorController;
-        
-        public void ChangeAnimation(AnimationClip clip, float crossFadeDuration)
-        {
-            if (_animationsHashes.TryGetValue(clip, out var animationHash))
-            {
-                AnimatorController?.CrossFadeInFixedTime(animationHash, crossFadeDuration);
-                OnAnimationChange?.Invoke(clip.name);
-                return;
-            }
-            
-            var newAnimationHash = Animator.StringToHash(clip.name);
-            AnimatorController?.CrossFadeInFixedTime(newAnimationHash, crossFadeDuration);
-            _animationsHashes.Add(clip, newAnimationHash);
-        }
-
-        public void PlayAnimation(AnimationClip clip)
-        {
-            if (_animationsHashes.TryGetValue(clip, out var animationHash))
-                AnimatorController?.Play(animationHash);
-        }
-
-        #endregion
     }
 }

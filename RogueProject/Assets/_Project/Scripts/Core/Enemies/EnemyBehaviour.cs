@@ -1,6 +1,8 @@
+using System;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using _Project.Scripts.Core.Enemies.States;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
+using Danil_dev.Scripts.Runtime.UtilScripts.TargetSensor;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -21,7 +23,7 @@ namespace _Project.Scripts.Core.Enemies
         #region Fields
 
         [Title("General Settings")] 
-        [SerializeField] private EnemyVision.EnemyVision _enemyVision;
+        [SerializeField] private TargetSensor _enemyVision;
         [SerializeField] private float _stoppingDistance;
         [Title("Idle Settings")] 
         [SerializeField] protected float _idleTime;
@@ -51,7 +53,7 @@ namespace _Project.Scripts.Core.Enemies
             set => _idleTime = value;
         }
 
-        public EnemyVision.EnemyVision Vision => _enemyVision;
+        public TargetSensor Vision => _enemyVision;
 
         public IMover EnemyMover => _enemyMover;
 
@@ -66,6 +68,14 @@ namespace _Project.Scripts.Core.Enemies
             get => _stoppingDistance;
             set => _stoppingDistance = value;
         }
+
+        #endregion
+
+        #region Monobehaviour
+
+        private void OnEnable() => _enemyVision.Init();
+
+        private void OnDisable() => _enemyVision.Dispose();
 
         #endregion
         

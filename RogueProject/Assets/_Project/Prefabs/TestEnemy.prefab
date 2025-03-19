@@ -143,7 +143,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6184690830901606075}
-  - component: {fileID: 7479185268049289410}
   m_Layer: 0
   m_Name: Vision
   m_TagString: Untagged
@@ -168,49 +167,6 @@ Transform:
   m_Father: {fileID: 4827303974818147113}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7479185268049289410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3793384949323534749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3922711be14871b3d7d50ea950f4c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _trigger: {fileID: 3618801988571155843}
-  _obstacleLinecaster:
-    _origin:
-      _raycastPointType: 1
-      _raycastVectorPoint: {x: 0, y: 0, z: 0}
-      _raycastTransformPoint: {fileID: 6184690830901606075}
-      _localTransformDirection: 0
-    _direction:
-      _raycastPointType: 0
-      _raycastVectorPoint: {x: 0, y: 0, z: 0}
-      _raycastTransformPoint: {fileID: 0}
-      _localTransformDirection: 0
-    _queryTriggerInteraction: 1
-    _colliderChecker:
-      _checkLayer: 1
-      _checkLayerMask:
-        serializedVersion: 2
-        m_Bits: 64
-      _checkTag: 1
-      _checkTags:
-      - {fileID: 11400000, guid: 47ac4af9118d440409d81a5ddd559f8c, type: 2}
-      _ignoreTrigger: 1
-      _ignoreColliders: 0
-      _ignoredColliders: []
-      _ignoreLayer: 0
-      _ignoreLayerMask:
-        serializedVersion: 2
-        m_Bits: 0
-      _ignoreTag: 0
-      _ignoreTags: []
-      _debugColliders: 1
 --- !u!1 &4827303974818147112
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultMoveSpeed: 3
-  _defaultRotationSpeed: 200
   _defautStoppingDistance: 1.5
 --- !u!114 &2100664406318732833
 MonoBehaviour:
@@ -334,13 +289,46 @@ MonoBehaviour:
   _currentState: 0
   _debugStateChange: 1
   _startState: 0
-  OnStateEnter:
+  _stateEvents: []
+  OnAnyStateEnter:
     m_PersistentCalls:
       m_Calls: []
-  OnStateExit:
+  OnAnyStateExit:
     m_PersistentCalls:
       m_Calls: []
-  _enemyVision: {fileID: 7479185268049289410}
+  _enemyVision:
+    _trigger: {fileID: 3618801988571155843}
+    _checkObstacleLinecast: 1
+    _obstacleLinecaster:
+      _origin:
+        _raycastPointType: 1
+        _raycastVectorPoint: {x: 0, y: 0, z: 0}
+        _raycastTransformPoint: {fileID: 6184690830901606075}
+        _localTransformDirection: 0
+      _direction:
+        _raycastPointType: 0
+        _raycastVectorPoint: {x: 0, y: 0, z: 0}
+        _raycastTransformPoint: {fileID: 0}
+        _localTransformDirection: 0
+      _queryTriggerInteraction: 1
+      _colliderChecker:
+        _checkLayer: 1
+        _checkLayerMask:
+          serializedVersion: 2
+          m_Bits: 64
+        _checkTag: 1
+        _checkTags:
+        - {fileID: 11400000, guid: 47ac4af9118d440409d81a5ddd559f8c, type: 2}
+        _ignoreTrigger: 1
+        _ignoreColliders: 0
+        _ignoredColliders: []
+        _ignoreLayer: 0
+        _ignoreLayerMask:
+          serializedVersion: 2
+          m_Bits: 0
+        _ignoreTag: 0
+        _ignoreTags: []
+        _debugColliders: 0
   _stoppingDistance: 3
   _idleTime: 3
   _patrolMovementSpeed: 1

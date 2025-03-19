@@ -29,7 +29,8 @@ namespace _Project.Scripts.Core.Enemies.States
 
         public override void OnUpdate()
         {
-            _mover.Move(_target.position);
+            _mover.Velocity = _target.position;
+            _mover.Move();
         }
 
         #endregion
