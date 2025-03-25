@@ -170,7 +170,7 @@ MonoBehaviour:
         _ignoreTags: []
         _debugColliders: 0
   _rotateMoveSpeed: 500
-  _rotateAimSpeed: 0
+  _rotateAimSpeed: 500
 --- !u!114 &4514954205295447601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,14 +268,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c21864fdd934104b35bb4e7b2dae660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startEquipmentEquippableWeaponInfo: {fileID: 0}
+  _startEquipmentEquippableWeaponInfo: {fileID: 11400000, guid: 249c959e02dc81c4aa2dd6e6acc4034a, type: 2}
   _currentEquippableWeaponInfo: {fileID: 0}
   _equippableWeaponPosition:
-    _positionType: 0
-    _parent: {fileID: 0}
+    _positionType: 1
+    _parent: {fileID: 3327202699212446869}
     _vectorPos: {x: 0, y: 0, z: 0}
-    _localPosTransform: 0
-    _transformPos: {fileID: 0}
+    _localPosTransform: 1
+    _transformPos: {fileID: 3327202699212446869}
     _randomVectorPos: []
     _randomTransforms: []
     _positionRandomizeType: 0
@@ -283,8 +283,14 @@ MonoBehaviour:
     _rotationType: 0
     _eulerAngles: {x: 0, y: 0, z: 0}
     _localRotTransform: 0
-    _transformRot: {fileID: 0}
+    _transformRot: {fileID: 3327202699212446869}
   _mainAnimator: {fileID: 665160019085986294}
+  OnEquip:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1170804383800424603
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,11 +448,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7490963711072802313, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
+      propertyPath: boneSize
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
 --- !u!95 &665160019085986294 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6773726167153255308, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
+  m_PrefabInstance: {fileID: 6285340130024204922}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3327202699212446869 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8725331434700469999, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
   m_PrefabInstance: {fileID: 6285340130024204922}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7404164163841955205 stripped
@@ -470,14 +485,19 @@ MonoBehaviour:
   OnAnimationChange:
     m_PersistentCalls:
       m_Calls: []
+  _aimBlendTreeSpeedMultiplier: 10
   _idleAnimation:
+    <IsRandomizeClip>k__BackingField: 0
     <AnimationClip>k__BackingField: {fileID: 7400000, guid: 6159e458bb0bfe44a9f71ec2978c7252, type: 2}
+    <AnimationClips>k__BackingField: []
     <Layer>k__BackingField: 0
     <CrossFadeTime>k__BackingField: 0.25
     <Loop>k__BackingField: 1
     <AnimationTime>k__BackingField: 1
   _moveAnimation:
+    <IsRandomizeClip>k__BackingField: 0
     <AnimationClip>k__BackingField: {fileID: 7400000, guid: 9a6606890c2b41e4aa8639b974e490bc, type: 2}
+    <AnimationClips>k__BackingField: []
     <Layer>k__BackingField: 0
     <CrossFadeTime>k__BackingField: 0.25
     <Loop>k__BackingField: 1

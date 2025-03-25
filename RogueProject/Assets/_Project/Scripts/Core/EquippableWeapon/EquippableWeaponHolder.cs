@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using D_Dev.UtilScripts.PositionConfig;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _Project.Scripts.Core.EquippableWeapon
 {
@@ -16,6 +17,10 @@ namespace _Project.Scripts.Core.EquippableWeapon
         [Space]
         [Title("View Settings")]
         [SerializeField] private Animator _mainAnimator;
+        [FoldoutGroup("Events")] 
+        public UnityEvent<EquippableWeaponBehaviour> OnEquip;
+        [FoldoutGroup("Events")] 
+        public UnityEvent<EquippableWeaponBehaviour> OnUse;
 
         private Dictionary<EquippableWeaponInfo, EquippableWeaponBehaviour> _equippableWeapons = new();
         
@@ -35,7 +40,10 @@ namespace _Project.Scripts.Core.EquippableWeapon
         public void UseEquippableWeapon()
         {
             if (_currentEquippableWeaponInfo != null)
+            {
                 _equippableWeapons[_currentEquippableWeaponInfo].Use();
+                OnUse?.Invoke(_equippableWeapons[_currentEquippableWeaponInfo]);
+            }
         }
 
         #endregion
@@ -75,6 +83,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             newEquippableWeapon.Equip(_mainAnimator,info.Config);
             _currentEquippableWeaponInfo = info;
             _equippableWeapons.TryAdd(info, newEquippableWeapon);
+            OnEquip?.Invoke(newEquippableWeapon);
         }
 
         #endregion

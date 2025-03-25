@@ -757,38 +757,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 7479185268049289410, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
-      propertyPath: _obstacleRaycaster._distance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7479185268049289410, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
-      propertyPath: _obstacleRaycaster._origin._raycastPointType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7479185268049289410, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
-      propertyPath: _obstacleRaycaster._direction._raycastPointType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7479185268049289410, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
-      propertyPath: _obstacleLinecaster._colliderChecker._ignoredColliders.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7479185268049289410, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
-      propertyPath: _obstacleLinecaster._colliderChecker._ignoredColliders.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8737910753218244994, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
-      propertyPath: _cameraOffset.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8737910753218244994, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
-      propertyPath: _cameraOffset.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8737910753218244994, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
-      propertyPath: _cameraOffset.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8797257106507143506, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.45

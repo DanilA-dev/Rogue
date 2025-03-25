@@ -1,5 +1,6 @@
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
+using Danil_dev.Scripts.Runtime.UtilScripts.DamagableSystem.DamagableCollider;
 using UnityEngine;
 
 namespace _Project.Scripts.Core.EquippableWeapon
@@ -19,6 +20,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
         #region Fields
 
         [SerializeField] private bool _loadConfigFromInfo;
+        [SerializeField] private DamageCollider _damageCollider;
         [SerializeField] private EquippableWeaponConfig _equippableWeaponConfig;
         [Space] 
         [SerializeField] private EquippableWeaponView _equippableWeaponView;
@@ -67,7 +69,8 @@ namespace _Project.Scripts.Core.EquippableWeapon
             _equippableWeaponConfig = _loadConfigFromInfo 
                 ? equippableWeaponConfig 
                 : _equippableWeaponConfig;
-            
+
+            _damageCollider.DamageInfo = _equippableWeaponConfig.DamageInfo;
             ChangeState(_startState);
             OnAnyStateEnter.AddListener(PlayAnimation);
             

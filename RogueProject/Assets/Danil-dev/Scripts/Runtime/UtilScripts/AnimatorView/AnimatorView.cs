@@ -15,7 +15,7 @@ namespace Danil_dev.Scripts.Runtime.UtilScripts.AnimatorView
         [FoldoutGroup("Events")]
         public UnityEvent<string> OnAnimationChange;
         
-        protected Dictionary<AnimationConfig, int> _animations = new();
+        protected Dictionary<AnimationClip, int> _animations = new();
         protected Dictionary<string, int> _animationParams = new();
 
         #endregion
@@ -26,16 +26,17 @@ namespace Danil_dev.Scripts.Runtime.UtilScripts.AnimatorView
         {
             if(Animator == null)
                 return;
-            
-            if (_animations.TryGetValue(animationConfig, out var animationHash))
+
+            var clip = animationConfig.GetAnimationClip();
+            if (_animations.TryGetValue(clip, out var animationHash))
             {
                 Animator.CrossFadeInFixedTime(animationHash, animationConfig.CrossFadeTime, animationConfig.Layer);
-                OnAnimationChange?.Invoke(animationConfig.AnimationClip.name);
+                OnAnimationChange?.Invoke(animationConfig.GetAnimationClip().name);
                 return;
             }
-            var newAnimationHash = Animator.StringToHash(animationConfig.AnimationClip.name);
+            var newAnimationHash = Animator.StringToHash(animationConfig.GetAnimationClip().name);
             Animator.CrossFadeInFixedTime(newAnimationHash, animationConfig.CrossFadeTime, animationConfig.Layer);
-            _animations.Add(animationConfig, newAnimationHash);
+            _animations.Add(clip, newAnimationHash);
         }
 
         public void SetBool(string boolParameter, bool value)

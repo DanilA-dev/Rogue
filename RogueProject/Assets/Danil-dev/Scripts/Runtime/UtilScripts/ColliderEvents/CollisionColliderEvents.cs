@@ -14,7 +14,7 @@ namespace D_Dev.UtilScripts.ColliderEvents
                     .Subscribe((c) =>
                     {
                         var passed = _colliderChecker.IsColliderPassed(c.collider);
-
+                        
                         if (passed)
                         {
                             OnEnter?.Invoke(c.collider);
@@ -27,7 +27,7 @@ namespace D_Dev.UtilScripts.ColliderEvents
                     .Subscribe((c) =>
                     {
                         var passed = _colliderChecker.IsColliderPassed(c.collider);
-
+                        
                         if (passed)
                         {
                             OnExit?.Invoke(c.collider);

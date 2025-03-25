@@ -2,6 +2,7 @@
   "dependencies": {
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.d-dev.utils": "https://github.com/DanilA-dev/Danil-dev.git?path=Package",
+    "com.unity.animation.rigging": "1.1.1",
     "com.unity.cinemachine": "2.10.3",
     "com.unity.collab-proxy": "2.4.4",
     "com.unity.ide.rider": "3.0.31",

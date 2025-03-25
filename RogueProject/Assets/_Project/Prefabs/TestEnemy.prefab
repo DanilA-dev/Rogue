@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4694590147894971307}
   - component: {fileID: 1600263470189480308}
   - component: {fileID: 3618801988571155843}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6338740378007889086}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6184690830901606075}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,8 @@ GameObject:
   - component: {fileID: 2100664406318732833}
   - component: {fileID: 2846530274945325345}
   - component: {fileID: 537693267585044077}
-  m_Layer: 0
+  - component: {fileID: 8970748393308219131}
+  m_Layer: 6
   m_Name: TestEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,6 +367,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tags:
   - {fileID: 11400000, guid: 6e060c8edd718b64b86033dba2f25fb1, type: 2}
+--- !u!114 &8970748393308219131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4827303974818147112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959b0c467ee841ebb807dda00cfe8bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statsContainer: {fileID: 2846530274945325345}
+  _healthVariable: {fileID: 11400000, guid: 5f1c8d631b5985c40881e20cced563a3, type: 2}
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamageWithInfo:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4827303974818147112}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5832346596458490753
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,7 +411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8797257106507143506}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point_ (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2339827369436595137}
   - component: {fileID: 3168057048111665379}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Patrol Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,6 +541,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StateBehaviourDebugger
       objectReference: {fileID: 0}
+    - target: {fileID: 3176613011048770030, guid: 998a4159af529d94aab9f9be47964280, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996828777503543266, guid: 998a4159af529d94aab9f9be47964280, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 998a4159af529d94aab9f9be47964280, type: 3}
 --- !u!4 &902998867489720164 stripped
@@ -571,9 +615,41 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1b3c0de39f10e1e40a41e5fce272a85e, type: 2}
+    - target: {fileID: 1919528023168357609, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550162593791022871, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938638532604192840, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344376161300150778, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6592864136516494167, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6905878157666373806, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
       propertyPath: m_Name
       value: TestCharacterVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905878157666373806, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017183623188322405, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321652883334242154, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35553a9d863ac584098b3353833e8cba, type: 3}
