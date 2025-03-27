@@ -18,6 +18,9 @@ MonoBehaviour:
       <DamageDealer>k__BackingField: {fileID: 0}
       <Damage>k__BackingField:
         rid: 1123452753682366470
+      <UseForceOnDamage>k__BackingField: 1
+      <ForceMode>k__BackingField: 1
+      <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: -1}
     _isChargable: 0
     _chargeTime: 0
     _attackingTime: 1
@@ -58,4 +61,4 @@ MonoBehaviour:
       type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes, asm: D-Dev.DamagableSystem}
       data:
         _damageAmount:
-          _value: 5
+          _value: 2
