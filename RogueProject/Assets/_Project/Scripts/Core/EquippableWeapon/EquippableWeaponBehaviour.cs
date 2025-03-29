@@ -1,3 +1,4 @@
+using System.Collections;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using Danil_dev.Scripts.Runtime.UtilScripts.DamagableSystem.DamagableCollider;
@@ -83,7 +84,23 @@ namespace _Project.Scripts.Core.EquippableWeapon
             AddTransition(new [] { EquippableWeaponState.Cooldown }, EquippableWeaponState.Idle,
                 new DelayCondition(_equippableWeaponConfig.CooldownTime));
         }
-       
+        public void Equip()
+        {
+            gameObject.SetActive(true);
+            _damageCollider.DamageInfo = _equippableWeaponConfig.DamageInfo;
+            ChangeState(_startState);
+            OnAnyStateEnter.AddListener(PlayAnimation);
+            
+            AddTransition(new [] { EquippableWeaponState.Attack }, EquippableWeaponState.Cooldown,
+                new DelayCondition(_equippableWeaponConfig.AttackingTime));
+            
+            AddTransition(new [] { EquippableWeaponState.ChargeStart}, EquippableWeaponState.ChargeEnd,
+                new DelayCondition(_equippableWeaponConfig.ChargeTime));
+            
+            AddTransition(new [] { EquippableWeaponState.Cooldown }, EquippableWeaponState.Idle,
+                new DelayCondition(_equippableWeaponConfig.CooldownTime));
+        }
+        
         public void Unequip()
         {
             ChangeEquippableWeaponState(EquippableWeaponState.Idle);
@@ -101,6 +118,11 @@ namespace _Project.Scripts.Core.EquippableWeapon
                 : EquippableWeaponState.Attack);
         }
 
+        public void UseUpdate()
+        {
+            StartCoroutine(UseRoutine());
+        }
+        
         public void ChangeEquippableWeaponState(EquippableWeaponState equippableWeaponState) 
             => ChangeState(equippableWeaponState);
 
@@ -114,6 +136,19 @@ namespace _Project.Scripts.Core.EquippableWeapon
             _equippableWeaponView.PlayAnimation(anim.AnimationConfig);
         }
             
+        #endregion
+
+        #region Coroutines
+
+        private IEnumerator UseRoutine()
+        {
+            while (true)
+            {
+                Use();
+                yield return null;
+            }
+        }
+
         #endregion
     }
 }

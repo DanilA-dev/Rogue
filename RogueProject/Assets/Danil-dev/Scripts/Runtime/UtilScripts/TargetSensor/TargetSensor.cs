@@ -3,7 +3,7 @@ using D_Dev.UtilScripts.Raycaster;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Danil_dev.Scripts.Runtime.UtilScripts.TargetSensor
+namespace D_Dev.Scripts.Runtime.UtilScripts.TargetSensor
 {
     [System.Serializable]
     public class TargetSensor

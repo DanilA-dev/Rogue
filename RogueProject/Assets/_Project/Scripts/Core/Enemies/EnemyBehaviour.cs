@@ -1,8 +1,7 @@
-using System;
-using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using _Project.Scripts.Core.Enemies.States;
+using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
-using Danil_dev.Scripts.Runtime.UtilScripts.TargetSensor;
+using D_Dev.Scripts.Runtime.UtilScripts.TargetSensor;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -24,14 +23,18 @@ namespace _Project.Scripts.Core.Enemies
 
         [Title("General Settings")] 
         [SerializeField] private TargetSensor _enemyVision;
+        [SerializeField] private EnemyView _view;
         [SerializeField] private float _stoppingDistance;
         [Title("Idle Settings")] 
         [SerializeField] protected float _idleTime;
         [Title("Patrol Settings")]
         [SerializeField] private float _patrolMovementSpeed;
         [SerializeField] private Transform[] _patrolPoints;
-        [Title("Chase Player Settings")]
+        [Title("Chase Settings")]
         [SerializeField] private float _chaseMovementSpeed;
+        [Title("Attack Settings")] 
+        [SerializeField] private float _attackRange;
+        [SerializeField] private float _rotationSpeed;
         
         private IMover _enemyMover;
 
@@ -67,6 +70,20 @@ namespace _Project.Scripts.Core.Enemies
         {
             get => _stoppingDistance;
             set => _stoppingDistance = value;
+        }
+
+        public EnemyView View => _view;
+
+        public float RotationSpeed
+        {
+            get => _rotationSpeed;
+            set => _rotationSpeed = value;
+        }
+
+        public float AttackRange
+        {
+            get => _attackRange;
+            set => _attackRange = value;
         }
 
         #endregion
@@ -118,6 +135,17 @@ namespace _Project.Scripts.Core.Enemies
                 EnemyState.Attack,
                 
             }, EnemyState.Idle, new FuncCondition(() => !IsTargetFound()));
+            
+            AddTransition(new []
+            {
+                EnemyState.Idle,
+                EnemyState.Patrol,
+                EnemyState.ChasePlayer,
+            }, EnemyState.Attack, new GroupCondition(new []
+            {
+                new FuncCondition(IsTargetFound),
+                new FuncCondition(() => IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
+            }));
         }
         
         private bool IsTargetFound() 
@@ -128,6 +156,8 @@ namespace _Project.Scripts.Core.Enemies
         #region Public
         public bool IsTargetReached(Vector3 targetPosition, float distance)
             => Vector3.Distance(transform.position, targetPosition) < distance;
+
+        public void SetDeadState() => _stateMachine.ChangeState(EnemyState.Dead);
 
         #endregion
     }

@@ -1,8 +1,8 @@
 using _Project.Scripts.Core.Player.States;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
+using D_Dev.Scripts.Runtime.UtilScripts.TargetSensor;
 using D_Dev.UtilScripts.Extensions;
-using Danil_dev.Scripts.Runtime.UtilScripts.TargetSensor;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

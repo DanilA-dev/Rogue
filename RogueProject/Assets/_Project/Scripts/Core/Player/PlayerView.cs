@@ -1,4 +1,4 @@
-using Danil_dev.Scripts.Runtime.UtilScripts.AnimatorView;
+using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView;
 using UnityEngine;
 
 namespace _Project.Scripts.Core.Player
