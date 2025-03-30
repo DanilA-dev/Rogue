@@ -23,8 +23,9 @@ MonoBehaviour:
       <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: -1}
     _isChargable: 0
     _chargeTime: 0
-    _attackingTime: 1
-    _cooldownTime: 0.1
+    _attackActionDelayTime: 0.5
+    _attackActionTime: 0.3
+    _cooldownTime: 0.5
     _animations:
     - <State>k__BackingField: 0
       <AnimationConfig>k__BackingField:
@@ -33,17 +34,7 @@ MonoBehaviour:
         <AnimationClips>k__BackingField: []
         <Layer>k__BackingField: 1
         <CrossFadeTime>k__BackingField: 0.25
-        <Loop>k__BackingField: 1
-        <AnimationTime>k__BackingField: 1
-    - <State>k__BackingField: 4
-      <AnimationConfig>k__BackingField:
-        <IsRandomizeClip>k__BackingField: 0
-        <AnimationClip>k__BackingField: {fileID: 7400000, guid: 6159e458bb0bfe44a9f71ec2978c7252, type: 2}
-        <AnimationClips>k__BackingField: []
-        <Layer>k__BackingField: 1
-        <CrossFadeTime>k__BackingField: 0.25
-        <Loop>k__BackingField: 0
-        <AnimationTime>k__BackingField: 1
+        <AnimationSpeed>k__BackingField: 1
     - <State>k__BackingField: 1
       <AnimationConfig>k__BackingField:
         <IsRandomizeClip>k__BackingField: 1
@@ -52,8 +43,15 @@ MonoBehaviour:
         - {fileID: 7400000, guid: 069d04b9391d2b446846d8ca90093dd6, type: 2}
         <Layer>k__BackingField: 1
         <CrossFadeTime>k__BackingField: 0.15
-        <Loop>k__BackingField: 0
-        <AnimationTime>k__BackingField: 2
+        <AnimationSpeed>k__BackingField: 1
+    - <State>k__BackingField: 5
+      <AnimationConfig>k__BackingField:
+        <IsRandomizeClip>k__BackingField: 0
+        <AnimationClip>k__BackingField: {fileID: 7400000, guid: 6159e458bb0bfe44a9f71ec2978c7252, type: 2}
+        <AnimationClips>k__BackingField: []
+        <Layer>k__BackingField: 1
+        <CrossFadeTime>k__BackingField: 0.25
+        <AnimationSpeed>k__BackingField: 1
   references:
     version: 2
     RefIds:

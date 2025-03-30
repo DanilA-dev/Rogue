@@ -22,19 +22,21 @@ namespace _Project.Scripts.Core.Player.States
 
         public override void OnUpdate()
         {
+            _playerController.Mover.Move();
             RotateTowardsNearestTarget();
-            _playerController.View.EvaluateAimLocomotionSpeed(_playerController.MovementVelocity);
+            _playerController.View.EvaluateAimLocomotionSpeed(_playerController.Mover.Velocity);
         }
 
         public override void OnExit()
         {
             _playerController.View.ToggleAimLocomotion(false);
+            _playerController.TargetVariable.Variable.SetActive(false);
         }
 
-        private bool RotateTowardsNearestTarget()
+        private void RotateTowardsNearestTarget()
         {
             if(_targets.Count <= 0 || _targets == null)
-                return false;
+                return ;
             
             var minDistance = _targets.Min(t => Vector3.Distance(t.transform.position, _playerController.transform.position));
             foreach (var target in _targets)
@@ -43,11 +45,14 @@ namespace _Project.Scripts.Core.Player.States
                 {
                     var dir = (target.transform.position - _playerController.transform.position).normalized;
                     var speed = _playerController.RotateAimSpeed;
+                    var targetObjectPos = new Vector3(target.transform.position.x + _playerController.TargetObjectPositionOffset.x,
+                        target.transform.position.y + _playerController.TargetObjectPositionOffset.y,
+                        target.transform.position.z + _playerController.TargetObjectPositionOffset.z);
+                    _playerController.TargetVariable.Variable.SetActive(true);
+                    _playerController.TargetVariable.Variable.transform.position = targetObjectPos;
                     _playerController.RotateTowards(dir, Vector3.up, speed, constrainX:true, constrainZ:true);
-                    return true;
                 }
             }
-            return false;
         }
     }
 }

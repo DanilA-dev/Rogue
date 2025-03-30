@@ -73,6 +73,14 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.TargetSensor
             else
                 return target != null && _obstacleLinecaster.IsIntersect();
         }
+        
+        public bool IsTargetFound()
+        {
+            if (!_checkObstacleLinecast)
+                return Target != null;
+            else
+                return Target != null && _obstacleLinecaster.IsIntersect();
+        }
 
         #endregion
         

@@ -4891,6 +4891,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _getHitAnimation.<Layer>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: _patrolAnimation.<Layer>k__BackingField
       value: 0
       objectReference: {fileID: 0}
@@ -4917,6 +4921,14 @@ PrefabInstance:
     - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: _deathAnimation.<CrossFadeTime>k__BackingField
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _getHitAnimation.<AnimationClip>k__BackingField
+      value: 
+      objectReference: {fileID: 7400000, guid: 00bdeae164dac6446bf98becf52b5824, type: 2}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _getHitAnimation.<CrossFadeTime>k__BackingField
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: _patrolAnimation.<AnimationClip>k__BackingField
@@ -4986,8 +4998,47 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.0360556
       objectReference: {fileID: 0}
+    - target: {fileID: 8970748393308219131, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970748393308219131, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970748393308219131, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6541849389735970769}
+    - target: {fileID: 8970748393308219131, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970748393308219131, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayGetHitAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970748393308219131, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: _Project.Scripts.Core.Enemies.EnemyView, Game.Enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970748393308219131, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+--- !u!114 &6541849389735970769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+  m_PrefabInstance: {fileID: 7412116303202971148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416686f0669d4c7bb0855937211810d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7360872666021411868 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 70423930638029328, guid: ec25e50875e53ca4eab21de274a96117, type: 3}

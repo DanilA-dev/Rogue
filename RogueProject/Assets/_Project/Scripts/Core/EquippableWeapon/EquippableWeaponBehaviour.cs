@@ -1,4 +1,3 @@
-using System.Collections;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using Danil_dev.Scripts.Runtime.UtilScripts.DamagableSystem.DamagableCollider;
@@ -10,10 +9,11 @@ namespace _Project.Scripts.Core.EquippableWeapon
     {
         Equipping = -1,
         Idle = 0,
-        Attack = 1,
-        ChargeStart = 2,
-        ChargeEnd = 3,
-        Cooldown = 4
+        AttackStart = 1,
+        AttackAction = 2,
+        ChargeStart = 3,
+        ChargeEnd = 4,
+        Cooldown = 5
     }
     
     public class EquippableWeaponBehaviour : StateMachineBehaviour<EquippableWeaponState>
@@ -38,11 +38,9 @@ namespace _Project.Scripts.Core.EquippableWeapon
         public EquippableWeaponConfig WeaponConfig => _equippableWeaponConfig;
         public EquippableWeaponView WeaponView => _equippableWeaponView;
 
-        #endregion
-
-        #region Monobehaviour
-
-        private void OnDisable() => OnAnyStateEnter.RemoveListener(PlayAnimation);
+        public float FullActionStateTime => _equippableWeaponConfig.AttackActionDelayTime +
+                                            _equippableWeaponConfig.AttackActionTime +
+                                            _equippableWeaponConfig.CooldownTime;
 
         #endregion
 
@@ -52,11 +50,18 @@ namespace _Project.Scripts.Core.EquippableWeapon
         {
             AddState(EquippableWeaponState.Equipping,new EquippingEquippableWeaponState(this));
             AddState(EquippableWeaponState.Idle, new IdleEquippableWeaponState(this));
-            AddState(EquippableWeaponState.Attack, new AttackEquippableWeaponState(this));
+            AddState(EquippableWeaponState.AttackStart, new AttackStartEquippableWeaponState(this));
+            AddState(EquippableWeaponState.AttackAction, new AttackActionEquippableWeaponState(this));
             AddState(EquippableWeaponState.ChargeStart, new ChargeStartEquippableWeaponState(this));
             AddState(EquippableWeaponState.ChargeEnd, new ChargeEndEquippableWeaponState(this));
             AddState(EquippableWeaponState.Cooldown, new CooldownEquippableWeaponState(this));
             
+            ChangeState(_startState);
+            
+            if(_loadConfigFromInfo)
+                return;
+            
+            InitTransitions();
         }
 
         #endregion
@@ -72,39 +77,13 @@ namespace _Project.Scripts.Core.EquippableWeapon
                 : _equippableWeaponConfig;
 
             _damageCollider.DamageInfo = _equippableWeaponConfig.DamageInfo;
-            ChangeState(_startState);
-            OnAnyStateEnter.AddListener(PlayAnimation);
-            
-            AddTransition(new [] { EquippableWeaponState.Attack }, EquippableWeaponState.Cooldown,
-                new DelayCondition(_equippableWeaponConfig.AttackingTime));
-            
-            AddTransition(new [] { EquippableWeaponState.ChargeStart}, EquippableWeaponState.ChargeEnd,
-                new DelayCondition(_equippableWeaponConfig.ChargeTime));
-            
-            AddTransition(new [] { EquippableWeaponState.Cooldown }, EquippableWeaponState.Idle,
-                new DelayCondition(_equippableWeaponConfig.CooldownTime));
-        }
-        public void Equip()
-        {
-            gameObject.SetActive(true);
-            _damageCollider.DamageInfo = _equippableWeaponConfig.DamageInfo;
-            ChangeState(_startState);
-            OnAnyStateEnter.AddListener(PlayAnimation);
-            
-            AddTransition(new [] { EquippableWeaponState.Attack }, EquippableWeaponState.Cooldown,
-                new DelayCondition(_equippableWeaponConfig.AttackingTime));
-            
-            AddTransition(new [] { EquippableWeaponState.ChargeStart}, EquippableWeaponState.ChargeEnd,
-                new DelayCondition(_equippableWeaponConfig.ChargeTime));
-            
-            AddTransition(new [] { EquippableWeaponState.Cooldown }, EquippableWeaponState.Idle,
-                new DelayCondition(_equippableWeaponConfig.CooldownTime));
+            ClearTransitions();
+            InitTransitions();
         }
         
         public void Unequip()
         {
-            ChangeEquippableWeaponState(EquippableWeaponState.Idle);
-            OnAnyStateEnter.RemoveListener(PlayAnimation);
+            ChangeState(EquippableWeaponState.Idle);
             gameObject.SetActive(false);
         }
 
@@ -113,21 +92,13 @@ namespace _Project.Scripts.Core.EquippableWeapon
             if(_currentState != EquippableWeaponState.Idle)
                 return;
             
-            ChangeEquippableWeaponState(_equippableWeaponConfig.IsChargable
+            ChangeState(_equippableWeaponConfig.IsChargable
                 ? EquippableWeaponState.ChargeStart
-                : EquippableWeaponState.Attack);
+                : EquippableWeaponState.AttackStart);
         }
 
-        public void UseUpdate()
-        {
-            StartCoroutine(UseRoutine());
-        }
         
-        public void ChangeEquippableWeaponState(EquippableWeaponState equippableWeaponState) 
-            => ChangeState(equippableWeaponState);
-
-        
-        public void PlayAnimation(EquippableWeaponState state)
+        public void PlayEquippableWeaponAnimation(EquippableWeaponState state)
         {
             var anim = _equippableWeaponConfig.GetAnimation(state);
             if(anim == null)
@@ -138,15 +109,29 @@ namespace _Project.Scripts.Core.EquippableWeapon
             
         #endregion
 
-        #region Coroutines
+        #region Private
 
-        private IEnumerator UseRoutine()
+        private void ClearTransitions()
         {
-            while (true)
-            {
-                Use();
-                yield return null;
-            }
+            RemoveTransition(EquippableWeaponState.AttackStart);
+            RemoveTransition(EquippableWeaponState.AttackAction);
+            RemoveTransition(EquippableWeaponState.ChargeStart);
+            RemoveTransition(EquippableWeaponState.Cooldown);
+        }
+        
+        private void InitTransitions()
+        {
+            AddTransition(new [] { EquippableWeaponState.AttackStart }, EquippableWeaponState.AttackAction,
+                new DelayCondition(_equippableWeaponConfig.AttackActionDelayTime));
+            
+            AddTransition(new [] { EquippableWeaponState.AttackAction }, EquippableWeaponState.Cooldown,
+                new DelayCondition(_equippableWeaponConfig.AttackActionTime));
+            
+            AddTransition(new [] { EquippableWeaponState.ChargeStart}, EquippableWeaponState.ChargeEnd,
+                new DelayCondition(_equippableWeaponConfig.ChargeTime));
+            
+            AddTransition(new [] { EquippableWeaponState.Cooldown }, EquippableWeaponState.Idle,
+                new DelayCondition(_equippableWeaponConfig.CooldownTime));
         }
 
         #endregion

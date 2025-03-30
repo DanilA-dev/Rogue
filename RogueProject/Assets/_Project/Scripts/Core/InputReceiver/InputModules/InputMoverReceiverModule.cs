@@ -52,12 +52,7 @@ namespace _Project.Scripts.Core
                 MovementDirection = movement;
             };
         }
-
-        public override void OnUpdate()
-        {
-            _mover?.Move();
-        }
-
+            
         #endregion
     }
 }

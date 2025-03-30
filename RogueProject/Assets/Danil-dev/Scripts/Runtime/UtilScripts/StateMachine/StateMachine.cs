@@ -49,6 +49,12 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine
             if(!_statesConditions.TryAdd(fromState, new List<StateTransition<TStateEnum>> {new(toState, condition) }))
                 _statesConditions[fromState].Add(new(toState, condition));
         }
+        
+        public void RemoveTransition(TStateEnum key)
+        {
+            if(_statesConditions.ContainsKey(key))
+                _statesConditions.Remove(key);
+        }
 
         public void OnUpdate()
         {

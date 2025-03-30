@@ -7,7 +7,7 @@ namespace D_Dev.UtilScripts.ScriptableVaiables
     {
         #region Fields
 
-        [SerializeField] public T _variable;
+        [SerializeField] private T _variable;
 
         public event Action<T> OnVariableSet;
         
@@ -26,7 +26,5 @@ namespace D_Dev.UtilScripts.ScriptableVaiables
         }
 
         #endregion
-        
-
     }
 }

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 312791083777510423}
   - component: {fileID: 6028508248699521088}
   m_Layer: 6
-  m_Name: BaseCharacter_Prefab
+  m_Name: BasePlayerCharacter_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,13 +128,45 @@ MonoBehaviour:
   _currentState: 0
   _debugStateChange: 0
   _startState: 0
-  _stateEvents: []
+  _stateEvents:
+  - <State>k__BackingField: 3
+    OnStateEnter:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5140777596550749075}
+          m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+          m_MethodName: set_detectCollisions
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5140777596550749075}
+          m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
+          m_MethodName: set_isKinematic
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    OnStateExit:
+      m_PersistentCalls:
+        m_Calls: []
   OnAnyStateEnter:
     m_PersistentCalls:
       m_Calls: []
   OnAnyStateExit:
     m_PersistentCalls:
       m_Calls: []
+  _damagableObject: {fileID: 312791083777510423}
   _view: {fileID: 3174720692157573957}
   _targetSensor:
     _trigger: {fileID: 732765198344493203}
@@ -169,6 +201,8 @@ MonoBehaviour:
         _ignoreTag: 0
         _ignoreTags: []
         _debugColliders: 0
+  _targetVariable: {fileID: 11400000, guid: 56a93fcf05c549445b1167a3962db133, type: 2}
+  _targetObjectPositionOffset: {x: 0, y: 0.15, z: 0}
   _rotateMoveSpeed: 500
   _rotateAimSpeed: 500
 --- !u!114 &4514954205295447601
@@ -186,7 +220,7 @@ MonoBehaviour:
   _stats:
   - <StatName>k__BackingField: {fileID: 11400000, guid: 5f1c8d631b5985c40881e20cced563a3, type: 2}
     <StatValue>k__BackingField:
-      _value: 100
+      _value: 20
 --- !u!114 &312791083777510423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +237,19 @@ MonoBehaviour:
   _healthVariable: {fileID: 11400000, guid: 5f1c8d631b5985c40881e20cced563a3, type: 2}
   OnDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3174720692157573957}
+        m_TargetAssemblyTypeName: _Project.Scripts.Core.Player.PlayerView, Game.Player
+        m_MethodName: PlayGetHitAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDamageWithInfo:
     m_PersistentCalls:
       m_Calls: []
@@ -492,16 +538,28 @@ MonoBehaviour:
     <AnimationClips>k__BackingField: []
     <Layer>k__BackingField: 0
     <CrossFadeTime>k__BackingField: 0.25
-    <Loop>k__BackingField: 1
-    <AnimationTime>k__BackingField: 1
+    <AnimationSpeed>k__BackingField: 1
   _moveAnimation:
     <IsRandomizeClip>k__BackingField: 0
     <AnimationClip>k__BackingField: {fileID: 7400000, guid: 9a6606890c2b41e4aa8639b974e490bc, type: 2}
     <AnimationClips>k__BackingField: []
     <Layer>k__BackingField: 0
     <CrossFadeTime>k__BackingField: 0.25
-    <Loop>k__BackingField: 1
-    <AnimationTime>k__BackingField: 1
+    <AnimationSpeed>k__BackingField: 1
+  _deathAnimation:
+    <IsRandomizeClip>k__BackingField: 0
+    <AnimationClip>k__BackingField: {fileID: 7400000, guid: be1a6915a645e9c4088e2344682f7735, type: 2}
+    <AnimationClips>k__BackingField: []
+    <Layer>k__BackingField: 0
+    <CrossFadeTime>k__BackingField: 0.25
+    <AnimationSpeed>k__BackingField: 1
+  _getHitAnimation:
+    <IsRandomizeClip>k__BackingField: 0
+    <AnimationClip>k__BackingField: {fileID: 7400000, guid: 00bdeae164dac6446bf98becf52b5824, type: 2}
+    <AnimationClips>k__BackingField: []
+    <Layer>k__BackingField: 1
+    <CrossFadeTime>k__BackingField: 0.15
+    <AnimationSpeed>k__BackingField: 1
 --- !u!4 &7893456370518347583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4229217820964283717, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}

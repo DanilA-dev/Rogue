@@ -14,21 +14,26 @@ namespace _Project.Scripts.Core.Player
         [SerializeField] private float _aimBlendTreeSpeedMultiplier;
         [SerializeField] private AnimationConfig _idleAnimation;
         [SerializeField] private AnimationConfig _moveAnimation;
+        [SerializeField] private AnimationConfig _deathAnimation;
+        [SerializeField] private AnimationConfig _getHitAnimation;
 
         #endregion
        
         #region Properties
         
         public AnimationConfig IdleAnimation => _idleAnimation;
-
         public AnimationConfig MoveAnimation => _moveAnimation;
-        
+        public AnimationConfig DeathAnimation => _deathAnimation;
+        public AnimationConfig GetHitAnimation => _getHitAnimation;
+
         #endregion
 
         #region Public
 
         public void PlayIdleAnimation() => PlayAnimation(_idleAnimation);
         public void PlayMoveAnimation() => PlayAnimation(_moveAnimation);
+        public void PlayDeathAnimation() => PlayAnimation(_deathAnimation);
+        public void PlayGetHitAnimation() => PlayAnimation(_getHitAnimation);
         
         public void ToggleAimLocomotion(bool value) => SetBool(AIM_LOCOMOTION, value);
         public void EvaluateAimLocomotionSpeed(Vector3 velocity)

@@ -17,7 +17,8 @@ namespace _Project.Scripts.Core.Player.States
 
         public override void OnUpdate()
         {
-            var dir = _playerController.MovementVelocity;
+            _playerController.Mover.Move();
+            var dir = _playerController.Mover.Velocity;
             var speed = _playerController.RotateMoveSpeed;
            _playerController.RotateTowards(dir, Vector3.up, speed);
         }

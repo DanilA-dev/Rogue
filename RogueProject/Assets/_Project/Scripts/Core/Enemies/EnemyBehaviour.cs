@@ -1,4 +1,5 @@
 using _Project.Scripts.Core.Enemies.States;
+using _Project.Scripts.Core.EquippableWeapon;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.TargetSensor;
@@ -32,7 +33,9 @@ namespace _Project.Scripts.Core.Enemies
         [SerializeField] private Transform[] _patrolPoints;
         [Title("Chase Settings")]
         [SerializeField] private float _chaseMovementSpeed;
-        [Title("Attack Settings")] 
+
+        [Title("Attack Settings")]
+        [SerializeField] private EquippableWeaponBehaviour _weaponBehaviour;
         [SerializeField] private float _attackRange;
         [SerializeField] private float _rotationSpeed;
         
@@ -85,6 +88,8 @@ namespace _Project.Scripts.Core.Enemies
             get => _attackRange;
             set => _attackRange = value;
         }
+
+        public EquippableWeaponBehaviour WeaponBehaviour => _weaponBehaviour;
 
         #endregion
 
@@ -141,15 +146,25 @@ namespace _Project.Scripts.Core.Enemies
                 EnemyState.Idle,
                 EnemyState.Patrol,
                 EnemyState.ChasePlayer,
-            }, EnemyState.Attack, new GroupCondition(new []
+            }, EnemyState.Attack, new GroupAndCondition(new []
             {
                 new FuncCondition(IsTargetFound),
                 new FuncCondition(() => IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
             }));
+
+            AddTransition(new []
+            {
+                EnemyState.Attack,
+            }, EnemyState.ChasePlayer, new GroupAndCondition(new IStateCondition[]
+            {
+                new DelayCondition(_weaponBehaviour.FullActionStateTime),
+                new FuncCondition(() => !IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
+            }));
         }
         
         private bool IsTargetFound() 
-            => _enemyVision.IsTargetFound(out var c);
+            => _enemyVision.IsTargetFound();
+       
 
         #endregion
         

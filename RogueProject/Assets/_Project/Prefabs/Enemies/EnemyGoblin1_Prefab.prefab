@@ -376,40 +376,20 @@ PrefabInstance:
       value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8933505193952426029, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-      propertyPath: _stateEvents.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933505193952426029, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-      propertyPath: _stateEvents.Array.data[0].<State>k__BackingField
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933505193952426029, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933505193952426029, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933505193952426029, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4702447687362334992}
-    - target: {fileID: 8933505193952426029, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      propertyPath: _attackRange
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8933505193952426029, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Use
+      propertyPath: _rotationSpeed
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 8933505193952426029, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _Project.Scripts.Core.EquippableWeapon.EquippableWeaponBehaviour, Game.EquippableWeapon
-      objectReference: {fileID: 0}
+      propertyPath: _weaponBehaviour
+      value: 
+      objectReference: {fileID: 4702447687362334992}
     - target: {fileID: 8933505193952426029, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      propertyPath: _stoppingDistance
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22180613533324a46b986cf40e9f388a, type: 3}
@@ -445,31 +425,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.097
+      value: 0.107
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.09668447
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.000000077564714
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.99531513
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.00000005613346
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -477,19 +457,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 168.903
       objectReference: {fileID: 0}
     - target: {fileID: 1979040982565281334, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2507062579913340837, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _colliderChecker._checkTags.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 47ac4af9118d440409d81a5ddd559f8c, type: 2}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _loadConfigFromInfo
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._cooldownTime
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._attackingTime
@@ -500,8 +484,20 @@ PrefabInstance:
       value: D-Dev.DamagableSystem D_Dev.UtilScripts.DamagableSystem.DamageTypes.SimpleDamage
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._attackActionTime
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.size
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._attackActionDelayTime
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _stateEvents.Array.data[2].<State>k__BackingField
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._damageInfo.<Damage>k__BackingField
@@ -524,12 +520,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
-      propertyPath: _equippableWeaponConfig._animations.Array.data[1].<State>k__BackingField
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<State>k__BackingField
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[1].<State>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[2].<State>k__BackingField
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._damageInfo.<ForceDirectionOffset>k__BackingField.z
@@ -537,23 +537,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<Layer>k__BackingField
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[1].<AnimationConfig>k__BackingField.<Layer>k__BackingField
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[2].<AnimationConfig>k__BackingField.<Layer>k__BackingField
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<AnimationClip>k__BackingField
       value: 
-      objectReference: {fileID: 7400000, guid: b9aa9cd417c008048b7a83361a249012, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<CrossFadeTime>k__BackingField
-      value: 0.15
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[1].<AnimationConfig>k__BackingField.<AnimationClip>k__BackingField
+      value: 
+      objectReference: {fileID: 7400000, guid: b9aa9cd417c008048b7a83361a249012, type: 2}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[1].<AnimationConfig>k__BackingField.<CrossFadeTime>k__BackingField
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[2].<AnimationConfig>k__BackingField.<AnimationClip>k__BackingField
@@ -561,7 +569,7 @@ PrefabInstance:
       objectReference: {fileID: 7400000, guid: b9aa9cd417c008048b7a83361a249012, type: 2}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[2].<AnimationConfig>k__BackingField.<CrossFadeTime>k__BackingField
-      value: 0.1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<AnimationSpeed>k__BackingField
@@ -576,13 +584,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
-      propertyPath: _equippableWeaponConfig._animations.Array.data[1].<AnimationConfig>k__BackingField.<IsRandomizeClip>k__BackingField
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<IsRandomizeClip>k__BackingField
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
-      propertyPath: _equippableWeaponConfig._animations.Array.data[1].<AnimationConfig>k__BackingField.<AnimationClips>k__BackingField.Array.size
+      propertyPath: _equippableWeaponConfig._animations.Array.data[1].<AnimationConfig>k__BackingField.<IsRandomizeClip>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<AnimationClips>k__BackingField.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[1].<AnimationConfig>k__BackingField.<AnimationClips>k__BackingField.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<AnimationClips>k__BackingField.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: 6d869fe6f1f4ab744be69169fa7ec5f0, type: 2}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<AnimationClips>k__BackingField.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: 1cb82e9e3bba8e6428309f6dabd4fece, type: 2}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<AnimationClips>k__BackingField.Array.data[2]
+      value: 
+      objectReference: {fileID: 7400000, guid: b220738645bd1b04e9090c1e3edc9868, type: 2}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[1].<AnimationConfig>k__BackingField.<AnimationClips>k__BackingField.Array.data[0]
       value: 

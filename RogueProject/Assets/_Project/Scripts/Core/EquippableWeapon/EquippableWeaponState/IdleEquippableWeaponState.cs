@@ -9,7 +9,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         public override void OnEnter()
         {
-            _weaponBehaviour.PlayAnimation(EquippableWeaponState.Idle);
+            _weaponBehaviour.PlayEquippableWeaponAnimation(EquippableWeaponState.Idle);
         }
     }
 }

@@ -15,8 +15,9 @@ namespace _Project.Scripts.Core.EquippableWeapon
         [SerializeField] private bool _isChargable;
         [ShowIf(nameof(_isChargable))]
         [SerializeField] private float _chargeTime;
-        [Space]
-        [SerializeField] private float _attackingTime;
+        [Space] 
+        [SerializeField] private float _attackActionDelayTime;
+        [SerializeField] private float _attackActionTime;
         [SerializeField] private float _cooldownTime;
         [Space]
         [SerializeField] private EquippableWeaponAnimation[] _animations;
@@ -26,11 +27,13 @@ namespace _Project.Scripts.Core.EquippableWeapon
         #region Properties
 
         public DamageInfo DamageInfo => _damageInfo;
-        public float AttackingTime => _attackingTime;
+        public float AttackActionTime => _attackActionTime;
         public float CooldownTime => _cooldownTime;
         public bool IsChargable => _isChargable;
         public EquippableWeaponAnimation[] Animations => _animations;
         public float ChargeTime => _chargeTime;
+
+        public float AttackActionDelayTime => _attackActionDelayTime;
 
         #endregion
 

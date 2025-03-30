@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1102 &-6173136790426304272
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Humanoid_HitReact
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 00bdeae164dac6446bf98becf52b5824, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-5224086994423097074
 AnimatorState:
   serializedVersion: 6
@@ -7,7 +33,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyHumanoid_MeleeAttackFromBot
+  m_Name: Humanoid_MeleeAttackFromBot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -26,6 +52,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-4519542311463926757
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 0}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-2984962010716626577
 AnimatorState:
   serializedVersion: 6
@@ -33,7 +85,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyHumanoid_MeleeAttackFromTop
+  m_Name: Humanoid_MeleeAttackFromTop
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -59,7 +111,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyHumanoid_Chase
+  m_Name: Humanoid_Chase
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -85,7 +137,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyHumanoid_Idle
+  m_Name: Humanoid_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -126,6 +178,43 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+  - serializedVersion: 5
+    m_Name: Top Layer
+    m_StateMachine: {fileID: 1115980578022181754}
+    m_Mask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
+    m_Motions: []
+    m_Behaviours: []
+    m_BlendingMode: 1
+    m_SyncedLayerIndex: -1
+    m_DefaultWeight: 1
+    m_IKPass: 0
+    m_SyncedLayerAffectsTiming: 0
+    m_Controller: {fileID: 9100000}
+--- !u!1107 &1115980578022181754
+AnimatorStateMachine:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Top Layer
+  m_ChildStates:
+  - serializedVersion: 1
+    m_State: {fileID: -4519542311463926757}
+    m_Position: {x: 326.74118, y: 41.427826, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -6173136790426304272}
+    m_Position: {x: 320, y: 100, z: 0}
+  m_ChildStateMachines: []
+  m_AnyStateTransitions: []
+  m_EntryTransitions: []
+  m_StateMachineTransitions: {}
+  m_StateMachineBehaviours: []
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_EntryPosition: {x: 50, y: 120, z: 0}
+  m_ExitPosition: {x: 50, y: 70, z: 0}
+  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+  m_DefaultState: {fileID: -4519542311463926757}
 --- !u!1107 &1636198916704151900
 AnimatorStateMachine:
   serializedVersion: 6
@@ -137,36 +226,36 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -213693639929187669}
-    m_Position: {x: 410, y: 100, z: 0}
+    m_Position: {x: 240, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3539959236521000075}
-    m_Position: {x: 410, y: 50, z: 0}
+    m_Position: {x: 240, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2842395491271844293}
-    m_Position: {x: 220, y: -50, z: 0}
+    m_Position: {x: 230, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -790684647847728137}
-    m_Position: {x: 410, y: 150, z: 0}
+    m_Position: {x: 240, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8728771674407731748}
-    m_Position: {x: 620, y: 150, z: 0}
+    m_Position: {x: 240, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5224086994423097074}
-    m_Position: {x: 620, y: 0, z: 0}
+    m_Position: {x: 480, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2984962010716626577}
-    m_Position: {x: 620, y: 50, z: 0}
+    m_Position: {x: 480, y: 160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6557239843109918003}
-    m_Position: {x: 620, y: 100, z: 0}
+    m_Position: {x: 480, y: 110, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -10, y: -150, z: 0}
-  m_EntryPosition: {x: -10, y: -50, z: 0}
-  m_ExitPosition: {x: -10, y: -100, z: 0}
+  m_AnyStatePosition: {x: 0, y: -170, z: 0}
+  m_EntryPosition: {x: 0, y: -70, z: 0}
+  m_ExitPosition: {x: 0, y: -120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 2842395491271844293}
 --- !u!1102 &2842395491271844293
@@ -202,7 +291,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyHumanoid_Patrol
+  m_Name: Humanoid_Patrol
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -228,7 +317,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyHumanoid_MeleeAttackHorizontal
+  m_Name: Humanoid_MeleeAttackHorizontal
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -254,7 +343,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyHumanoid_Death
+  m_Name: Humanoid_Death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
