@@ -4862,6 +4862,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2100664406318732833, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100664406318732833, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100664406318732833, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1068329582583087506}
+    - target: {fileID: 2100664406318732833, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_detectCollisions
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100664406318732833, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Rigidbody, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2100664406318732833, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _stateEvents.Array.data[0].OnStateEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2667344150018394769, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: m_Height
       value: 2
@@ -5028,6 +5052,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+--- !u!54 &1068329582583087506 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7498027847775383454, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+  m_PrefabInstance: {fileID: 7412116303202971148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6541849389735970769 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
