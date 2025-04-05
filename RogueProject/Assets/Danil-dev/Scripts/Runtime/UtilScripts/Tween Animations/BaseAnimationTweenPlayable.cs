@@ -44,8 +44,20 @@ namespace D_Dev.UtilScripts.Tween_Animations
         #region Private
 
         protected bool HasTweensInArray() => _tweens != null || _tweens.Length > 0;
+
+        #endregion
+
+        #region Virtual/Abstract
+
+        protected abstract void OnPlay();
         
-        private void Play()
+        public virtual void Pause() {}
+
+        #endregion
+
+        #region Public
+
+        public void Play()
         {
             OnStart?.Invoke();
             OnPlay();
@@ -57,15 +69,6 @@ namespace D_Dev.UtilScripts.Tween_Animations
                 lastTween.OnComplete.RemoveAllListeners();
             }));
         }
-
-
-        #endregion
-
-        #region Virtual/Abstract
-
-        protected abstract void OnPlay();
-        
-        public virtual void Pause() {}
 
         #endregion
     }

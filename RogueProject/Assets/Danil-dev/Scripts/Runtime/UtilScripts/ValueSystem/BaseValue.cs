@@ -9,8 +9,8 @@ namespace D_Dev.UtilScripts.ValueSystem
 
         [SerializeField] protected T _value;
         
-
         public Action<T> OnValueChanged;
+        
         #endregion
 
         #region Properties

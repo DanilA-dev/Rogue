@@ -9,7 +9,7 @@ namespace D_Dev.UtilScripts.ScriptableVaiables
 
         [SerializeField] private T _variable;
 
-        public event Action<T> OnVariableSet;
+        public event Action<T> OnVariableUpdate;
         
         #endregion
 
@@ -21,10 +21,15 @@ namespace D_Dev.UtilScripts.ScriptableVaiables
             set
             {
                 _variable = value;
-                OnVariableSet?.Invoke(_variable);
+                OnVariableUpdate?.Invoke(_variable);
             }
         }
 
         #endregion
+        
+        private void OnEnable()
+        {
+            Debug.Log("ENABLE");
+        }
     }
 }

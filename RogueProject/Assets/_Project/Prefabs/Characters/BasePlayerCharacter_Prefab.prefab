@@ -241,6 +241,38 @@ MonoBehaviour:
   - <StatName>k__BackingField: {fileID: 11400000, guid: 5f1c8d631b5985c40881e20cced563a3, type: 2}
     <StatValue>k__BackingField:
       _value: 20
+    OnStatInit:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 13dda8762b38b60409a708740dca54d4, type: 2}
+          m_TargetAssemblyTypeName: D_Dev.UtilScripts.ScriptableVaiables.BaseScriptableVariable`1[[System.Single,
+            mscorlib
+          m_MethodName: set_Variable
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnStatUpdate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 13dda8762b38b60409a708740dca54d4, type: 2}
+          m_TargetAssemblyTypeName: D_Dev.UtilScripts.ScriptableVaiables.BaseScriptableVariable`1[[System.Single,
+            mscorlib
+          m_MethodName: set_Variable
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &312791083777510423
 MonoBehaviour:
   m_ObjectHideFlags: 0
