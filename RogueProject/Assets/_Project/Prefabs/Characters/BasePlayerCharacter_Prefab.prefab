@@ -39,6 +39,7 @@ Transform:
   - {fileID: 7893456370518347583}
   - {fileID: 5585126719247915869}
   - {fileID: 3114551759940941835}
+  - {fileID: 5859126749533462173}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -603,6 +604,75 @@ Transform:
   m_Father: {fileID: 3000194390292091561}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5815609634742957110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5859126749533462173}
+  - component: {fileID: 3329130187455935344}
+  m_Layer: 6
+  m_Name: AudioPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5859126749533462173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5815609634742957110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3000194390292091561}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3329130187455935344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5815609634742957110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780e16cc01d944b59c920bde2d38e0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioConfigs:
+  - _audioConfigName: {fileID: 11400000, guid: 704901314390fd94b9db8bd4b064bf2d, type: 2}
+    _soundMixer: {fileID: 0}
+    _clip: {fileID: 0}
+    _isRandomClip: 1
+    _clips:
+    - {fileID: 8300000, guid: 0ae5866471a5dc54793411290e081d3c, type: 3}
+    - {fileID: 8300000, guid: 6d19bc376730fe34b9d1193b7f3b6953, type: 3}
+    - {fileID: 8300000, guid: babf58a42dca6fd42b1a1e9de6237690, type: 3}
+    - {fileID: 8300000, guid: ae2a14f7021bb3247937e57344830ed5, type: 3}
+    _volume: 0
+    _pitch: 0
+    _isRandomVolume: 1
+    _isRandomPitch: 1
+    _minVolume: 0.3
+    _maxVolume: 0.5
+    _minPitch: 0.9
+    _maxPitch: 1.1
+    _spatialBlend: 0.5
+    _fadeTime: 0
+    _delayType: 0
+    _delay: 0
+    _scheduledTime: 0
+    _playOnAwake: 0
+    _isLooping: 0
 --- !u!1001 &6285340130024204922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,6 +794,37 @@ MonoBehaviour:
     <Layer>k__BackingField: 1
     <CrossFadeTime>k__BackingField: 0.15
     <AnimationSpeed>k__BackingField: 1
+--- !u!114 &5452943856630662967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7404164163841955205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173f57ea85864028ab5593a30d57fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animatorEvents:
+  - <EventName>k__BackingField: FootStep
+    <Event>k__BackingField:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3329130187455935344}
+          m_TargetAssemblyTypeName: D_dev.Scripts.Runtime.UtilScripts.AudioSystem.AudioPlayer,
+            D-Dev.AudioSystem
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 704901314390fd94b9db8bd4b064bf2d, type: 2}
+            m_ObjectArgumentAssemblyTypeName: D_Dev.UtilScripts.ScriptableVaiables.StringScriptableVariable,
+              D-Dev.ScriptableVariables
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &7893456370518347583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4229217820964283717, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}

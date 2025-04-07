@@ -26,10 +26,5 @@ namespace D_Dev.UtilScripts.ScriptableVaiables
         }
 
         #endregion
-        
-        private void OnEnable()
-        {
-            Debug.Log("ENABLE");
-        }
     }
 }

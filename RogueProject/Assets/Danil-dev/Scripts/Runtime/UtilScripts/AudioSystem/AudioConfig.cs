@@ -25,6 +25,7 @@ namespace D_dev.Scripts.Runtime.UtilScripts.AudioSystem
         [SerializeField] private AudioMixerGroup _soundMixer;
         [Space]
         [Title("Clips")]
+        [HideIf(nameof(_isRandomClip))]
         [SerializeField] private AudioClip _clip;
         [SerializeField] private bool _isRandomClip;
         [ShowIf(nameof(_isRandomClip))]

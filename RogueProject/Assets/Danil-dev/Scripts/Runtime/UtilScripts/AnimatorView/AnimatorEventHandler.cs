@@ -24,7 +24,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
 
         #region Public
 
-        public void Invoke(string eventName)
+        public void InvokeEvent(string eventName)
         {
             if(_animatorEvents.Length <= 0)
                 return;
