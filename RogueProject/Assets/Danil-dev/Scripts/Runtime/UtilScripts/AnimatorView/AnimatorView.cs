@@ -8,17 +8,27 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
     public class AnimatorView : MonoBehaviour
     {
         #region Fields
-        
         [field: SerializeField] public Animator Animator { get; set; }
         
         [FoldoutGroup("Events")]
         public UnityEvent<string> OnAnimationChange;
         
-        protected Dictionary<AnimationClip, int> _animations = new();
-        protected Dictionary<string, int> _animationParams = new();
+        private Dictionary<AnimationClip, int> _animations = new();
+        private Dictionary<string, int> _animationParams = new();
+        private AnimatorOverrideController _overrideController;
 
         #endregion
 
+        #region Monobehaviour
+
+        private void Awake()
+        {
+            _overrideController = new AnimatorOverrideController(Animator.runtimeAnimatorController);
+            Animator.runtimeAnimatorController = _overrideController;
+        }
+
+        #endregion
+        
         #region Public
 
         public void PlayAnimation(AnimationConfig animationConfig)
@@ -29,6 +39,12 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
             var clip = animationConfig.GetAnimationClip();
             if(clip == null)
                 return;
+
+            if (animationConfig.IsAnimationClipOverride && animationConfig.OverrideAnimationClip != null)
+            {
+                if (_overrideController[animationConfig.OverrideAnimationClip] != null)
+                    _overrideController[animationConfig.OverrideAnimationClip] = clip;
+            }
             
             if (_animations.TryGetValue(clip, out var animationHash))
             {
@@ -37,7 +53,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
                 OnAnimationChange?.Invoke(animationConfig.GetAnimationClip().name);
                 return;
             }
-            var newAnimationHash = Animator.StringToHash(animationConfig.GetAnimationClip().name);
+            var newAnimationHash = Animator.StringToHash(animationConfig.AnimationState);
             Animator.speed = animationConfig.AnimationSpeed;
             Animator.CrossFadeInFixedTime(newAnimationHash, animationConfig.CrossFadeTime, animationConfig.Layer);
             _animations.Add(clip, newAnimationHash);

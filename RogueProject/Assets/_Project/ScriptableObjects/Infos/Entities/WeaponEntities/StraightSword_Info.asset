@@ -29,29 +29,46 @@ MonoBehaviour:
     _animations:
     - <State>k__BackingField: 0
       <AnimationConfig>k__BackingField:
-        <IsRandomizeClip>k__BackingField: 0
-        <AnimationClip>k__BackingField: {fileID: 7400000, guid: 6159e458bb0bfe44a9f71ec2978c7252, type: 2}
-        <AnimationClips>k__BackingField: []
-        <Layer>k__BackingField: 1
-        <CrossFadeTime>k__BackingField: 0.25
-        <AnimationSpeed>k__BackingField: 1
+        _isLocomotion: 0
+        _isRandomizeClip: 0
+        _animationClip: {fileID: 7400000, guid: f01365bfdfb795b4d98eb645b3d8b717, type: 2}
+        _animationClips: []
+        _layer: 0
+        _isAdditive: 0
+        _weight: 0
+        _wrapMode: 2
+        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
+        _useFootIK: 0
+        _crossFadeTime: 0.25
+        _animationSpeed: 1
     - <State>k__BackingField: 1
       <AnimationConfig>k__BackingField:
-        <IsRandomizeClip>k__BackingField: 1
-        <AnimationClip>k__BackingField: {fileID: 7400000, guid: 069d04b9391d2b446846d8ca90093dd6, type: 2}
-        <AnimationClips>k__BackingField:
-        - {fileID: 7400000, guid: 069d04b9391d2b446846d8ca90093dd6, type: 2}
-        <Layer>k__BackingField: 1
-        <CrossFadeTime>k__BackingField: 0.15
-        <AnimationSpeed>k__BackingField: 1
+        _isLocomotion: 0
+        _isRandomizeClip: 0
+        _animationClip: {fileID: 1109091590377655818, guid: a1ff31df15966b147a6e4ce696b9a904, type: 3}
+        _animationClips: []
+        _layer: 0
+        _isAdditive: 0
+        _weight: 0
+        _wrapMode: 0
+        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
+        _useFootIK: 0
+        _crossFadeTime: 0.25
+        _animationSpeed: 1
     - <State>k__BackingField: 5
       <AnimationConfig>k__BackingField:
-        <IsRandomizeClip>k__BackingField: 0
-        <AnimationClip>k__BackingField: {fileID: 7400000, guid: 6159e458bb0bfe44a9f71ec2978c7252, type: 2}
-        <AnimationClips>k__BackingField: []
-        <Layer>k__BackingField: 1
-        <CrossFadeTime>k__BackingField: 0.25
-        <AnimationSpeed>k__BackingField: 1
+        _isLocomotion: 0
+        _isRandomizeClip: 0
+        _animationClip: {fileID: 7400000, guid: f01365bfdfb795b4d98eb645b3d8b717, type: 2}
+        _animationClips: []
+        _layer: 0
+        _isAdditive: 0
+        _weight: 0
+        _wrapMode: 0
+        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
+        _useFootIK: 0
+        _crossFadeTime: 1
+        _animationSpeed: 1
   references:
     version: 2
     RefIds:

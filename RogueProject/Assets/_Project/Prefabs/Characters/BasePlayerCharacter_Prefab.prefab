@@ -728,6 +728,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6773726167153255308, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: d49c65de9fce66146b5d0e164b1f9d2d, type: 3}
     - target: {fileID: 7490963711072802313, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
       propertyPath: boneSize
       value: 0.01
@@ -768,7 +772,7 @@ MonoBehaviour:
   _aimBlendTreeSpeedMultiplier: 10
   _idleAnimation:
     <IsRandomizeClip>k__BackingField: 0
-    <AnimationClip>k__BackingField: {fileID: 7400000, guid: 6159e458bb0bfe44a9f71ec2978c7252, type: 2}
+    <AnimationClip>k__BackingField: {fileID: 7400000, guid: b9aa9cd417c008048b7a83361a249012, type: 2}
     <AnimationClips>k__BackingField: []
     <Layer>k__BackingField: 0
     <CrossFadeTime>k__BackingField: 0.25

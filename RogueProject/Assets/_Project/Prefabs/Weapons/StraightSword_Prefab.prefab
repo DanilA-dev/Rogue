@@ -178,7 +178,7 @@ MonoBehaviour:
     _attackActionTime: 0
     _cooldownTime: 0
     _animations: []
-  _equippableWeaponView: {fileID: 6642598075913874245}
+  _equippableWeaponView: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -418,7 +418,6 @@ GameObject:
   - component: {fileID: 8079329277340273820}
   - component: {fileID: 8983720760885020713}
   - component: {fileID: 710561712597694436}
-  - component: {fileID: 6642598075913874245}
   m_Layer: 0
   m_Name: StraightSword_Visual
   m_TagString: Untagged
@@ -492,22 +491,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6642598075913874245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2770562992515055833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7359b610dea546e08a0f56e08587dd74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 0}
-  OnAnimationChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1411860732098373254
 PrefabInstance:
   m_ObjectHideFlags: 0

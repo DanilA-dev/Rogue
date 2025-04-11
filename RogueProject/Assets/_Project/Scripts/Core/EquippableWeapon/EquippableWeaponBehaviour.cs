@@ -1,3 +1,4 @@
+using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using Danil_dev.Scripts.Runtime.UtilScripts.DamagableSystem.DamagableCollider;
@@ -23,9 +24,8 @@ namespace _Project.Scripts.Core.EquippableWeapon
         [SerializeField] private bool _loadConfigFromInfo;
         [SerializeField] private DamageCollider _damageCollider;
         [SerializeField] private EquippableWeaponConfig _equippableWeaponConfig;
-        [Space] 
-        [SerializeField] private EquippableWeaponView _equippableWeaponView;
-
+        [SerializeField] private AnimationPlayableHandler _playableHandler;
+            
         #endregion
 
         #region Properties
@@ -36,7 +36,6 @@ namespace _Project.Scripts.Core.EquippableWeapon
             set => _loadConfigFromInfo = value;
         }
         public EquippableWeaponConfig WeaponConfig => _equippableWeaponConfig;
-        public EquippableWeaponView WeaponView => _equippableWeaponView;
 
         public float FullActionStateTime => _equippableWeaponConfig.AttackActionDelayTime +
                                             _equippableWeaponConfig.AttackActionTime +
@@ -68,10 +67,10 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         #region Public
 
-        public void Equip(Animator animator,EquippableWeaponConfig equippableWeaponConfig)
+        public void Equip(AnimationPlayableHandler playableHandler,EquippableWeaponConfig equippableWeaponConfig)
         {
             gameObject.SetActive(true);
-            _equippableWeaponView.Animator = animator;
+            _playableHandler = playableHandler;
             _equippableWeaponConfig = _loadConfigFromInfo 
                 ? equippableWeaponConfig 
                 : _equippableWeaponConfig;
@@ -104,7 +103,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             if(anim == null)
                 return;
             
-            _equippableWeaponView.PlayAnimation(anim.AnimationConfig);
+            _playableHandler?.PlayOneShotAnimation(anim.AnimationConfig);
         }
             
         #endregion

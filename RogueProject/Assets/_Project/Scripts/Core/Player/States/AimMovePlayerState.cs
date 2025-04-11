@@ -17,19 +17,19 @@ namespace _Project.Scripts.Core.Player.States
         public override void OnEnter()
         {
             _targets = _playerController.Sensor.Trigger.Colliders;
-            _playerController.View.ToggleAimLocomotion(true);
+            // _playerController.View.ToggleAimLocomotion(true);
         }
 
         public override void OnUpdate()
         {
             _playerController.Mover.Move();
             RotateTowardsNearestTarget();
-            _playerController.View.EvaluateAimLocomotionSpeed(_playerController.Mover.Velocity);
+            //_playerController.View.EvaluateAimLocomotionSpeed(_playerController.Mover.Velocity);
         }
 
         public override void OnExit()
         {
-            _playerController.View.ToggleAimLocomotion(false);
+            //_playerController.View.ToggleAimLocomotion(false);
             _playerController.TargetVariable.Variable.SetActive(false);
         }
 

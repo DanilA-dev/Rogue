@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler;
 using D_Dev.UtilScripts.PositionConfig;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -16,7 +17,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
         [SerializeField] private PositionConfig _equippableWeaponPosition;
         [Space]
         [Title("View Settings")]
-        [SerializeField] private Animator _mainAnimator;
+        [SerializeField] private AnimationPlayableHandler _mainAnimationPlayableHandler;
         [FoldoutGroup("Events")] 
         public UnityEvent<EquippableWeaponBehaviour> OnEquip;
         [FoldoutGroup("Events")] 
@@ -71,7 +72,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             
             if (_equippableWeapons.TryGetValue(info, out var equippableWeaponBehaviour))
             {
-                equippableWeaponBehaviour.Equip(_mainAnimator,info.Config);
+                equippableWeaponBehaviour.Equip(_mainAnimationPlayableHandler,info.Config);
                 _currentEquippableWeaponInfo = info;
                 return;
             }
@@ -80,7 +81,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             var newEquippableWeaponTransform = newEquippableWeapon.transform;
             _equippableWeaponPosition.SetPosition(ref newEquippableWeaponTransform);
             _equippableWeaponPosition.SetRotation(ref newEquippableWeaponTransform);
-            newEquippableWeapon.Equip(_mainAnimator,info.Config);
+            newEquippableWeapon.Equip(_mainAnimationPlayableHandler,info.Config);
             _currentEquippableWeaponInfo = info;
             _equippableWeapons.TryAdd(info, newEquippableWeapon);
             OnEquip?.Invoke(newEquippableWeapon);
