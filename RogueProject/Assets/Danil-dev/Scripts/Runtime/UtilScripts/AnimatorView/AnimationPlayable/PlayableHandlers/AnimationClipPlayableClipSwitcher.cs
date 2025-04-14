@@ -10,7 +10,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         {
             [SerializeField] private AnimationPlayableClipConfig _clip;
             
-            public AnimationClipPlayableHandler Handler { get; set; }
+            public AnimationClipPlayableMixer Handler { get; set; }
 
             [Button]
             private void PlayClip()
@@ -19,7 +19,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             }
         }
         
-        [SerializeField] private AnimationClipPlayableHandler _animationClipPlayableHandler;
+        [SerializeField] private AnimationClipPlayableMixer _animationClipPlayableHandler;
         [SerializeField] private ClipPlayableConfig[] _clips;
 
         private void Start()

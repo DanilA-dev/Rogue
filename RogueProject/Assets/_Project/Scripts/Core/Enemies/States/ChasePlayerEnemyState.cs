@@ -42,7 +42,7 @@ namespace _Project.Scripts.Core.Enemies.States
         {
             if (_mover != null && _target != null)
             {
-                _mover.Velocity = _target.position;
+                _mover.Target = _target.position;
                 _mover.Move();
             }
         }

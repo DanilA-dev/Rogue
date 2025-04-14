@@ -72,6 +72,8 @@ namespace _Project.Scripts.Core.Player
         
         #region Overrides
 
+       
+
         protected override void InitStates()
         {
             AddState(PlayerState.Idle, new IdlePlayerState(this));
@@ -92,6 +94,12 @@ namespace _Project.Scripts.Core.Player
             
             AddTransition(new [] { PlayerState.AimMove }, PlayerState.Idle, new FuncCondition(() => !IsTargetNearby()));
         }
+        
+        protected override void Update()
+        {
+            base.Update();
+            _view.EvaluateSimpleLocomotion(_rigidbody.velocity.magnitude);
+        }
 
         #endregion
 
@@ -100,7 +108,7 @@ namespace _Project.Scripts.Core.Player
         public void RotateTowards(Vector3 dir, Vector3 upwards, float speed,
             bool constrainX = false, bool constrainY = false, bool constrainZ = false)
         {
-            if(_mover.Velocity != Vector3.zero)
+            if(_mover.Target != Vector3.zero)
                 transform.RotateTowards(dir, upwards,
                     speed * Time.deltaTime, constrainX, constrainY, constrainZ);
         }
@@ -109,7 +117,7 @@ namespace _Project.Scripts.Core.Player
         
         #region Helpers
 
-        private bool IsMoving() => _mover != null && _mover.Velocity != Vector3.zero;
+        private bool IsMoving() => _mover != null && _mover.Target != Vector3.zero;
 
         private bool IsTargetNearby()
         {

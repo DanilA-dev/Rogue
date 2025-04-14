@@ -4460,8 +4460,12 @@ GameObject:
   - component: {fileID: 4229217820964283717}
   - component: {fileID: 6773726167153255308}
   - component: {fileID: 7490963711072802313}
+  - component: {fileID: 1612470608629816343}
+  - component: {fileID: 4868050506428719166}
+  - component: {fileID: 6094547412182284014}
+  - component: {fileID: 1987635301145540762}
   m_Layer: 0
-  m_Name: M_Fighter_View_0
+  m_Name: BaseMale_View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4624,6 +4628,136 @@ MonoBehaviour:
   - {fileID: 2867124227915100183}
   - {fileID: 8006898274297663372}
   - {fileID: 7094281531882943193}
+--- !u!114 &1612470608629816343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3601441128150450175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7185ed27134f5b94d71572e6d2f1ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aimBlendTreeSpeedMultiplier: 10
+  _clipPlayableMixer: {fileID: 0}
+  _simpleLocomotionMixer: {fileID: 6094547412182284014}
+  _deathAnimation:
+    _layer: 3
+    _isStatic: 0
+    _targetWeight: 1
+    _isRandomizeClip: 0
+    _animationClip: {fileID: 7400000, guid: be1a6915a645e9c4088e2344682f7735, type: 2}
+    _animationClips: []
+    _isLooping: 0
+    _avatarMask: {fileID: 0}
+    _isAdditive: 0
+    _useFootIK: 0
+    _crossFadeTime: 0.1
+    _fadeDelay: 0.1
+    _animationSpeed: 1
+  _getHitAnimation:
+    _layer: 2
+    _isStatic: 0
+    _targetWeight: 1
+    _isRandomizeClip: 0
+    _animationClip: {fileID: 7400000, guid: 00bdeae164dac6446bf98becf52b5824, type: 2}
+    _animationClips: []
+    _isLooping: 0
+    _avatarMask: {fileID: 0}
+    _isAdditive: 0
+    _useFootIK: 0
+    _crossFadeTime: 0.1
+    _fadeDelay: 0.1
+    _animationSpeed: 1
+--- !u!114 &4868050506428719166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3601441128150450175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62042c3e0e6d4354b7f002e3ae08adb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 6773726167153255308}
+  _layerCount: 0
+--- !u!114 &6094547412182284014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3601441128150450175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65fa352c8964ad38bada70ae4ac93d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layer: 0
+  _playableGraph: {fileID: 4868050506428719166}
+  _tryFoundOnItSelf: 0
+  _tryFoundOnGameObject: 0
+  _graphObject: {fileID: 0}
+  _tryFoundOnParent: 0
+  _value: 0
+  _debugValue: 0
+  _blendAnimations:
+  - _motionName: Idle
+    _value: 0
+    _config:
+      _layer: 0
+      _isStatic: 0
+      _targetWeight: 1
+      _isRandomizeClip: 0
+      _animationClip: {fileID: 7400000, guid: b9aa9cd417c008048b7a83361a249012, type: 2}
+      _animationClips: []
+      _isLooping: 1
+      _avatarMask: {fileID: 0}
+      _isAdditive: 0
+      _useFootIK: 0
+      _crossFadeTime: 0.15
+      _fadeDelay: 0.15
+      _animationSpeed: 1
+  - _motionName: Run
+    _value: 1
+    _config:
+      _layer: 1
+      _isStatic: 0
+      _targetWeight: 1
+      _isRandomizeClip: 0
+      _animationClip: {fileID: 7400000, guid: af28ef6a0c39f5d48bd30128af605870, type: 2}
+      _animationClips: []
+      _isLooping: 1
+      _avatarMask: {fileID: 0}
+      _isAdditive: 0
+      _useFootIK: 0
+      _crossFadeTime: 0.15
+      _fadeDelay: 0.15
+      _animationSpeed: 1
+--- !u!114 &1987635301145540762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3601441128150450175}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf6875377984797a4ac95fe0d403aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layer: 0
+  _playableGraph: {fileID: 4868050506428719166}
+  _tryFoundOnItSelf: 0
+  _tryFoundOnGameObject: 0
+  _graphObject: {fileID: 0}
+  _tryFoundOnParent: 0
+  _hasStartAnimations: 0
+  _onStartAnimations: []
 --- !u!1 &3624053965567862855
 GameObject:
   m_ObjectHideFlags: 0

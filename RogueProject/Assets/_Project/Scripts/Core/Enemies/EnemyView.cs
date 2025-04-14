@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace _Project.Scripts.Core.Enemies
 {
-    public class EnemyView : AnimationClipPlayableHandler
+    public class EnemyView : MonoBehaviour
     {
         #region Fields
 
+        [SerializeField] private AnimationClipPlayableMixer _clipPlayableHandler;
+        [Space]
         [SerializeField] private AnimationPlayableClipConfig _idleAnimation;
         [SerializeField] private AnimationPlayableClipConfig _patrolAnimation;
         [SerializeField] private AnimationPlayableClipConfig _chaseAnimation;
@@ -17,11 +19,11 @@ namespace _Project.Scripts.Core.Enemies
 
         #region Public
 
-        public void PlayIdleAnimation() => Play(_idleAnimation);
-        public void PlayPatrolAnimation() => Play(_patrolAnimation);
-        public void PlayGetHitAnimation() => Play(_getHitAnimation);
-        public void PlayDeathAnimation() => Play(_deathAnimation);
-        public void PlayChaseAnimation() => Play(_chaseAnimation);
+        public void PlayIdleAnimation() => _clipPlayableHandler.Play(_idleAnimation);
+        public void PlayPatrolAnimation() => _clipPlayableHandler.Play(_patrolAnimation);
+        public void PlayGetHitAnimation() => _clipPlayableHandler.Play(_getHitAnimation);
+        public void PlayDeathAnimation() => _clipPlayableHandler.Play(_deathAnimation);
+        public void PlayChaseAnimation() => _clipPlayableHandler.Play(_chaseAnimation);
 
         #endregion
     }

@@ -35,7 +35,7 @@ namespace _Project.Scripts.Core
             _inputRouter.Move += (direction) =>
             {
                 var movement = new Vector3(direction.x, 0, direction.y);
-               _mover.Velocity = movement;
+               _mover.Target = movement;
                MovementDirection = movement;
             };
         }
@@ -48,7 +48,7 @@ namespace _Project.Scripts.Core
             _inputRouter.Move -= (direction) =>
             {
                 var movement = new Vector3(direction.x, 0, direction.y);
-                _mover.Velocity = movement;
+                _mover.Target = movement;
                 MovementDirection = movement;
             };
         }

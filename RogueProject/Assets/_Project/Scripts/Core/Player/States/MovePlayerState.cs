@@ -9,16 +9,10 @@ namespace _Project.Scripts.Core.Player.States
         public MovePlayerState(PlayerControllerBehaviour playerController) : base(playerController)
         {
         }
-
-        public override void OnEnter()
-        {
-            _playerController.View.PlayMoveAnimation();
-        }
-
         public override void OnUpdate()
         {
             _playerController.Mover.Move();
-            var dir = _playerController.Mover.Velocity;
+            var dir = _playerController.Mover.Target;
             var speed = _playerController.RotateMoveSpeed;
            _playerController.RotateTowards(dir, Vector3.up, speed);
         }

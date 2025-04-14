@@ -149,7 +149,7 @@ namespace _Project.Scripts.Core.Enemies
             }, EnemyState.Attack, new GroupAndCondition(new []
             {
                 new FuncCondition(IsTargetFound),
-                new FuncCondition(() => IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
+                new FuncCondition(() => _enemyVision.Target != null && IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
             }));
 
             AddTransition(new []
@@ -158,7 +158,7 @@ namespace _Project.Scripts.Core.Enemies
             }, EnemyState.ChasePlayer, new GroupAndCondition(new IStateCondition[]
             {
                 new DelayCondition(_weaponBehaviour.FullActionStateTime),
-                new FuncCondition(() => !IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
+                new FuncCondition(() => _enemyVision.Target != null && !IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
             }));
         }
         

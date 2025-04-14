@@ -39,15 +39,15 @@ namespace _Project.Scripts.Core
 
         #region Public
 
-        public Vector3 Velocity { get; set; }
+        public Vector3 Target { get; set; }
 
         public void Move()
         {
-            MoveSpeed = Mathf.MoveTowards(MoveSpeed, Velocity == Vector3.zero 
+            MoveSpeed = Mathf.MoveTowards(MoveSpeed, Target == Vector3.zero 
                 ? 0 
                 : _movementMaxForce, _movementAcceleration * Time.deltaTime);
-            _rigidbody.velocity = Velocity * MoveSpeed;
-            OnMove?.Invoke(Velocity * MoveSpeed);
+            _rigidbody.velocity = Target * MoveSpeed;
+            OnMove?.Invoke(Target * MoveSpeed);
         }
 
         #endregion

@@ -5,11 +5,12 @@ using UnityEngine.Playables;
 namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler
 {
     [DefaultExecutionOrder(-1)]
-    public class AnimationPlayableRoot : MonoBehaviour
+    public class AnimationPlayableGraph : MonoBehaviour
     {
         #region Fields
 
         [SerializeField] private Animator _animator;
+        [SerializeField, Min(1)] private int _layerCount;
 
         private AnimationPlayableOutput _animationPlayableOutput;
             
@@ -30,9 +31,8 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         {
             PlayableGraph = PlayableGraph.Create($"AnimationPlayableGraph {gameObject.name} - {gameObject.GetInstanceID()}");
             _animationPlayableOutput = AnimationPlayableOutput.Create(PlayableGraph, "Animation", _animator);
-            RootLayerMixer = AnimationLayerMixerPlayable.Create(PlayableGraph, 3);
+            RootLayerMixer = AnimationLayerMixerPlayable.Create(PlayableGraph, _layerCount);
             _animationPlayableOutput.SetSourcePlayable(RootLayerMixer);
-            
             PlayableGraph.Play();
         }
 

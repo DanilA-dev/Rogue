@@ -188,7 +188,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _damagableObject: {fileID: 312791083777510423}
-  _view: {fileID: 3174720692157573957}
+  _view: {fileID: 4709259934263080557}
   _rigidbody: {fileID: 0}
   _targetSensor:
     _trigger: {fileID: 732765198344493203}
@@ -292,7 +292,7 @@ MonoBehaviour:
   OnDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3174720692157573957}
+      - m_Target: {fileID: 4709259934263080557}
         m_TargetAssemblyTypeName: _Project.Scripts.Core.Player.PlayerView, Game.Player
         m_MethodName: PlayGetHitAnimation
         m_Mode: 1
@@ -743,105 +743,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
---- !u!95 &665160019085986294 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6773726167153255308, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
-  m_PrefabInstance: {fileID: 6285340130024204922}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3327202699212446869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8725331434700469999, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
   m_PrefabInstance: {fileID: 6285340130024204922}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7404164163841955205 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3601441128150450175, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
+--- !u!114 &4709259934263080557 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1612470608629816343, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
   m_PrefabInstance: {fileID: 6285340130024204922}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3174720692157573957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404164163841955205}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae7185ed27134f5b94d71572e6d2f1ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasStartAnimations: 0
-  _onStartAnimations: []
-  _aimBlendTreeSpeedMultiplier: 10
-  _idleAnimation:
-    _layer: 0
-    _isStatic: 0
-    _targetWeight: 1
-    _isRandomizeClip: 0
-    _animationClip: {fileID: 7400000, guid: 74a0aa96f011db54388e0f33d97cc2c0, type: 2}
-    _animationClips: []
-    _isLooping: 1
-    _avatarMask: {fileID: 0}
-    _isAdditive: 0
-    _useFootIK: 0
-    _crossFadeTime: 0.1
-    _fadeDelay: 0.1
-    _animationSpeed: 1
-  _moveAnimation:
-    _layer: 1
-    _isStatic: 0
-    _targetWeight: 1
-    _isRandomizeClip: 0
-    _animationClip: {fileID: 7400000, guid: af28ef6a0c39f5d48bd30128af605870, type: 2}
-    _animationClips: []
-    _isLooping: 1
-    _avatarMask: {fileID: 0}
-    _isAdditive: 0
-    _useFootIK: 0
-    _crossFadeTime: 0.1
-    _fadeDelay: 0.1
-    _animationSpeed: 1
-  _deathAnimation:
-    _layer: 3
-    _isStatic: 0
-    _targetWeight: 1
-    _isRandomizeClip: 0
-    _animationClip: {fileID: 7400000, guid: be1a6915a645e9c4088e2344682f7735, type: 2}
-    _animationClips: []
-    _isLooping: 0
-    _avatarMask: {fileID: 0}
-    _isAdditive: 0
-    _useFootIK: 0
-    _crossFadeTime: 0.1
-    _fadeDelay: 0.1
-    _animationSpeed: 1
-  _getHitAnimation:
-    _layer: 2
-    _isStatic: 0
-    _targetWeight: 1
-    _isRandomizeClip: 0
-    _animationClip: {fileID: 7400000, guid: 00bdeae164dac6446bf98becf52b5824, type: 2}
-    _animationClips: []
-    _isLooping: 0
-    _avatarMask: {fileID: 0}
-    _isAdditive: 0
-    _useFootIK: 0
-    _crossFadeTime: 0.1
-    _fadeDelay: 0.1
-    _animationSpeed: 1
---- !u!114 &8714329402615226632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404164163841955205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62042c3e0e6d4354b7f002e3ae08adb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 665160019085986294}
 --- !u!4 &7893456370518347583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4229217820964283717, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}

@@ -486,6 +486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 70423930638029328}
   - component: {fileID: 9073535858226997501}
+  - component: {fileID: 4226632471623017792}
   - component: {fileID: 4329210338749376989}
   m_Layer: 6
   m_Name: View
@@ -522,6 +523,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 0}
+--- !u!114 &4226632471623017792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300064044370690688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf6875377984797a4ac95fe0d403aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playableGraph: {fileID: 9073535858226997501}
+  _tryFoundOnItSelf: 0
+  _tryFoundOnGameObject: 0
+  _graphObject: {fileID: 0}
+  _tryFoundOnParent: 0
+  _hasStartAnimations: 0
+  _onStartAnimations: []
 --- !u!114 &4329210338749376989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,10 +554,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416686f0669d4c7bb0855937211810d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasStartAnimations: 0
-  _onStartAnimations: []
+  _clipPlayableHandler: {fileID: 4226632471623017792}
   _idleAnimation:
     _layer: 0
+    _isStatic: 0
     _targetWeight: 0
     _isRandomizeClip: 0
     _animationClip: {fileID: 0}
@@ -551,6 +571,7 @@ MonoBehaviour:
     _animationSpeed: 1
   _patrolAnimation:
     _layer: 0
+    _isStatic: 0
     _targetWeight: 0
     _isRandomizeClip: 0
     _animationClip: {fileID: 0}
@@ -564,6 +585,7 @@ MonoBehaviour:
     _animationSpeed: 1
   _chaseAnimation:
     _layer: 0
+    _isStatic: 0
     _targetWeight: 0
     _isRandomizeClip: 0
     _animationClip: {fileID: 0}
@@ -577,6 +599,7 @@ MonoBehaviour:
     _animationSpeed: 1
   _getHitAnimation:
     _layer: 0
+    _isStatic: 0
     _targetWeight: 0
     _isRandomizeClip: 0
     _animationClip: {fileID: 0}
@@ -590,6 +613,7 @@ MonoBehaviour:
     _animationSpeed: 1
   _deathAnimation:
     _layer: 0
+    _isStatic: 0
     _targetWeight: 0
     _isRandomizeClip: 0
     _animationClip: {fileID: 0}

@@ -17,7 +17,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
         [SerializeField] private PositionConfig _equippableWeaponPosition;
         [Space]
         [Title("View Settings")]
-        [SerializeField] private AnimationClipPlayableHandler _mainAnimationPlayableHandler;
+        [SerializeField] private AnimationClipPlayableMixer _mainAnimationPlayableHandler;
         [FoldoutGroup("Events")] 
         public UnityEvent<EquippableWeaponBehaviour> OnEquip;
         [FoldoutGroup("Events")] 

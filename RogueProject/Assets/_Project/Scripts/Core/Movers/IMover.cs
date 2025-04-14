@@ -5,7 +5,7 @@ namespace _Project.Scripts.Core
 {
     public interface IMover
     {
-        public Vector3 Velocity { get; set; }
+        public Vector3 Target { get; set; }
         public void Move();
         public event Action<Vector3> OnMove; 
         public float MoveSpeed { get; set; }

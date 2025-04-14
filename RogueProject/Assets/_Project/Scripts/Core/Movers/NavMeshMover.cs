@@ -12,7 +12,7 @@ namespace _Project.Scripts.Core
         [SerializeField] private float _defaultMoveSpeed;
         [SerializeField] private float _defautStoppingDistance;
 
-        public Vector3 Velocity { get; set; }
+        public Vector3 Target { get; set; }
         public event Action<Vector3> OnMove;
 
         
@@ -38,8 +38,8 @@ namespace _Project.Scripts.Core
         {
             Agent.speed = MoveSpeed;
             Agent.stoppingDistance = StoppingDistance;
-            Agent.destination = Velocity;
-            OnMove?.Invoke(Velocity);
+            Agent.destination = Target;
+            OnMove?.Invoke(Target);
         }
 
         #endregion

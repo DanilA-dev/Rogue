@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Project.Scripts.Core.Player
 {
-    public class PlayerView : AnimationClipPlayableHandler
+    public class PlayerView : MonoBehaviour
     {
         #region Fields
         
@@ -12,8 +12,9 @@ namespace _Project.Scripts.Core.Player
         private const string INPUT_Y = "InputY";
         
         [SerializeField] private float _aimBlendTreeSpeedMultiplier;
-        [SerializeField] private AnimationPlayableClipConfig _idleAnimation;
-        [SerializeField] private AnimationPlayableClipConfig _moveAnimation;
+        [SerializeField] private AnimationClipPlayableMixer _clipPlayableMixer;
+        [SerializeField] private AnimationSimpleBlendMixer _simpleLocomotionMixer;
+        [Space]
         [SerializeField] private AnimationPlayableClipConfig _deathAnimation;
         [SerializeField] private AnimationPlayableClipConfig _getHitAnimation;
 
@@ -21,11 +22,18 @@ namespace _Project.Scripts.Core.Player
 
         #region Public
 
-        public void PlayIdleAnimation() => Play(_idleAnimation);
-        public void PlayMoveAnimation() => Play(_moveAnimation);
-        public void PlayDeathAnimation() => Play(_deathAnimation);
-        public void PlayGetHitAnimation() => Play(_getHitAnimation);
-        
+        public void EvaluateSimpleLocomotion(float value) => _simpleLocomotionMixer.EvaluateBlendAnimations(value);
+
+        public void PlayDeathAnimation()
+        {
+            _clipPlayableMixer.Play(_deathAnimation);
+        }
+
+        public void PlayGetHitAnimation()
+        {
+            _clipPlayableMixer.Play(_getHitAnimation);
+        }
+
         // public void ToggleAimLocomotion(bool value) => SetBool(AIM_LOCOMOTION, value);
         // public void EvaluateAimLocomotionSpeed(Vector3 velocity)
         // {
