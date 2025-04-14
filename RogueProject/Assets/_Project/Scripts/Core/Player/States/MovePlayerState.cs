@@ -12,7 +12,7 @@ namespace _Project.Scripts.Core.Player.States
 
         public override void OnEnter()
         {
-            //_playerController.View.PlayMoveAnimation();
+            _playerController.View.PlayMoveAnimation();
         }
 
         public override void OnUpdate()

@@ -8,20 +8,20 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
     {
         #region Fields
 
-        [SerializeField] private bool _isLocomotion;
+        [SerializeField] private int _layer;
+        [SerializeField] private bool _isStatic;
+        [SerializeField, Range(0, 1f)] private float _targetWeight;
         [SerializeField] private bool _isRandomizeClip;
         [HideIf(nameof(_isRandomizeClip))] 
         [SerializeField] private AnimationClip _animationClip;
         [ShowIf(nameof(_isRandomizeClip))]
         [SerializeField] private AnimationClip[] _animationClips;
-        [HideIf(nameof(_isLocomotion))]
-        [SerializeField] private int _layer;
-        [SerializeField] private bool _isAdditive;
-        [SerializeField, Range(0, 1f)] private float _weight;
-        [SerializeField] private WrapMode _wrapMode;
+        [SerializeField] private bool _isLooping;
         [SerializeField] private AvatarMask _avatarMask;
+        [SerializeField] private bool _isAdditive;
         [SerializeField] private bool _useFootIK;
         [SerializeField] private float _crossFadeTime;
+        [SerializeField] private float _fadeDelay;
         [Range(0, 10)]
         [SerializeField] private float _animationSpeed = 1;
 
@@ -71,10 +71,10 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             set => _avatarMask = value;
         }
 
-        public WrapMode WrapMode
+        public bool IsLooping
         {
-            get => _wrapMode;
-            set => _wrapMode = value;
+            get => _isLooping;
+            set => _isLooping = value;
         }
 
         public bool IsAdditive
@@ -83,22 +83,28 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             set => _isAdditive = value;
         }
 
-        public float Weight
+        public float TargetWeight
         {
-            get => _weight;
-            set => _weight = value;
-        }
-
-        public bool IsLocomotion
-        {
-            get => _isLocomotion;
-            set => _isLocomotion = value;
+            get => _targetWeight;
+            set => _targetWeight = value;
         }
 
         public bool UseFootIK
         {
             get => _useFootIK;
             set => _useFootIK = value;
+        }
+
+        public float FadeDelay
+        {
+            get => _fadeDelay;
+            set => _fadeDelay = value;
+        }
+
+        public bool IsStatic
+        {
+            get => _isStatic;
+            set => _isStatic = value;
         }
 
         #endregion

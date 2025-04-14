@@ -24,7 +24,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
         [SerializeField] private bool _loadConfigFromInfo;
         [SerializeField] private DamageCollider _damageCollider;
         [SerializeField] private EquippableWeaponConfig _equippableWeaponConfig;
-        [SerializeField] private AnimationPlayableHandler _playableHandler;
+        [SerializeField] private AnimationClipPlayableHandler _playableHandler;
             
         #endregion
 
@@ -67,7 +67,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         #region Public
 
-        public void Equip(AnimationPlayableHandler playableHandler,EquippableWeaponConfig equippableWeaponConfig)
+        public void Equip(AnimationClipPlayableHandler playableHandler,EquippableWeaponConfig equippableWeaponConfig)
         {
             gameObject.SetActive(true);
             _playableHandler = playableHandler;
@@ -103,7 +103,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             if(anim == null)
                 return;
             
-            _playableHandler?.PlayOneShotAnimation(anim.AnimationConfig);
+            _playableHandler?.Play(anim.AnimationConfig);
         }
             
         #endregion

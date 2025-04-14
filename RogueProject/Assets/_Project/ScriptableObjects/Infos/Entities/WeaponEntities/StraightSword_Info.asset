@@ -29,45 +29,42 @@ MonoBehaviour:
     _animations:
     - <State>k__BackingField: 0
       <AnimationConfig>k__BackingField:
-        _isLocomotion: 0
+        _layer: 0
+        _targetWeight: 0
         _isRandomizeClip: 0
         _animationClip: {fileID: 7400000, guid: f01365bfdfb795b4d98eb645b3d8b717, type: 2}
         _animationClips: []
-        _layer: 0
+        _isLooping: 0
+        _avatarMask: {fileID: 0}
         _isAdditive: 0
-        _weight: 0
-        _wrapMode: 2
-        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
         _useFootIK: 0
-        _crossFadeTime: 0.25
+        _crossFadeTime: 0.1
         _animationSpeed: 1
     - <State>k__BackingField: 1
       <AnimationConfig>k__BackingField:
-        _isLocomotion: 0
+        _layer: 0
+        _targetWeight: 0
         _isRandomizeClip: 0
         _animationClip: {fileID: 1109091590377655818, guid: a1ff31df15966b147a6e4ce696b9a904, type: 3}
         _animationClips: []
-        _layer: 0
+        _isLooping: 0
+        _avatarMask: {fileID: 0}
         _isAdditive: 0
-        _weight: 0
-        _wrapMode: 0
-        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
         _useFootIK: 0
-        _crossFadeTime: 0.25
+        _crossFadeTime: 0.1
         _animationSpeed: 1
     - <State>k__BackingField: 5
       <AnimationConfig>k__BackingField:
-        _isLocomotion: 0
+        _layer: 0
+        _targetWeight: 0
         _isRandomizeClip: 0
         _animationClip: {fileID: 7400000, guid: f01365bfdfb795b4d98eb645b3d8b717, type: 2}
         _animationClips: []
-        _layer: 0
+        _isLooping: 0
+        _avatarMask: {fileID: 0}
         _isAdditive: 0
-        _weight: 0
-        _wrapMode: 0
-        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
         _useFootIK: 0
-        _crossFadeTime: 1
+        _crossFadeTime: 0.1
         _animationSpeed: 1
   references:
     version: 2

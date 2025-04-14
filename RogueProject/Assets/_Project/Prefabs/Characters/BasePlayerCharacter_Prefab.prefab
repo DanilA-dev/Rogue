@@ -189,6 +189,7 @@ MonoBehaviour:
       m_Calls: []
   _damagableObject: {fileID: 312791083777510423}
   _view: {fileID: 3174720692157573957}
+  _rigidbody: {fileID: 0}
   _targetSensor:
     _trigger: {fileID: 732765198344493203}
     _checkObstacleLinecast: 1
@@ -383,7 +384,7 @@ MonoBehaviour:
     _eulerAngles: {x: 0, y: 0, z: 0}
     _localRotTransform: 0
     _transformRot: {fileID: 3327202699212446869}
-  _mainAnimator: {fileID: 665160019085986294}
+  _mainAnimationPlayableHandler: {fileID: 0}
   OnEquip:
     m_PersistentCalls:
       m_Calls: []
@@ -732,6 +733,10 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: d49c65de9fce66146b5d0e164b1f9d2d, type: 3}
+    - target: {fileID: 6773726167153255308, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7490963711072802313, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
       propertyPath: boneSize
       value: 0.01
@@ -765,40 +770,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7185ed27134f5b94d71572e6d2f1ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 665160019085986294}
-  OnAnimationChange:
-    m_PersistentCalls:
-      m_Calls: []
+  _hasStartAnimations: 0
+  _onStartAnimations: []
   _aimBlendTreeSpeedMultiplier: 10
   _idleAnimation:
-    <IsRandomizeClip>k__BackingField: 0
-    <AnimationClip>k__BackingField: {fileID: 7400000, guid: b9aa9cd417c008048b7a83361a249012, type: 2}
-    <AnimationClips>k__BackingField: []
-    <Layer>k__BackingField: 0
-    <CrossFadeTime>k__BackingField: 0.25
-    <AnimationSpeed>k__BackingField: 1
+    _layer: 0
+    _isStatic: 0
+    _targetWeight: 1
+    _isRandomizeClip: 0
+    _animationClip: {fileID: 7400000, guid: 74a0aa96f011db54388e0f33d97cc2c0, type: 2}
+    _animationClips: []
+    _isLooping: 1
+    _avatarMask: {fileID: 0}
+    _isAdditive: 0
+    _useFootIK: 0
+    _crossFadeTime: 0.1
+    _fadeDelay: 0.1
+    _animationSpeed: 1
   _moveAnimation:
-    <IsRandomizeClip>k__BackingField: 0
-    <AnimationClip>k__BackingField: {fileID: 7400000, guid: 9a6606890c2b41e4aa8639b974e490bc, type: 2}
-    <AnimationClips>k__BackingField: []
-    <Layer>k__BackingField: 0
-    <CrossFadeTime>k__BackingField: 0.25
-    <AnimationSpeed>k__BackingField: 1
+    _layer: 1
+    _isStatic: 0
+    _targetWeight: 1
+    _isRandomizeClip: 0
+    _animationClip: {fileID: 7400000, guid: af28ef6a0c39f5d48bd30128af605870, type: 2}
+    _animationClips: []
+    _isLooping: 1
+    _avatarMask: {fileID: 0}
+    _isAdditive: 0
+    _useFootIK: 0
+    _crossFadeTime: 0.1
+    _fadeDelay: 0.1
+    _animationSpeed: 1
   _deathAnimation:
-    <IsRandomizeClip>k__BackingField: 0
-    <AnimationClip>k__BackingField: {fileID: 7400000, guid: be1a6915a645e9c4088e2344682f7735, type: 2}
-    <AnimationClips>k__BackingField: []
-    <Layer>k__BackingField: 0
-    <CrossFadeTime>k__BackingField: 0.25
-    <AnimationSpeed>k__BackingField: 1
+    _layer: 3
+    _isStatic: 0
+    _targetWeight: 1
+    _isRandomizeClip: 0
+    _animationClip: {fileID: 7400000, guid: be1a6915a645e9c4088e2344682f7735, type: 2}
+    _animationClips: []
+    _isLooping: 0
+    _avatarMask: {fileID: 0}
+    _isAdditive: 0
+    _useFootIK: 0
+    _crossFadeTime: 0.1
+    _fadeDelay: 0.1
+    _animationSpeed: 1
   _getHitAnimation:
-    <IsRandomizeClip>k__BackingField: 0
-    <AnimationClip>k__BackingField: {fileID: 7400000, guid: 00bdeae164dac6446bf98becf52b5824, type: 2}
-    <AnimationClips>k__BackingField: []
-    <Layer>k__BackingField: 1
-    <CrossFadeTime>k__BackingField: 0.15
-    <AnimationSpeed>k__BackingField: 1
---- !u!114 &5452943856630662967
+    _layer: 2
+    _isStatic: 0
+    _targetWeight: 1
+    _isRandomizeClip: 0
+    _animationClip: {fileID: 7400000, guid: 00bdeae164dac6446bf98becf52b5824, type: 2}
+    _animationClips: []
+    _isLooping: 0
+    _avatarMask: {fileID: 0}
+    _isAdditive: 0
+    _useFootIK: 0
+    _crossFadeTime: 0.1
+    _fadeDelay: 0.1
+    _animationSpeed: 1
+--- !u!114 &8714329402615226632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -807,28 +838,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7404164163841955205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 173f57ea85864028ab5593a30d57fa5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 62042c3e0e6d4354b7f002e3ae08adb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animatorEvents:
-  - <EventName>k__BackingField: FootStep
-    <Event>k__BackingField:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3329130187455935344}
-          m_TargetAssemblyTypeName: D_dev.Scripts.Runtime.UtilScripts.AudioSystem.AudioPlayer,
-            D-Dev.AudioSystem
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 704901314390fd94b9db8bd4b064bf2d, type: 2}
-            m_ObjectArgumentAssemblyTypeName: D_Dev.UtilScripts.ScriptableVaiables.StringScriptableVariable,
-              D-Dev.ScriptableVariables
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  _animator: {fileID: 665160019085986294}
 --- !u!4 &7893456370518347583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4229217820964283717, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}

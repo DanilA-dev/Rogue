@@ -9,7 +9,7 @@ namespace _Project.Scripts.Core.Player.States
 
         public override void OnEnter()
         {
-            //_playerController.View.PlayDeathAnimation();
+            _playerController.View.PlayDeathAnimation();
         }
     }
 }

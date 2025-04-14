@@ -143,7 +143,7 @@ Animator:
   m_GameObject: {fileID: 4765256686340080430}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
-  m_Controller: {fileID: 9100000, guid: 21f1cd756423d5a44bbe4db3646fbeb6, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4899,9 +4899,133 @@ PrefabInstance:
       value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _chaseAnimation._layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _deathAnimation._layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _getHitAnimation._layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _patrolAnimation._layer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: <Animator>k__BackingField
       value: 
       objectReference: {fileID: 4859569037662706308}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _idleAnimation._fadeDelay
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _idleAnimation._isLooping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _idleAnimation._useFootIK
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _chaseAnimation._fadeDelay
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _chaseAnimation._isLooping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _chaseAnimation._useFootIK
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _deathAnimation._fadeDelay
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _getHitAnimation._fadeDelay
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _getHitAnimation._useFootIK
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _patrolAnimation._fadeDelay
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _patrolAnimation._isLooping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _patrolAnimation._useFootIK
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _idleAnimation._targetWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _chaseAnimation._targetWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _deathAnimation._targetWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _idleAnimation._animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: b9aa9cd417c008048b7a83361a249012, type: 2}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _idleAnimation._crossFadeTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _chaseAnimation._animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: af28ef6a0c39f5d48bd30128af605870, type: 2}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _chaseAnimation._crossFadeTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _deathAnimation._animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: be1a6915a645e9c4088e2344682f7735, type: 2}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _deathAnimation._crossFadeTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _getHitAnimation._targetWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _patrolAnimation._targetWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _getHitAnimation._animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 00bdeae164dac6446bf98becf52b5824, type: 2}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _getHitAnimation._crossFadeTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _patrolAnimation._animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 1a6872434006d504c9df4abcf4411f41, type: 2}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _patrolAnimation._crossFadeTime
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: _idleAnimation.<Loop>k__BackingField
       value: 1
@@ -5050,6 +5174,10 @@ PrefabInstance:
       propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 9073535858226997501, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 4859569037662706308}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
 --- !u!54 &1068329582583087506 stripped

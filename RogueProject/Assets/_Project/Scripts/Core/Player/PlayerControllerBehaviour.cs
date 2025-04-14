@@ -1,5 +1,4 @@
 using _Project.Scripts.Core.Player.States;
-using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using D_Dev.Scripts.Runtime.UtilScripts.TargetSensor;
@@ -25,7 +24,7 @@ namespace _Project.Scripts.Core.Player
 
         [SerializeField] private DamagableObject _damagableObject;
         [Title("View")]
-        [SerializeField] private AnimationPlayableHandler _view;
+        [SerializeField] private PlayerView _view;
         [SerializeField] private Rigidbody _rigidbody;
         [Title("Sensors")]
         [SerializeField] private TargetSensor _targetSensor;
@@ -48,10 +47,9 @@ namespace _Project.Scripts.Core.Player
         public TargetSensor Sensor => _targetSensor;
         public float RotateMoveSpeed => _rotateMoveSpeed;
         public float RotateAimSpeed => _rotateAimSpeed;
-
         public GameObjectScriptableVariable TargetVariable => _targetVariable;
-
         public Vector3 TargetObjectPositionOffset => _targetObjectPositionOffset;
+        public PlayerView View => _view;
 
         #endregion
         
@@ -63,13 +61,7 @@ namespace _Project.Scripts.Core.Player
             _targetSensor.Init();
             _damagableObject.OnDeath.AddListener((() => ChangeState(PlayerState.Dead)));
         }
-
-        protected override void Update()
-        {
-            base.Update();
-            _view.UpdateLocomotionAnimation(_rigidbody.velocity, _mover.MoveSpeed);
-        }
-
+      
         private void OnDisable()
         {
             _targetSensor.Dispose();
