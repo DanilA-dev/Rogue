@@ -20,7 +20,10 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         [SerializeField] private AvatarMask _avatarMask;
         [SerializeField] private bool _isAdditive;
         [SerializeField] private bool _useFootIK;
+        [SerializeField] private bool _useAutoFadeTimeBasedOnClipLength;
+        [HideIf(nameof(_useAutoFadeTimeBasedOnClipLength))]
         [SerializeField] private float _crossFadeTime;
+        [HideIf(nameof(_useAutoFadeTimeBasedOnClipLength))]
         [SerializeField] private float _fadeDelay;
         [Range(0, 10)]
         [SerializeField] private float _animationSpeed = 1;
@@ -105,6 +108,12 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         {
             get => _isStatic;
             set => _isStatic = value;
+        }
+
+        public bool UseAutoFadeTimeBasedOnClipLength
+        {
+            get => _useAutoFadeTimeBasedOnClipLength;
+            set => _useAutoFadeTimeBasedOnClipLength = value;
         }
 
         #endregion

@@ -48,7 +48,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         [Space]
         [SerializeField] private MotionClip[] _blendAnimations;
         
-        private AnimationLayerMixerPlayable _blendLayerMixer;
+        private AnimationLayerMixerPlayable _animationLayerMixer;
 
         #endregion
 
@@ -58,8 +58,9 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         {
             base.OnEnable();
             var inputCount = Mathf.Max(1, _blendAnimations.Length);
-            _blendLayerMixer = AnimationLayerMixerPlayable.Create(_playableGraph.PlayableGraph,inputCount);
-            _playableGraph.RootLayerMixer.ConnectInput(_layer, _blendLayerMixer, 0, 1);
+            _animationLayerMixer = AnimationLayerMixerPlayable.Create(_playableGraph.PlayableGraph,inputCount);
+            _playableGraph.RootLayerMixer.ConnectInput(_layer, _animationLayerMixer, 0, 1);
+            _playableGraph.RootLayerMixer.SetLayerAdditive((uint)_layer, _isAdditive);
             
             InitBlendClips();
         }
@@ -83,18 +84,18 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             foreach (var blendAnimation in _blendAnimations)
             {
                 var newPlayable = CreatePlayableClip(blendAnimation.Config);
-                _blendLayerMixer.ConnectInput(blendAnimation.Config.Layer, newPlayable, 0);
+                _animationLayerMixer.ConnectInput(blendAnimation.Config.Layer, newPlayable, 0);
                 
                 if(blendAnimation.Config.Mask != null)
-                    _blendLayerMixer.SetLayerMaskFromAvatarMask((uint)blendAnimation.Config.Layer,blendAnimation.Config.Mask);
+                    _animationLayerMixer.SetLayerMaskFromAvatarMask((uint)blendAnimation.Config.Layer,blendAnimation.Config.Mask);
             }
-            _blendLayerMixer.SetInputWeight(_blendAnimations[0].Config.Layer, 1);
+            _animationLayerMixer.SetInputWeight(_blendAnimations[0].Config.Layer, 1);
         }
 
         private void SetWeight(AnimationPlayableClipConfig config, float weight)
         {
             if(!config.IsStatic)
-                _blendLayerMixer.SetInputWeight(config.Layer, weight);
+                _animationLayerMixer.SetInputWeight(config.Layer, weight);
         }
         
         #endregion

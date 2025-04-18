@@ -5,13 +5,13 @@ using UnityEngine.Playables;
 
 namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler
 {
-    [RequireComponent(typeof(AnimationPlayableGraph))]
     public abstract class BaseAnimationPlayableMixer : MonoBehaviour
     {
         #region Fields
 
         [Title("Playable Graph")] 
         [SerializeField] protected int _layer;
+        [SerializeField] protected bool _isAdditive;
         [SerializeField] protected AnimationPlayableGraph _playableGraph;
         [Space]
         [SerializeField] protected bool _tryFoundOnItSelf;
@@ -19,7 +19,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         [ShowIf(nameof(_tryFoundOnGameObject))]
         [SerializeField] protected GameObject _graphObject;
         [SerializeField] protected bool _tryFoundOnParent;
-
+        
         #endregion
 
         #region Properties

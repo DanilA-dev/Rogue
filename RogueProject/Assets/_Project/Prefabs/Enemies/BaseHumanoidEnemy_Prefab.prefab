@@ -4915,6 +4915,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _idleAnimation._isStatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: <Animator>k__BackingField
       value: 
       objectReference: {fileID: 4859569037662706308}
@@ -5178,6 +5182,10 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 4859569037662706308}
+    - target: {fileID: 9073535858226997501, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _layerCount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
 --- !u!54 &1068329582583087506 stripped

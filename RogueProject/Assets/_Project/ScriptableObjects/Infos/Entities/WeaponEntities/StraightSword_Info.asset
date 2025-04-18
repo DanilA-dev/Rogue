@@ -18,7 +18,7 @@ MonoBehaviour:
       <DamageDealer>k__BackingField: {fileID: 0}
       <Damage>k__BackingField:
         rid: 1123452753682366470
-      <UseForceOnDamage>k__BackingField: 1
+      <UseForceOnDamage>k__BackingField: 0
       <ForceMode>k__BackingField: 1
       <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: -1}
     _isChargable: 0
@@ -27,44 +27,23 @@ MonoBehaviour:
     _attackActionTime: 0.3
     _cooldownTime: 0.5
     _animations:
-    - <State>k__BackingField: 0
-      <AnimationConfig>k__BackingField:
-        _layer: 0
-        _targetWeight: 0
-        _isRandomizeClip: 0
-        _animationClip: {fileID: 7400000, guid: f01365bfdfb795b4d98eb645b3d8b717, type: 2}
-        _animationClips: []
-        _isLooping: 0
-        _avatarMask: {fileID: 0}
-        _isAdditive: 0
-        _useFootIK: 0
-        _crossFadeTime: 0.1
-        _animationSpeed: 1
     - <State>k__BackingField: 1
       <AnimationConfig>k__BackingField:
         _layer: 0
-        _targetWeight: 0
-        _isRandomizeClip: 0
+        _isStatic: 0
+        _targetWeight: 1
+        _isRandomizeClip: 1
         _animationClip: {fileID: 1109091590377655818, guid: a1ff31df15966b147a6e4ce696b9a904, type: 3}
-        _animationClips: []
+        _animationClips:
+        - {fileID: 7400000, guid: 0b5e5a2da227e274fa60b49717e26b96, type: 2}
+        - {fileID: 7400000, guid: 5f66cf1a2e1dc7743a318f866aae009a, type: 2}
         _isLooping: 0
-        _avatarMask: {fileID: 0}
+        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
         _isAdditive: 0
         _useFootIK: 0
+        _useAutoFadeTimeBasedOnClipLength: 0
         _crossFadeTime: 0.1
-        _animationSpeed: 1
-    - <State>k__BackingField: 5
-      <AnimationConfig>k__BackingField:
-        _layer: 0
-        _targetWeight: 0
-        _isRandomizeClip: 0
-        _animationClip: {fileID: 7400000, guid: f01365bfdfb795b4d98eb645b3d8b717, type: 2}
-        _animationClips: []
-        _isLooping: 0
-        _avatarMask: {fileID: 0}
-        _isAdditive: 0
-        _useFootIK: 0
-        _crossFadeTime: 0.1
+        _fadeDelay: 1.5
         _animationSpeed: 1
   references:
     version: 2

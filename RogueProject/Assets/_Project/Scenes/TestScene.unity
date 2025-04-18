@@ -1336,6 +1336,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _deathAnimation._layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _getHitAnimation._layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: _idleAnimation._isStatic
       value: 1
       objectReference: {fileID: 0}
@@ -1351,8 +1359,36 @@ PrefabInstance:
       propertyPath: _moveAnimation._avatarMask
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _getHitAnimation._fadeDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _getHitAnimation._avatarMask
+      value: 
+      objectReference: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
+    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _getHitAnimation._isAdditive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _getHitAnimation._crossFadeTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _mainAnimationPlayableHandler
+      value: 
+      objectReference: {fileID: 2125612859}
+    - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _equippableWeaponPosition._positionType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _equippableWeaponPosition._localPosTransform
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
@@ -1364,9 +1400,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _hasStartAnimations
+      propertyPath: _isBlendInLowerLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _mixerWithLowerLayer
+      value: 
+      objectReference: {fileID: 2125612863}
     - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: _onStartAnimations.Array.size
       value: 1
@@ -1482,7 +1522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689354540510106121, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5155080672766623900, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
       propertyPath: m_AngularSpeed

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1960908944203892465, guid: 22180613533324a46b986cf40e9f388a, type: 3}
+      propertyPath: _layerCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2603968861830546724, guid: 22180613533324a46b986cf40e9f388a, type: 3}
       propertyPath: m_Name
       value: EnemyGoblin1_Prefab
@@ -372,6 +376,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
+      propertyPath: _idleAnimation._isStatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
+      propertyPath: _idleAnimation._animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 25347e5aa6fdb084f964310066573313, type: 2}
+    - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
+      propertyPath: _patrolAnimation._animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 1a6872434006d504c9df4abcf4411f41, type: 2}
+    - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
       propertyPath: _chaseAnimation.<AnimationSpeed>k__BackingField
       value: 0.8
       objectReference: {fileID: 0}
@@ -398,6 +414,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2603968861830546724, guid: 22180613533324a46b986cf40e9f388a, type: 3}
   m_PrefabInstance: {fileID: 1661862941978449709}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5432815445905316961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6662270082169949004, guid: 22180613533324a46b986cf40e9f388a, type: 3}
+  m_PrefabInstance: {fileID: 1661862941978449709}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf6875377984797a4ac95fe0d403aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &6080061534784818601 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4859569037662706308, guid: 22180613533324a46b986cf40e9f388a, type: 3}
@@ -468,6 +495,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 47ac4af9118d440409d81a5ddd559f8c, type: 2}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _playableHandler
+      value: 
+      objectReference: {fileID: 5432815445905316961}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _loadConfigFromInfo
       value: 0
       objectReference: {fileID: 0}
@@ -536,6 +567,38 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._fadeDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._useFootIK
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._avatarMask
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._targetWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._crossFadeTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._animationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._isRandomizeClip
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<Layer>k__BackingField
       value: 0
       objectReference: {fileID: 0}
@@ -547,6 +610,18 @@ PrefabInstance:
       propertyPath: _equippableWeaponConfig._animations.Array.data[2].<AnimationConfig>k__BackingField.<Layer>k__BackingField
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._animationClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._animationClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: 0b5e5a2da227e274fa60b49717e26b96, type: 2}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._animationClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: 5f66cf1a2e1dc7743a318f866aae009a, type: 2}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField.<AnimationClip>k__BackingField
       value: 
@@ -589,6 +664,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._animations.Array.data[1].<AnimationConfig>k__BackingField.<IsRandomizeClip>k__BackingField
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _equippableWeaponConfig._animations.Array.data[0].<AnimationConfig>k__BackingField._useAutoFadeTimeBasedOnClipLength
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}

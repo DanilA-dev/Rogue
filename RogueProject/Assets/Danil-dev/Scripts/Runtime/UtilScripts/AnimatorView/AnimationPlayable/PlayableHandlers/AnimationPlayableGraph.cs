@@ -20,8 +20,9 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
 
         public PlayableGraph PlayableGraph { get; private set; }
         public AnimationLayerMixerPlayable RootLayerMixer { get; private set; }
-
         public Animator Animator => _animator;
+        
+        public bool IsPlayableGraphInitialized { get; private set; }
 
         #endregion
 
@@ -34,6 +35,8 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             RootLayerMixer = AnimationLayerMixerPlayable.Create(PlayableGraph, _layerCount);
             _animationPlayableOutput.SetSourcePlayable(RootLayerMixer);
             PlayableGraph.Play();
+            
+            IsPlayableGraphInitialized = true;
         }
 
         private void OnDestroy()
