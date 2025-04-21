@@ -23,8 +23,11 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         [SerializeField] private bool _loadConfigFromInfo;
         [SerializeField] private DamageCollider _damageCollider;
-        [SerializeField] private EquippableWeaponConfig _equippableWeaponConfig;
-        [SerializeField] private AnimationClipPlayableMixer _playableHandler;
+        [SerializeField] private EquippableWeaponData _equippableWeaponData;
+        [SerializeField] private AnimationClipPlayableMixer _clipPlayableMixer;
+
+        private EquippableWeaponAttackConfig _lastAttackConfig;
+        private bool _isTransitionsInitialized;
             
         #endregion
 
@@ -35,11 +38,11 @@ namespace _Project.Scripts.Core.EquippableWeapon
             get => _loadConfigFromInfo;
             set => _loadConfigFromInfo = value;
         }
-        public EquippableWeaponConfig WeaponConfig => _equippableWeaponConfig;
+        public EquippableWeaponData WeaponData => _equippableWeaponData;
 
-        public float FullActionStateTime => _equippableWeaponConfig.AttackActionDelayTime +
-                                            _equippableWeaponConfig.AttackActionTime +
-                                            _equippableWeaponConfig.CooldownTime;
+        public float FullActionStateTime => _equippableWeaponData.GetAttackConfig().AttackActionDelayTime +
+                                            _equippableWeaponData.GetAttackConfig().AttackActionTime +
+                                            _equippableWeaponData.GetAttackConfig().CooldownTime;
 
         #endregion
 
@@ -60,24 +63,25 @@ namespace _Project.Scripts.Core.EquippableWeapon
             if(_loadConfigFromInfo)
                 return;
             
-            InitTransitions();
+            InitAttackTransitions(_equippableWeaponData.GetAttackConfig());
         }
 
         #endregion
 
         #region Public
 
-        public void Equip(AnimationClipPlayableMixer playableHandler,EquippableWeaponConfig equippableWeaponConfig)
+        public void Equip(AnimationClipPlayableMixer playableHandler, EquippableWeaponData loadedEquippableWeaponData)
         {
             gameObject.SetActive(true);
-            _playableHandler = playableHandler;
-            _equippableWeaponConfig = _loadConfigFromInfo 
-                ? equippableWeaponConfig 
-                : _equippableWeaponConfig;
+            _clipPlayableMixer = playableHandler;
+            _equippableWeaponData = _loadConfigFromInfo 
+                ? loadedEquippableWeaponData 
+                : _equippableWeaponData;
 
-            _damageCollider.DamageInfo = _equippableWeaponConfig.DamageInfo;
+
+            _lastAttackConfig = _equippableWeaponData.GetAttackConfig();
             ClearTransitions();
-            InitTransitions();
+            InitAttackTransitions(_lastAttackConfig);
         }
         
         public void Unequip()
@@ -90,8 +94,13 @@ namespace _Project.Scripts.Core.EquippableWeapon
         {
             if(_currentState != EquippableWeaponState.Idle)
                 return;
+
+            _lastAttackConfig = _equippableWeaponData.GetAttackConfig();
+            _damageCollider.DamageInfo = _lastAttackConfig.DamageInfo;
+            ClearTransitions();
+            InitAttackTransitions(_lastAttackConfig);
             
-            ChangeState(_equippableWeaponConfig.IsChargable
+            ChangeState(_lastAttackConfig.IsChargable
                 ? EquippableWeaponState.ChargeStart
                 : EquippableWeaponState.AttackStart);
         }
@@ -99,11 +108,19 @@ namespace _Project.Scripts.Core.EquippableWeapon
         
         public void PlayEquippableWeaponAnimation(EquippableWeaponState state)
         {
-            var anim = _equippableWeaponConfig.GetAnimation(state);
-            if(anim == null)
+            // var anim = _equippableWeaponConfig.GetAnimation(state);
+            // if(anim == null)
+            //     return;
+            //
+            // _playableHandler?.Play(anim);
+        }
+
+        public void PlayAttackConfigAnimation()
+        {
+            if(_lastAttackConfig == null)
                 return;
             
-            _playableHandler?.Play(anim.AnimationConfig);
+            _clipPlayableMixer?.Play(_lastAttackConfig.WeaponAnimation);
         }
             
         #endregion
@@ -116,21 +133,28 @@ namespace _Project.Scripts.Core.EquippableWeapon
             RemoveTransition(EquippableWeaponState.AttackAction);
             RemoveTransition(EquippableWeaponState.ChargeStart);
             RemoveTransition(EquippableWeaponState.Cooldown);
+            
+            _isTransitionsInitialized = false;
         }
         
-        private void InitTransitions()
+        private void InitAttackTransitions(EquippableWeaponAttackConfig attackConfig)
         {
+            if(_isTransitionsInitialized)
+                return;
+            
             AddTransition(new [] { EquippableWeaponState.AttackStart }, EquippableWeaponState.AttackAction,
-                new DelayCondition(_equippableWeaponConfig.AttackActionDelayTime));
+                new DelayCondition(attackConfig.AttackActionDelayTime));
             
             AddTransition(new [] { EquippableWeaponState.AttackAction }, EquippableWeaponState.Cooldown,
-                new DelayCondition(_equippableWeaponConfig.AttackActionTime));
+                new DelayCondition(attackConfig.AttackActionTime));
             
             AddTransition(new [] { EquippableWeaponState.ChargeStart}, EquippableWeaponState.ChargeEnd,
-                new DelayCondition(_equippableWeaponConfig.ChargeTime));
+                new DelayCondition(attackConfig.ChargeTime));
             
             AddTransition(new [] { EquippableWeaponState.Cooldown }, EquippableWeaponState.Idle,
-                new DelayCondition(_equippableWeaponConfig.CooldownTime));
+                new DelayCondition(attackConfig.CooldownTime));
+
+            _isTransitionsInitialized = true;
         }
 
         #endregion

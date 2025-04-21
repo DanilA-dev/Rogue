@@ -1159,121 +1159,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _debugValue
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[1]._value
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[1]._motionName
-      value: Walk
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._motionName
-      value: Run
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[0]._config._layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[1]._config._layer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._config._layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[0]._config._isStatic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[1]._config._fadeDelay
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[1]._config._isLooping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._config._fadeDelay
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._config._isLooping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[0]._config._avatarMask
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[1]._config._avatarMask
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._config._avatarMask
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[1]._config._targetWeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._config._targetWeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[0]._config._animationClip
-      value: 
-      objectReference: {fileID: 7400000, guid: dd771e18c6f1b6344bba9045e773864a, type: 2}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[1]._config._animationClip
-      value: 
-      objectReference: {fileID: 7400000, guid: 1a6872434006d504c9df4abcf4411f41, type: 2}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[1]._config._crossFadeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._config._animationClip
-      value: 
-      objectReference: {fileID: 7400000, guid: af28ef6a0c39f5d48bd30128af605870, type: 2}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._config._crossFadeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blendAnimations.Array.data[2]._config._animationSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 456966870965895341, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: m_Name
       value: BasePlayerCharacter_Prefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 1492039103426955844, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _layerCount
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3000194390292091561, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: m_RootOrder
@@ -1319,70 +1207,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _blend1dMixer
-      value: 
-      objectReference: {fileID: 2125612863}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _clipPlayableMixer
-      value: 
-      objectReference: {fileID: 2125612859}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _idleAnimation._layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _moveAnimation._layer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _deathAnimation._layer
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _getHitAnimation._layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _idleAnimation._isStatic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _moveAnimation._isStatic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _idleAnimation._avatarMask
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _moveAnimation._avatarMask
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _getHitAnimation._fadeDelay
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _getHitAnimation._avatarMask
-      value: 
-      objectReference: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _getHitAnimation._isAdditive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4709259934263080557, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _getHitAnimation._crossFadeTime
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _mainAnimationPlayableHandler
-      value: 
-      objectReference: {fileID: 2125612859}
     - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: _equippableWeaponPosition._positionType
       value: 1
@@ -1390,62 +1218,6 @@ PrefabInstance:
     - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: _equippableWeaponPosition._localPosTransform
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _layer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _isBlendInLowerLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _mixerWithLowerLayer
-      value: 
-      objectReference: {fileID: 2125612863}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.data[0]._layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.data[0]._fadeDelay
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.data[0]._isLooping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.data[0]._avatarMask
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.data[0]._isAdditive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.data[0]._targetWeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.data[0]._animationClip
-      value: 
-      objectReference: {fileID: 8341632802235832332, guid: bfe21e03eb84778469001a81e7e6bbe9, type: 3}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.data[0]._crossFadeTime
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-      propertyPath: _onStartAnimations.Array.data[0]._animationSpeed
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8442810583087530730, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: _rigidbody
@@ -1464,8 +1236,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -5.61
       objectReference: {fileID: 0}
-    - target: {fileID: 1856441348889695935, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
-      propertyPath: m_IsKinematic
+    - target: {fileID: 2551212047585596767, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _blendAnimations.Array.data[0]._config._isStatic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551212047585596767, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _blendAnimations.Array.data[1]._config._isStatic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551212047585596767, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _blendAnimations.Array.data[2]._config._isStatic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2754661190073081247, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
@@ -1708,25 +1488,3 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &2125612859 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5525771927447655136, guid: e6511342725d65140b41bc2364537c70, type: 3}
-  m_PrefabInstance: {fileID: 1639508917}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cf6875377984797a4ac95fe0d403aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2125612863 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 265199012645117076, guid: e6511342725d65140b41bc2364537c70, type: 3}
-  m_PrefabInstance: {fileID: 1639508917}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65fa352c8964ad38bada70ae4ac93d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

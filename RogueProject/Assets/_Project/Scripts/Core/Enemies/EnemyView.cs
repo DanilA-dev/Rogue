@@ -7,7 +7,8 @@ namespace _Project.Scripts.Core.Enemies
     {
         #region Fields
 
-        [SerializeField] private AnimationClipPlayableMixer _clipPlayableHandler;
+        [SerializeField] private AnimationClipPlayableMixer _locomotionPlayableMixer;
+        [SerializeField] private AnimationClipPlayableMixer _oneShotPlayableMixer;
         [Space]
         [SerializeField] private AnimationPlayableClipConfig _idleAnimation;
         [SerializeField] private AnimationPlayableClipConfig _patrolAnimation;
@@ -19,11 +20,12 @@ namespace _Project.Scripts.Core.Enemies
 
         #region Public
 
-        public void PlayIdleAnimation() => _clipPlayableHandler.Play(_idleAnimation);
-        public void PlayPatrolAnimation() => _clipPlayableHandler.Play(_patrolAnimation);
-        public void PlayGetHitAnimation() => _clipPlayableHandler.Play(_getHitAnimation);
-        public void PlayDeathAnimation() => _clipPlayableHandler.Play(_deathAnimation);
-        public void PlayChaseAnimation() => _clipPlayableHandler.Play(_chaseAnimation);
+        public void PlayIdleAnimation() => _locomotionPlayableMixer.Play(_idleAnimation);
+        public void PlayPatrolAnimation() => _locomotionPlayableMixer.Play(_patrolAnimation);
+        public void PlayChaseAnimation() => _locomotionPlayableMixer.Play(_chaseAnimation);
+        
+        public void PlayGetHitAnimation() => _oneShotPlayableMixer.Play(_getHitAnimation);
+        public void PlayDeathAnimation() => _oneShotPlayableMixer.Play(_deathAnimation);
 
         #endregion
     }

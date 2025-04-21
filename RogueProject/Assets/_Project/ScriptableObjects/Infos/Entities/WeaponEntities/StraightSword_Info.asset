@@ -13,43 +13,106 @@ MonoBehaviour:
   m_Name: StraightSword_Info
   m_EditorClassIdentifier: 
   <EntityPrefab>k__BackingField: {fileID: 1170135344080618636, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
-  <Config>k__BackingField:
-    _damageInfo:
-      <DamageDealer>k__BackingField: {fileID: 0}
-      <Damage>k__BackingField:
-        rid: 1123452753682366470
-      <UseForceOnDamage>k__BackingField: 0
-      <ForceMode>k__BackingField: 1
-      <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: -1}
-    _isChargable: 0
-    _chargeTime: 0
-    _attackActionDelayTime: 0.5
-    _attackActionTime: 0.3
-    _cooldownTime: 0.5
-    _animations:
-    - <State>k__BackingField: 1
-      <AnimationConfig>k__BackingField:
+  <WeaponData>k__BackingField:
+    _weaponAttackConfig:
+      _damageInfo:
+        <DamageDealer>k__BackingField: {fileID: 0}
+        <Damage>k__BackingField:
+          rid: 2247855241080340480
+        <UseForceOnDamage>k__BackingField: 0
+        <ForceMode>k__BackingField: 0
+        <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
+      _isChargable: 0
+      _chargeTime: 0
+      _attackActionDelayTime: 0.65
+      _attackActionTime: 0.15
+      _cooldownTime: 1
+      _weaponAnimation:
         _layer: 0
         _isStatic: 0
         _targetWeight: 1
-        _isRandomizeClip: 1
-        _animationClip: {fileID: 1109091590377655818, guid: a1ff31df15966b147a6e4ce696b9a904, type: 3}
-        _animationClips:
-        - {fileID: 7400000, guid: 0b5e5a2da227e274fa60b49717e26b96, type: 2}
-        - {fileID: 7400000, guid: 5f66cf1a2e1dc7743a318f866aae009a, type: 2}
+        _isRandomizeClip: 0
+        _animationClip: {fileID: 7400000, guid: 0b5e5a2da227e274fa60b49717e26b96, type: 2}
+        _animationClips: []
         _isLooping: 0
         _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
         _isAdditive: 0
         _useFootIK: 0
         _useAutoFadeTimeBasedOnClipLength: 0
-        _crossFadeTime: 0.1
-        _fadeDelay: 1.5
+        _crossFadeTime: 0.4
+        _fadeDelay: 1
+        _animationSpeed: 1
+    _useRandomAttackConfigs: 1
+    _randomWeaponAttackConfigs:
+    - _damageInfo:
+        <DamageDealer>k__BackingField: {fileID: 0}
+        <Damage>k__BackingField:
+          rid: 2247855241080340485
+        <UseForceOnDamage>k__BackingField: 0
+        <ForceMode>k__BackingField: 0
+        <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
+      _isChargable: 0
+      _chargeTime: 0
+      _attackActionDelayTime: 0.65
+      _attackActionTime: 0.15
+      _cooldownTime: 1
+      _weaponAnimation:
+        _layer: 0
+        _isStatic: 0
+        _targetWeight: 1
+        _isRandomizeClip: 0
+        _animationClip: {fileID: 7400000, guid: 0b5e5a2da227e274fa60b49717e26b96, type: 2}
+        _animationClips: []
+        _isLooping: 0
+        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
+        _isAdditive: 0
+        _useFootIK: 0
+        _useAutoFadeTimeBasedOnClipLength: 0
+        _crossFadeTime: 0.4
+        _fadeDelay: 1
+        _animationSpeed: 1
+    - _damageInfo:
+        <DamageDealer>k__BackingField: {fileID: 0}
+        <Damage>k__BackingField:
+          rid: 2247855241080340486
+        <UseForceOnDamage>k__BackingField: 0
+        <ForceMode>k__BackingField: 0
+        <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
+      _isChargable: 0
+      _chargeTime: 0
+      _attackActionDelayTime: 0.6
+      _attackActionTime: 0.15
+      _cooldownTime: 0.7
+      _weaponAnimation:
+        _layer: 1
+        _isStatic: 0
+        _targetWeight: 1
+        _isRandomizeClip: 0
+        _animationClip: {fileID: 7400000, guid: 5f66cf1a2e1dc7743a318f866aae009a, type: 2}
+        _animationClips: []
+        _isLooping: 0
+        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
+        _isAdditive: 0
+        _useFootIK: 0
+        _useAutoFadeTimeBasedOnClipLength: 0
+        _crossFadeTime: 0.4
+        _fadeDelay: 0.7
         _animationSpeed: 1
   references:
     version: 2
     RefIds:
-    - rid: 1123452753682366470
+    - rid: 2247855241080340480
       type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes, asm: D-Dev.DamagableSystem}
       data:
         _damageAmount:
-          _value: 2
+          _value: 5
+    - rid: 2247855241080340485
+      type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes, asm: D-Dev.DamagableSystem}
+      data:
+        _damageAmount:
+          _value: 5
+    - rid: 2247855241080340486
+      type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes, asm: D-Dev.DamagableSystem}
+      data:
+        _damageAmount:
+          _value: 5

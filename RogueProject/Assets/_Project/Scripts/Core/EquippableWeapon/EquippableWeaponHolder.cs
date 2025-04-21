@@ -72,7 +72,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             
             if (_equippableWeapons.TryGetValue(info, out var equippableWeaponBehaviour))
             {
-                equippableWeaponBehaviour.Equip(_mainAnimationPlayableHandler,info.Config);
+                equippableWeaponBehaviour.Equip(_mainAnimationPlayableHandler,info.WeaponData);
                 _currentEquippableWeaponInfo = info;
                 return;
             }
@@ -81,7 +81,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
             var newEquippableWeaponTransform = newEquippableWeapon.transform;
             _equippableWeaponPosition.SetPosition(ref newEquippableWeaponTransform);
             _equippableWeaponPosition.SetRotation(ref newEquippableWeaponTransform);
-            newEquippableWeapon.Equip(_mainAnimationPlayableHandler,info.Config);
+            newEquippableWeapon.Equip(_mainAnimationPlayableHandler,info.WeaponData);
             _currentEquippableWeaponInfo = info;
             _equippableWeapons.TryAdd(info, newEquippableWeapon);
             OnEquip?.Invoke(newEquippableWeapon);

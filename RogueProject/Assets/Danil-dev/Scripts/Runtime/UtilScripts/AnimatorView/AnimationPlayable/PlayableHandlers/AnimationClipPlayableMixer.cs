@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.Playables;
 
 namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler
@@ -11,6 +12,8 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
     {
         #region Fields
 
+        [PropertyOrder(-1)]
+        [SerializeField] private bool _connectToSeperateMixer;
         [PropertySpace(10)] 
         [SerializeField] private bool _hasStartAnimations;
         [ShowIf(nameof(_hasStartAnimations))]
@@ -18,6 +21,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         
         private AnimationPlayableClipConfig _currentPlayableClipConfig;
         private AnimationPlayableClipConfig _lastPlayedConfig;
+        private AnimationLayerMixerPlayable _targetLayerMixerPlayable;
         
         private Dictionary<int, AnimationPlayablePairConfig> _playablesPair = new();
 
@@ -27,6 +31,19 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         #endregion
 
         #region Monobehaviour
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+
+            _targetLayerMixerPlayable = _connectToSeperateMixer 
+                ? AnimationLayerMixerPlayable.Create(_playableGraph.PlayableGraph, 1) 
+                : _playableGraph.RootLayerMixer;
+            
+            if(_connectToSeperateMixer && _targetLayerMixerPlayable.IsValid())
+                _playableGraph.RootLayerMixer.ConnectInput(_layer, _targetLayerMixerPlayable, 0, 0);
+        }
+
         private void Start()
         {
             if (_hasStartAnimations && _onStartAnimations.Length > 0)
@@ -51,21 +68,22 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
                     return;
 
                 if(!oldPlayable.ClipConfig.IsStatic && oldPlayable.Playable.IsValid())
-                    InterruptOneShot(oldPlayable.ClipConfig);
+                    Stop(oldPlayable.ClipConfig);
             }
 
             var newAnimationLayer = newPlayableConfig.Layer + 1;
             var newAnimationPlayable = CreatePlayableClip(newPlayableConfig);
-            if(newAnimationLayer >=  _playableGraph.RootLayerMixer.GetInputCount())
-                _playableGraph.RootLayerMixer.SetInputCount(_playableGraph.RootLayerMixer.GetInputCount() + newAnimationLayer);
+            if(newAnimationLayer >=  _targetLayerMixerPlayable.GetInputCount())
+                _targetLayerMixerPlayable.SetInputCount(_targetLayerMixerPlayable.GetInputCount() + newAnimationLayer);
 
             if(!_playablesPair.ContainsKey(newAnimationLayer))    
-                _playableGraph.RootLayerMixer.ConnectInput(newAnimationLayer, newAnimationPlayable, 0);
+                _targetLayerMixerPlayable.ConnectInput(newAnimationLayer, newAnimationPlayable, 0);
            
             if(newPlayableConfig.Mask != null)
-                _playableGraph.RootLayerMixer.SetLayerMaskFromAvatarMask((uint)newAnimationLayer,newPlayableConfig.Mask);
+                _targetLayerMixerPlayable.SetLayerMaskFromAvatarMask((uint)newAnimationLayer,newPlayableConfig.Mask);
             
-            _playableGraph.RootLayerMixer.SetLayerAdditive((uint)newAnimationLayer, newPlayableConfig.IsAdditive);
+            _playableGraph.RootLayerMixer.SetInputWeight(_layer, 1);
+            _targetLayerMixerPlayable.SetLayerAdditive((uint)newAnimationLayer, newPlayableConfig.IsAdditive);
             _currentPlayableClipConfig = newPlayableConfig;
             if (_playablesPair.Count > 0 || _layer != 0)
             {
@@ -73,18 +91,14 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
                 BlendOut(_lastPlayedConfig);
             }
             else
-                _playableGraph.RootLayerMixer.SetInputWeight(newAnimationLayer, newPlayableConfig.TargetWeight);
+                _targetLayerMixerPlayable.SetInputWeight(newAnimationLayer, newPlayableConfig.TargetWeight);
             
             _lastPlayedConfig = newPlayableConfig;
             _playablesPair.TryAdd(newAnimationLayer, new AnimationPlayablePairConfig 
                 {ClipConfig = newPlayableConfig, Playable = newAnimationPlayable});
         }
 
-        #endregion
-
-        #region Private
-
-        private void InterruptOneShot(AnimationPlayableClipConfig config)
+        public void Stop(AnimationPlayableClipConfig config)
         {
             if(_blendInCoroutine != null)
                 StopCoroutine(_blendInCoroutine);
@@ -92,12 +106,15 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             if(_blendOutCoroutine != null)
                 StopCoroutine(_blendOutCoroutine);
             
-            _playableGraph.RootLayerMixer.SetInputWeight(config.Layer + 1, 0);
+            _targetLayerMixerPlayable.SetInputWeight(config.Layer + 1, 0);
             _playableGraph.RootLayerMixer.SetInputWeight(0, 1);
             
             DisconnectOneShot(config);
         }
         
+        #endregion
+
+        #region Private
 
         private void DisconnectOneShot(AnimationPlayableClipConfig config)
         {
@@ -112,7 +129,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
                         _lastPlayedConfig = null;
                     
                     _playableGraph.PlayableGraph.DestroyPlayable(playableConfig.Playable);
-                    _playableGraph.RootLayerMixer.DisconnectInput(config.Layer + 1);
+                    _targetLayerMixerPlayable.DisconnectInput(config.Layer + 1);
                     _playablesPair.Remove(config.Layer + 1);
                 }
             }
@@ -130,7 +147,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             _blendInCoroutine = StartCoroutine(BlendCoroutine(crossFadeTime, config.TargetWeight,blend =>
             {
                 float weight = Mathf.Lerp(0f, 1f, blend);
-                _playableGraph.RootLayerMixer.SetInputWeight(config.Layer + 1, weight);
+                _targetLayerMixerPlayable.SetInputWeight(config.Layer + 1, weight);
             }));
         }
         
@@ -151,7 +168,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             {
                 float weight = Mathf.Lerp(1f, 0, blend);
                 if(!config.IsStatic)
-                    _playableGraph.RootLayerMixer.SetInputWeight(config.Layer + 1, weight);
+                    _targetLayerMixerPlayable.SetInputWeight(config.Layer + 1, weight);
                 
             }, delayTime, () => DisconnectOneShot(config)));
         }

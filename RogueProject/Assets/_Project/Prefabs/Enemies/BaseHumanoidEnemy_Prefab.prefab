@@ -4894,9 +4894,17 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3069849882754794543, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3911298781822663101, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: m_BaseOffset
       value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226632471623017792, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _layer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4329210338749376989, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: _chaseAnimation._layer
@@ -5149,6 +5157,14 @@ PrefabInstance:
     - target: {fileID: 5067626287236973102, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.0360556
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914815383026650922, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956750916484162371, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
+      propertyPath: _layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8970748393308219131, guid: ec25e50875e53ca4eab21de274a96117, type: 3}
       propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.size

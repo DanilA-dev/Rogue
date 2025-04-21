@@ -6,12 +6,6 @@ namespace _Project.Scripts.Core.Player
     public class PlayerView : MonoBehaviour
     {
         #region Fields
-        
-        private const string AIM_LOCOMOTION = "IsTargetNearBy";
-        private const string INPUT_X = "InputX";
-        private const string INPUT_Y = "InputY";
-        
-        [SerializeField] private float _aimBlendTreeSpeedMultiplier;
         [SerializeField] private AnimationClipPlayableMixer _clipPlayableMixer;
         [SerializeField] private AnimationSimpleBlendMixer _simpleLocomotionMixer;
         [Space]

@@ -17,14 +17,15 @@ namespace _Project.Scripts.Core.Enemies.States
         public override void OnEnter()
         {
             _enemyBehaviour.EnemyMover.MoveSpeed = 0;
+            _enemyBehaviour.View.PlayIdleAnimation();
         }
 
         public override void OnUpdate()
         {
             if (_enemyBehaviour.Vision.IsTargetFound(out var target))
             {
-                _transform.RotateTowardsDirection(target.transform.position, Vector3.up,
-                    _enemyBehaviour.RotationSpeed * Time.deltaTime);
+                // _transform.RotateTowardsDirection(target.transform.position, Vector3.up,
+                //     _enemyBehaviour.RotationSpeed * Time.deltaTime);
                 
                 _enemyBehaviour.WeaponBehaviour.Use();
             }

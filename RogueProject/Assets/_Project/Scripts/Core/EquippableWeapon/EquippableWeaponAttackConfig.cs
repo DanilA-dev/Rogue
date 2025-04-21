@@ -1,4 +1,4 @@
-using System.Linq;
+using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler;
 using D_Dev.UtilScripts.DamagableSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 namespace _Project.Scripts.Core.EquippableWeapon
 {
     [System.Serializable]
-    public class EquippableWeaponConfig
+    public class EquippableWeaponAttackConfig
     {
         #region Fields
 
@@ -20,29 +20,18 @@ namespace _Project.Scripts.Core.EquippableWeapon
         [SerializeField] private float _attackActionTime;
         [SerializeField] private float _cooldownTime;
         [Space]
-        [SerializeField] private EquippableWeaponAnimation[] _animations;
+        [SerializeField] private AnimationPlayableClipConfig _weaponAnimation;
 
         #endregion
 
         #region Properties
-
         public DamageInfo DamageInfo => _damageInfo;
         public float AttackActionTime => _attackActionTime;
         public float CooldownTime => _cooldownTime;
         public bool IsChargable => _isChargable;
-        public EquippableWeaponAnimation[] Animations => _animations;
+        public AnimationPlayableClipConfig WeaponAnimation => _weaponAnimation;
         public float ChargeTime => _chargeTime;
-
         public float AttackActionDelayTime => _attackActionDelayTime;
-
-        #endregion
-
-        #region Public
-
-        public EquippableWeaponAnimation GetAnimation(EquippableWeaponState state)
-        {
-            return _animations.FirstOrDefault(a => a.State == state);
-        }
 
         #endregion
     }
