@@ -2,24 +2,24 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace _Project.Scripts.Core.EquippableWeapon
+namespace _Project.Scripts.Core.Weapon
 {
     [System.Serializable]
-    public class EquippableWeaponData
+    public class WeaponData
     {
         #region Fields
 
         [HideIf(nameof(_useRandomAttackConfigs))]
-        [SerializeField] private EquippableWeaponAttackConfig _weaponAttackConfig;
+        [SerializeField] private WeaponAttackConfig _weaponAttackConfig;
         [SerializeField] private bool _useRandomAttackConfigs;
         [ShowIf(nameof(_useRandomAttackConfigs))]
-        [SerializeField] private List<EquippableWeaponAttackConfig> _randomWeaponAttackConfigs;
+        [SerializeField] private List<WeaponAttackConfig> _randomWeaponAttackConfigs;
 
         #endregion
 
         #region Properties
 
-        public List<EquippableWeaponAttackConfig> RandomWeaponAttackConfigs
+        public List<WeaponAttackConfig> RandomWeaponAttackConfigs
         {
             get => _randomWeaponAttackConfigs;
             set => _randomWeaponAttackConfigs = value;
@@ -29,7 +29,7 @@ namespace _Project.Scripts.Core.EquippableWeapon
 
         #region Public
 
-        public EquippableWeaponAttackConfig GetAttackConfig()
+        public WeaponAttackConfig GetAttackConfig()
         {
             return _useRandomAttackConfigs
                 ? _randomWeaponAttackConfigs[Random.Range(0, _randomWeaponAttackConfigs.Count)]

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
 {
     [System.Serializable]
-    public class AnimationConfig
+    public class AnimationClipConfig
     {
         #region Fields
 

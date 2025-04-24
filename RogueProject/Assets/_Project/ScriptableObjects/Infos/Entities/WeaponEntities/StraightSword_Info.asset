@@ -24,12 +24,14 @@ MonoBehaviour:
         <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
       _isChargable: 0
       _chargeTime: 0
+      _stopMovementWhileAttacking: 1
       _attackActionDelayTime: 0.65
       _attackActionTime: 0.15
       _cooldownTime: 1
       _weaponAnimation:
         _layer: 0
         _isStatic: 0
+        _applyRootMotion: 0
         _targetWeight: 1
         _isRandomizeClip: 0
         _animationClip: {fileID: 7400000, guid: 0b5e5a2da227e274fa60b49717e26b96, type: 2}
@@ -53,50 +55,25 @@ MonoBehaviour:
         <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
       _isChargable: 0
       _chargeTime: 0
+      _stopMovementWhileAttacking: 0
       _attackActionDelayTime: 0.65
       _attackActionTime: 0.15
-      _cooldownTime: 1
+      _cooldownTime: 1.5
       _weaponAnimation:
-        _layer: 0
+        _layer: 1
         _isStatic: 0
+        _applyRootMotion: 0
         _targetWeight: 1
         _isRandomizeClip: 0
         _animationClip: {fileID: 7400000, guid: 0b5e5a2da227e274fa60b49717e26b96, type: 2}
         _animationClips: []
         _isLooping: 0
-        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
+        _avatarMask: {fileID: 31900000, guid: 68d28677e1de0cb428a689bd49362b29, type: 2}
         _isAdditive: 0
         _useFootIK: 0
         _useAutoFadeTimeBasedOnClipLength: 0
         _crossFadeTime: 0.4
-        _fadeDelay: 1
-        _animationSpeed: 1
-    - _damageInfo:
-        <DamageDealer>k__BackingField: {fileID: 0}
-        <Damage>k__BackingField:
-          rid: 2247855241080340486
-        <UseForceOnDamage>k__BackingField: 0
-        <ForceMode>k__BackingField: 0
-        <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
-      _isChargable: 0
-      _chargeTime: 0
-      _attackActionDelayTime: 0.6
-      _attackActionTime: 0.15
-      _cooldownTime: 0.7
-      _weaponAnimation:
-        _layer: 1
-        _isStatic: 0
-        _targetWeight: 1
-        _isRandomizeClip: 0
-        _animationClip: {fileID: 7400000, guid: 5f66cf1a2e1dc7743a318f866aae009a, type: 2}
-        _animationClips: []
-        _isLooping: 0
-        _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
-        _isAdditive: 0
-        _useFootIK: 0
-        _useAutoFadeTimeBasedOnClipLength: 0
-        _crossFadeTime: 0.4
-        _fadeDelay: 0.7
+        _fadeDelay: 1.5
         _animationSpeed: 1
   references:
     version: 2
@@ -110,9 +87,4 @@ MonoBehaviour:
       type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes, asm: D-Dev.DamagableSystem}
       data:
         _damageAmount:
-          _value: 5
-    - rid: 2247855241080340486
-      type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes, asm: D-Dev.DamagableSystem}
-      data:
-        _damageAmount:
-          _value: 5
+          _value: 1

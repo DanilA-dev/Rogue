@@ -1163,6 +1163,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasePlayerCharacter_Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 1539542473964005791, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _runAnimation._isStatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539542473964005791, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _idleAnimation._isStatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539542473964005791, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _runAnimation._fadeDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539542473964005791, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _idleAnimation._fadeDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539542473964005791, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _runAnimation._crossFadeTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539542473964005791, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _idleAnimation._crossFadeTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539542473964005791, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _idleAnimation._applyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3000194390292091561, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1207,10 +1235,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4514954205295447601, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _stats.Array.data[0].<StatValue>k__BackingField._value
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
+      propertyPath: _startWeaponInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 249c959e02dc81c4aa2dd6e6acc4034a, type: 2}
     - target: {fileID: 4764944347595774760, guid: e6511342725d65140b41bc2364537c70, type: 3}
       propertyPath: _equippableWeaponPosition._positionType
       value: 1
@@ -1303,6 +1339,50 @@ PrefabInstance:
     - target: {fileID: 3689354540510106121, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: managedReferences[2247855331942596608]
+      value: D-Dev.DamagableSystem D_Dev.UtilScripts.DamagableSystem.DamageTypes.SimpleDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _weaponData._weaponAttackConfig._cooldownTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _weaponData._weaponAttackConfig._attackActionTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _weaponData._weaponAttackConfig._attackActionDelayTime
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _weaponData._weaponAttackConfig._stopMovementWhileAttacking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _weaponData._weaponAttackConfig._weaponAnimation._fadeDelay
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: managedReferences[2247855331942596608]._damageAmount._value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _weaponData._weaponAttackConfig._weaponAnimation._targetWeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _weaponData._weaponAttackConfig._weaponAnimation._animationClip
+      value: 
+      objectReference: {fileID: 7400000, guid: 0b5e5a2da227e274fa60b49717e26b96, type: 2}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _weaponData._weaponAttackConfig._weaponAnimation._crossFadeTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: _weaponData._weaponAttackConfig._damageInfo.<Damage>k__BackingField
+      value: 2247855331942596608
       objectReference: {fileID: 0}
     - target: {fileID: 5155080672766623900, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
       propertyPath: m_AngularSpeed

@@ -10,6 +10,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
 
         [SerializeField] private int _layer;
         [SerializeField] private bool _isStatic;
+        [SerializeField] private bool _applyRootMotion;
         [SerializeField, Range(0, 1f)] private float _targetWeight;
         [SerializeField] private bool _isRandomizeClip;
         [HideIf(nameof(_isRandomizeClip))] 
@@ -114,6 +115,12 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
         {
             get => _useAutoFadeTimeBasedOnClipLength;
             set => _useAutoFadeTimeBasedOnClipLength = value;
+        }
+
+        public bool ApplyRootMotion
+        {
+            get => _applyRootMotion;
+            set => _applyRootMotion = value;
         }
 
         #endregion

@@ -7,6 +7,7 @@ namespace _Project.Scripts.Core
     {
         public Vector3 Target { get; set; }
         public void Move();
+        public void Stop();
         public event Action<Vector3> OnMove; 
         public float MoveSpeed { get; set; }
         public float StoppingDistance { get; set; }

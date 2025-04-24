@@ -89,15 +89,15 @@ MonoBehaviour:
   _inputRouter: {fileID: 11400000, guid: b299fe18b864a6a448ae3ab79bd7d358, type: 2}
   _inputReceiverModules:
   - rid: 1123452685490847754
-  - rid: 1123452685490847755
+  - rid: 2247855309054017536
   references:
     version: 2
     RefIds:
     - rid: 1123452685490847754
       type: {class: InputMoverReceiverModule, ns: _Project.Scripts.Core, asm: Game.InputReceiver}
       data: 
-    - rid: 1123452685490847755
-      type: {class: InputEquippableWeaponReceiverModule, ns: _Project.Scripts.Core, asm: Game.InputReceiver}
+    - rid: 2247855309054017536
+      type: {class: InputWeaponHolderReceiverModule, ns: _Project.Scripts.Core, asm: Game.InputReceiver}
       data:
         _equippableWeapon: {fileID: 4764944347595774760}
 --- !u!114 &724749709405138123
@@ -188,6 +188,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _damagableObject: {fileID: 312791083777510423}
+  _weaponHolder: {fileID: 4764944347595774760}
   _view: {fileID: 1539542473964005791}
   _rigidbody: {fileID: 0}
   _targetSensor:
@@ -292,7 +293,7 @@ MonoBehaviour:
   OnDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1539542473964005791}
         m_TargetAssemblyTypeName: _Project.Scripts.Core.Player.PlayerView, Game.Player
         m_MethodName: PlayGetHitAnimation
         m_Mode: 1
@@ -335,7 +336,7 @@ GameObject:
   - component: {fileID: 5585126719247915869}
   - component: {fileID: 4764944347595774760}
   m_Layer: 6
-  m_Name: EquippableWeaponHolder
+  m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,14 +369,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c21864fdd934104b35bb4e7b2dae660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startEquipmentEquippableWeaponInfo: {fileID: 11400000, guid: 249c959e02dc81c4aa2dd6e6acc4034a, type: 2}
-  _currentEquippableWeaponInfo: {fileID: 0}
-  _equippableWeaponPosition:
+  _startWeaponInfo: {fileID: 0}
+  _currentWeaponInfo: {fileID: 0}
+  _weaponPosition:
     _positionType: 1
-    _parent: {fileID: 3327202699212446869}
+    _parent: {fileID: 7565433528157485341}
     _vectorPos: {x: 0, y: 0, z: 0}
-    _localPosTransform: 1
-    _transformPos: {fileID: 3327202699212446869}
+    _localPosTransform: 0
+    _transformPos: {fileID: 7565433528157485341}
     _randomVectorPos: []
     _randomTransforms: []
     _positionRandomizeType: 0
@@ -383,8 +384,8 @@ MonoBehaviour:
     _rotationType: 0
     _eulerAngles: {x: 0, y: 0, z: 0}
     _localRotTransform: 0
-    _transformRot: {fileID: 3327202699212446869}
-  _mainAnimationPlayableHandler: {fileID: 5270476292040901765}
+    _transformRot: {fileID: 0}
+  _weaponAnimationClipPlayableMixer: {fileID: 8391640313529177966}
   OnEquip:
     m_PersistentCalls:
       m_Calls: []
@@ -635,11 +636,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7185ed27134f5b94d71572e6d2f1ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _runtimeAnimatorType: 1
+  _animationMixer: {fileID: 0}
+  _animator: {fileID: 665160019085986294}
+  OnAnimationChange:
+    m_PersistentCalls:
+      m_Calls: []
+  _idle:
+    _animationState: Default_Idle
+    _isRandomizeClip: 0
+    _isAnimationClipOverride: 0
+    _overrideAnimationClip: {fileID: 0}
+    _animationClip: {fileID: 7400000, guid: b9aa9cd417c008048b7a83361a249012, type: 2}
+    _animationClips: []
+    _layer: 0
+    _crossFadeTime: 0.25
+    _animationSpeed: 1
+  _run:
+    _animationState: Default_Run
+    _isRandomizeClip: 0
+    _isAnimationClipOverride: 0
+    _overrideAnimationClip: {fileID: 0}
+    _animationClip: {fileID: 7400000, guid: af28ef6a0c39f5d48bd30128af605870, type: 2}
+    _animationClips: []
+    _layer: 0
+    _crossFadeTime: 0.25
+    _animationSpeed: 1
+  _locomotionMixer: {fileID: 527701252172665828}
   _clipPlayableMixer: {fileID: 5700863053961054057}
-  _simpleLocomotionMixer: {fileID: 437634375812195589}
   _deathAnimation:
     _layer: 20
     _isStatic: 0
+    _applyRootMotion: 0
     _targetWeight: 1
     _isRandomizeClip: 0
     _animationClip: {fileID: 7400000, guid: be1a6915a645e9c4088e2344682f7735, type: 2}
@@ -655,17 +683,50 @@ MonoBehaviour:
   _getHitAnimation:
     _layer: 10
     _isStatic: 0
+    _applyRootMotion: 0
     _targetWeight: 1
     _isRandomizeClip: 0
     _animationClip: {fileID: 7400000, guid: 00bdeae164dac6446bf98becf52b5824, type: 2}
     _animationClips: []
     _isLooping: 0
     _avatarMask: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
-    _isAdditive: 0
+    _isAdditive: 1
     _useFootIK: 0
     _useAutoFadeTimeBasedOnClipLength: 0
     _crossFadeTime: 0.1
     _fadeDelay: 0.3
+    _animationSpeed: 1
+  _idleAnimation:
+    _layer: 0
+    _isStatic: 0
+    _applyRootMotion: 0
+    _targetWeight: 1
+    _isRandomizeClip: 0
+    _animationClip: {fileID: 7400000, guid: 74a0aa96f011db54388e0f33d97cc2c0, type: 2}
+    _animationClips: []
+    _isLooping: 1
+    _avatarMask: {fileID: 0}
+    _isAdditive: 0
+    _useFootIK: 1
+    _useAutoFadeTimeBasedOnClipLength: 0
+    _crossFadeTime: 0.2
+    _fadeDelay: 0.15
+    _animationSpeed: 1
+  _runAnimation:
+    _layer: 1
+    _isStatic: 0
+    _applyRootMotion: 0
+    _targetWeight: 1
+    _isRandomizeClip: 0
+    _animationClip: {fileID: 7400000, guid: af28ef6a0c39f5d48bd30128af605870, type: 2}
+    _animationClips: []
+    _isLooping: 1
+    _avatarMask: {fileID: 0}
+    _isAdditive: 0
+    _useFootIK: 1
+    _useAutoFadeTimeBasedOnClipLength: 0
+    _crossFadeTime: 0.2
+    _fadeDelay: 0.15
     _animationSpeed: 1
 --- !u!1 &3798791173450944483
 GameObject:
@@ -730,9 +791,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1117344170079736872}
-  - component: {fileID: 5270476292040901765}
+  - component: {fileID: 8391640313529177966}
   m_Layer: 6
-  m_Name: AttackMixer
+  m_Name: WeaponMixer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -753,7 +814,7 @@ Transform:
   m_Father: {fileID: 3328940025524136122}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5270476292040901765
+--- !u!114 &8391640313529177966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -886,7 +947,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 547898743642544828}
-  - component: {fileID: 437634375812195589}
+  - component: {fileID: 527701252172665828}
   m_Layer: 6
   m_Name: LocomotionMixer
   m_TagString: Untagged
@@ -909,7 +970,7 @@ Transform:
   m_Father: {fileID: 3328940025524136122}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &437634375812195589
+--- !u!114 &527701252172665828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -918,7 +979,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6201000932857347367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65fa352c8964ad38bada70ae4ac93d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cf6875377984797a4ac95fe0d403aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _layer: 0
@@ -928,60 +989,9 @@ MonoBehaviour:
   _tryFoundOnGameObject: 0
   _graphObject: {fileID: 0}
   _tryFoundOnParent: 0
-  _value: 0
-  _debugValue: 0
-  _blendAnimations:
-  - _motionName: Idle
-    _value: 0
-    _config:
-      _layer: 0
-      _isStatic: 1
-      _targetWeight: 1
-      _isRandomizeClip: 0
-      _animationClip: {fileID: 7400000, guid: dd771e18c6f1b6344bba9045e773864a, type: 2}
-      _animationClips: []
-      _isLooping: 1
-      _avatarMask: {fileID: 0}
-      _isAdditive: 0
-      _useFootIK: 0
-      _useAutoFadeTimeBasedOnClipLength: 0
-      _crossFadeTime: 0.15
-      _fadeDelay: 0.15
-      _animationSpeed: 1
-  - _motionName: Walk
-    _value: 0.5
-    _config:
-      _layer: 1
-      _isStatic: 0
-      _targetWeight: 1
-      _isRandomizeClip: 0
-      _animationClip: {fileID: 7400000, guid: 1a6872434006d504c9df4abcf4411f41, type: 2}
-      _animationClips: []
-      _isLooping: 1
-      _avatarMask: {fileID: 0}
-      _isAdditive: 0
-      _useFootIK: 0
-      _useAutoFadeTimeBasedOnClipLength: 0
-      _crossFadeTime: 0.15
-      _fadeDelay: 0.15
-      _animationSpeed: 1
-  - _motionName: Run
-    _value: 1
-    _config:
-      _layer: 2
-      _isStatic: 0
-      _targetWeight: 1
-      _isRandomizeClip: 0
-      _animationClip: {fileID: 7400000, guid: af28ef6a0c39f5d48bd30128af605870, type: 2}
-      _animationClips: []
-      _isLooping: 1
-      _avatarMask: {fileID: 0}
-      _isAdditive: 0
-      _useFootIK: 0
-      _useAutoFadeTimeBasedOnClipLength: 0
-      _crossFadeTime: 0.15
-      _fadeDelay: 0.15
-      _animationSpeed: 1
+  _connectToSeperateMixer: 1
+  _hasStartAnimations: 0
+  _onStartAnimations: []
 --- !u!1001 &6285340130024204922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1049,6 +1059,10 @@ PrefabInstance:
       propertyPath: boneSize
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 7490963711072802313, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
+      propertyPath: drawBones
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
 --- !u!95 &665160019085986294 stripped
@@ -1056,9 +1070,9 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6773726167153255308, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
   m_PrefabInstance: {fileID: 6285340130024204922}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3327202699212446869 stripped
+--- !u!4 &7565433528157485341 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8725331434700469999, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4595873091022852967, guid: 78ca5eb18c442d548a6959855b8372a9, type: 3}
   m_PrefabInstance: {fileID: 6285340130024204922}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7893456370518347583 stripped

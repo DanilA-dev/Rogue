@@ -1,5 +1,5 @@
 using _Project.Scripts.Core.Enemies.States;
-using _Project.Scripts.Core.EquippableWeapon;
+using _Project.Scripts.Core.Weapon;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.TargetSensor;
@@ -35,7 +35,7 @@ namespace _Project.Scripts.Core.Enemies
         [SerializeField] private float _chaseMovementSpeed;
 
         [Title("Attack Settings")]
-        [SerializeField] private EquippableWeaponBehaviour _weaponBehaviour;
+        [SerializeField] private WeaponBehaviour _weaponBehaviour;
         [SerializeField] private float _attackRange;
         [SerializeField] private float _rotationSpeed;
         
@@ -89,7 +89,7 @@ namespace _Project.Scripts.Core.Enemies
             set => _attackRange = value;
         }
 
-        public EquippableWeaponBehaviour WeaponBehaviour => _weaponBehaviour;
+        public WeaponBehaviour WeaponBehaviour => _weaponBehaviour;
 
         #endregion
 

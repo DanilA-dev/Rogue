@@ -14,6 +14,7 @@ namespace _Project.Scripts.Core
         [SerializeField] private float _movementAcceleration;
         
         private Rigidbody _rigidbody;
+       
         public event Action<Vector3> OnMove;
 
         #endregion
@@ -48,6 +49,12 @@ namespace _Project.Scripts.Core
                 : _movementMaxForce, _movementAcceleration * Time.deltaTime);
             _rigidbody.velocity = Target * MoveSpeed;
             OnMove?.Invoke(Target * MoveSpeed);
+        }
+        
+        public void Stop()
+        {
+            MoveSpeed = 0;
+            _rigidbody.velocity = Vector3.zero;
         }
 
         #endregion

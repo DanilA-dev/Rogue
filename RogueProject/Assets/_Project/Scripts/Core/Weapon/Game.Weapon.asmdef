@@ -1,5 +1,5 @@
 {
-    "name": "Game.EquippableWeapon",
+    "name": "Game.Weapon",
     "rootNamespace": "",
     "references": [
         "GUID:ce2b898ae95920f4ba24cb64995a3989",

@@ -501,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
       propertyPath: _deathAnimation._layer
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
       propertyPath: _attackAnimation._layer
@@ -509,7 +509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
       propertyPath: _getHitAnimation._layer
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
       propertyPath: _idleAnimation._isStatic
@@ -522,6 +522,14 @@ PrefabInstance:
     - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
       propertyPath: _attackAnimation._fadeDelay
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
+      propertyPath: _getHitAnimation._avatarMask
+      value: 
+      objectReference: {fileID: 31900000, guid: 5dadc1f1f821c7340af4b640f3e4882d, type: 2}
+    - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
+      propertyPath: _getHitAnimation._isAdditive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6541849389735970769, guid: 22180613533324a46b986cf40e9f388a, type: 3}
       propertyPath: _idleAnimation._animationClip
@@ -596,6 +604,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62042c3e0e6d4354b7f002e3ae08adb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2113385751481560943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 739820343374182466, guid: 22180613533324a46b986cf40e9f388a, type: 3}
+  m_PrefabInstance: {fileID: 1661862941978449709}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf6875377984797a4ac95fe0d403aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3689354540510106121 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2603968861830546724, guid: 22180613533324a46b986cf40e9f388a, type: 3}
@@ -622,17 +641,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4770175383581846910, guid: 22180613533324a46b986cf40e9f388a, type: 3}
   m_PrefabInstance: {fileID: 1661862941978449709}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8982720203860349705 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7762261703484556324, guid: 22180613533324a46b986cf40e9f388a, type: 3}
-  m_PrefabInstance: {fileID: 1661862941978449709}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cf6875377984797a4ac95fe0d403aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7332214742884403845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,7 +707,7 @@ PrefabInstance:
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _clipPlayableMixer
       value: 
-      objectReference: {fileID: 8982720203860349705}
+      objectReference: {fileID: 2113385751481560943}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _loadConfigFromInfo
       value: 0
@@ -708,6 +716,10 @@ PrefabInstance:
       propertyPath: _stateEvents.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
+      propertyPath: _animationClipPlayableMixer
+      value: 
+      objectReference: {fileID: 2113385751481560943}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponConfig._cooldownTime
       value: 2
@@ -842,7 +854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponData._randomWeaponAttackConfigs.Array.data[0]._weaponAnimation._layer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2631000707571325845, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
       propertyPath: _equippableWeaponData._randomWeaponAttackConfigs.Array.data[1]._weaponAnimation._layer

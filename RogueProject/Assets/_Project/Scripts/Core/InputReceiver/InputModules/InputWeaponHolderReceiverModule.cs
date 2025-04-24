@@ -1,14 +1,14 @@
-using _Project.Scripts.Core.EquippableWeapon;
+using _Project.Scripts.Core.Weapon;
 using UnityEngine;
 
 namespace _Project.Scripts.Core
 {
     [System.Serializable]
-    public class InputEquippableWeaponReceiverModule : BaseInputReceiverModule
+    public class InputWeaponHolderReceiverModule : BaseInputReceiverModule
     {
         #region Fields
 
-        [SerializeField] private EquippableWeaponHolder _equippableWeapon;
+        [SerializeField] private WeaponHolder _equippableWeapon;
 
         #endregion
         
@@ -22,7 +22,7 @@ namespace _Project.Scripts.Core
             _inputRouter.LmbPressed += (isPressed) =>
             {
                 if(isPressed)
-                    _equippableWeapon.UseEquippableWeapon();
+                    _equippableWeapon.UseWeapon();
             };
         }
 
@@ -34,7 +34,7 @@ namespace _Project.Scripts.Core
             _inputRouter.LmbPressed -= (isPressed) =>
             {
                 if(isPressed)
-                    _equippableWeapon.UseEquippableWeapon();
+                    _equippableWeapon.UseWeapon();
             };
         }
         

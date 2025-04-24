@@ -1,4 +1,5 @@
 using _Project.Scripts.Core.Player.States;
+using _Project.Scripts.Core.Weapon;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using D_Dev.Scripts.Runtime.UtilScripts.TargetSensor;
@@ -23,6 +24,7 @@ namespace _Project.Scripts.Core.Player
         #region Fields
 
         [SerializeField] private DamagableObject _damagableObject;
+        [SerializeField] private WeaponHolder _weaponHolder;
         [Title("View")]
         [SerializeField] private PlayerView _view;
         [SerializeField] private Rigidbody _rigidbody;
@@ -51,6 +53,8 @@ namespace _Project.Scripts.Core.Player
         public Vector3 TargetObjectPositionOffset => _targetObjectPositionOffset;
         public PlayerView View => _view;
 
+        public WeaponHolder WeaponHolder => _weaponHolder;
+
         #endregion
         
         #region Monobehaviour
@@ -72,8 +76,6 @@ namespace _Project.Scripts.Core.Player
         
         #region Overrides
 
-       
-
         protected override void InitStates()
         {
             AddState(PlayerState.Idle, new IdlePlayerState(this));
@@ -93,12 +95,6 @@ namespace _Project.Scripts.Core.Player
             }, PlayerState.AimMove, new FuncCondition(IsTargetNearby));
             
             AddTransition(new [] { PlayerState.AimMove }, PlayerState.Idle, new FuncCondition(() => !IsTargetNearby()));
-        }
-        
-        protected override void Update()
-        {
-            base.Update();
-            _view.EvaluateSimpleLocomotion(_rigidbody.velocity.magnitude);
         }
 
         #endregion
@@ -123,6 +119,18 @@ namespace _Project.Scripts.Core.Player
         {
             return _targetSensor.Trigger.Colliders.Count > 0
                    && _targetSensor.IsTargetFound();
+        }
+
+        public bool IsCurrentWeaponAttackStopMove()
+        {
+            var isStopMovement = _weaponHolder.CurrentWeaponItem != null &&
+                                 _weaponHolder.CurrentWeaponItem.CurrentState != WeaponState.Idle &&
+                                 _weaponHolder.CurrentWeaponItem.StopMovementOnAttack;
+
+            if(isStopMovement)
+                _mover.Stop();
+            
+            return isStopMovement;
         }
 
         #endregion

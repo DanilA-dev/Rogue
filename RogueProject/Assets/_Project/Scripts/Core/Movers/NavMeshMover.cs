@@ -12,7 +12,6 @@ namespace _Project.Scripts.Core
         [SerializeField] private float _defaultMoveSpeed;
         [SerializeField] private float _defautStoppingDistance;
 
-        public Vector3 Target { get; set; }
         public event Action<Vector3> OnMove;
 
         
@@ -20,6 +19,7 @@ namespace _Project.Scripts.Core
         
         #region Properties
 
+        public Vector3 Target { get; set; }
         public float MoveSpeed { get => _defaultMoveSpeed; set => _defaultMoveSpeed = value; }
         public float StoppingDistance { get => _defautStoppingDistance; set => _defautStoppingDistance = value; }
         public NavMeshAgent Agent {get; private set;}
@@ -36,10 +36,17 @@ namespace _Project.Scripts.Core
 
         public void Move()
         {
+            //[TODO] no need to set it every frame
+            Agent.isStopped = false;
             Agent.speed = MoveSpeed;
             Agent.stoppingDistance = StoppingDistance;
             Agent.destination = Target;
             OnMove?.Invoke(Target);
+        }
+        
+        public void Stop()
+        {
+            Agent.isStopped = true;
         }
 
         #endregion

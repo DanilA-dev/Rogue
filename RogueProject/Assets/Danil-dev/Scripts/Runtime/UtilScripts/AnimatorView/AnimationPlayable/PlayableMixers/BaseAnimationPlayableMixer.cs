@@ -34,12 +34,6 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
 
         #region Monobehaviour
 
-        private void Reset()
-        {
-            if (TryGetComponent(out BaseAnimationPlayableMixer otherHandler) && otherHandler.Layer == _layer)
-                Debug.LogError($"Mixer layer - {_layer}, is already taken by {otherHandler.GetType().Name}");
-        }
-
         protected virtual void OnEnable()
         {
             if(_tryFoundOnItSelf)
@@ -58,6 +52,9 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
 
         protected AnimationClipPlayable CreatePlayableClip(AnimationPlayableClipConfig config)
         {
+            if (!_playableGraph.PlayableGraph.IsValid())
+                return new AnimationClipPlayable();
+            
             var clip = config.GetAnimationClip();
             var newPlayable = AnimationClipPlayable.Create(_playableGraph.PlayableGraph, clip);
             if(!config.IsLooping)

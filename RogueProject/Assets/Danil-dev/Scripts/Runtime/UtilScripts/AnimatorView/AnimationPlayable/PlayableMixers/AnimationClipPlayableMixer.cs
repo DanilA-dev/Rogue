@@ -50,7 +50,6 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
                 foreach (var animation in _onStartAnimations)
                     Play(animation);
         }
-
         #endregion
         
         #region Public
@@ -83,6 +82,8 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
                 _targetLayerMixerPlayable.SetLayerMaskFromAvatarMask((uint)newAnimationLayer,newPlayableConfig.Mask);
             
             _playableGraph.RootLayerMixer.SetInputWeight(_layer, 1);
+            _playableGraph.Animator.applyRootMotion = newPlayableConfig.ApplyRootMotion;
+            
             _targetLayerMixerPlayable.SetLayerAdditive((uint)newAnimationLayer, newPlayableConfig.IsAdditive);
             _currentPlayableClipConfig = newPlayableConfig;
             if (_playablesPair.Count > 0 || _layer != 0)
@@ -144,10 +145,15 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             var crossFadeTime = config.UseAutoFadeTimeBasedOnClipLength
                 ? Mathf.Clamp(clip.length * 0.1f, 0.1f, clip.length * 0.5f)
                 : config.CrossFadeTime;
+           
+            if(config.Layer <= 0 && config.IsStatic)
+                return;
+            
             _blendInCoroutine = StartCoroutine(BlendCoroutine(crossFadeTime, config.TargetWeight,blend =>
             {
                 float weight = Mathf.Lerp(0f, 1f, blend);
                 _targetLayerMixerPlayable.SetInputWeight(config.Layer + 1, weight);
+                
             }));
         }
         
@@ -164,11 +170,13 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
                 ? clip.length - crossFadeTime
                 : config.FadeDelay;
             
+            if(config.Layer <= 0 && config.IsStatic)
+                return;
+            
             _blendInCoroutine = StartCoroutine(BlendCoroutine(crossFadeTime, config.TargetWeight,blend =>
             {
                 float weight = Mathf.Lerp(1f, 0, blend);
-                if(!config.IsStatic)
-                    _targetLayerMixerPlayable.SetInputWeight(config.Layer + 1, weight);
+                _targetLayerMixerPlayable.SetInputWeight(config.Layer + 1, weight);
                 
             }, delayTime, () => DisconnectOneShot(config)));
         }

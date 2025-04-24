@@ -1,12 +1,12 @@
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 
-namespace _Project.Scripts.Core.EquippableWeapon
+namespace _Project.Scripts.Core.Weapon
 {
-    public abstract class BaseEquippableWeaponState : IState
+    public abstract class BaseWeaponState : IState
     {
-        protected EquippableWeaponBehaviour _weaponBehaviour;
+        protected WeaponBehaviour _weaponBehaviour;
 
-        public BaseEquippableWeaponState(EquippableWeaponBehaviour weaponBehaviour)
+        public BaseWeaponState(WeaponBehaviour weaponBehaviour)
         {
             _weaponBehaviour = weaponBehaviour;
         }

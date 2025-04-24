@@ -1,32 +1,36 @@
+using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView;
 using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Project.Scripts.Core.Player
 {
-    public class PlayerView : MonoBehaviour
+    public class PlayerView : AnimatorView
     {
         #region Fields
-        [SerializeField] private AnimationClipPlayableMixer _clipPlayableMixer;
-        [SerializeField] private AnimationSimpleBlendMixer _simpleLocomotionMixer;
+
+        [Title("Animator Clips")]
+        [SerializeField] private AnimationClipConfig _idle;
+        [SerializeField] private AnimationClipConfig _run;
         [Space]
+        [Title("Clip Playables")]
+        [SerializeField] private AnimationClipPlayableMixer _locomotionMixer;
+        [SerializeField] private AnimationClipPlayableMixer _clipPlayableMixer;
         [SerializeField] private AnimationPlayableClipConfig _deathAnimation;
         [SerializeField] private AnimationPlayableClipConfig _getHitAnimation;
+        [SerializeField] private AnimationPlayableClipConfig _idleAnimation;
+        [SerializeField] private AnimationPlayableClipConfig _runAnimation;
 
         #endregion
 
         #region Public
 
-        public void EvaluateSimpleLocomotion(float value) => _simpleLocomotionMixer.EvaluateBlendAnimations(value);
-
-        public void PlayDeathAnimation()
-        {
-            _clipPlayableMixer.Play(_deathAnimation);
-        }
-
-        public void PlayGetHitAnimation()
-        {
-            _clipPlayableMixer.Play(_getHitAnimation);
-        }
+        public void PlayIdle() => _locomotionMixer.Play(_idleAnimation);
+        public void PlayRun() => _locomotionMixer.Play(_runAnimation);
+        
+        public void PlayDeathAnimation() => _clipPlayableMixer.Play(_deathAnimation);
+        public void PlayGetHitAnimation() => _clipPlayableMixer.Play(_getHitAnimation);
+        
 
         // public void ToggleAimLocomotion(bool value) => SetBool(AIM_LOCOMOTION, value);
         // public void EvaluateAimLocomotionSpeed(Vector3 velocity)

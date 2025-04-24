@@ -22,6 +22,9 @@ namespace _Project.Scripts.Core.Player.States
 
         public override void OnUpdate()
         {
+            if(_playerController.IsCurrentWeaponAttackStopMove())
+                return;
+            
             _playerController.Mover.Move();
             RotateTowardsNearestTarget();
             //_playerController.View.EvaluateAimLocomotionSpeed(_playerController.Mover.Velocity);
