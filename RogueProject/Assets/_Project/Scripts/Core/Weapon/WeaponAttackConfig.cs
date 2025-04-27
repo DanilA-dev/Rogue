@@ -15,6 +15,12 @@ namespace _Project.Scripts.Core.Weapon
         [SerializeField] private bool _isChargable;
         [ShowIf(nameof(_isChargable))]
         [SerializeField] private float _chargeTime;
+        [Space] 
+        [SerializeField] private bool _applyForceOnAttack;
+        [ShowIf(nameof(_applyForceOnAttack))]
+        [SerializeField] private Vector3 _attackForce;
+        [ShowIf(nameof(_applyForceOnAttack))]
+        [SerializeField] private ForceMode _forceMode;
         [Space]
         [SerializeField] private bool _stopMovementWhileAttacking = true;
         [SerializeField] private float _attackActionDelayTime;
@@ -72,6 +78,24 @@ namespace _Project.Scripts.Core.Weapon
         {
             get => _stopMovementWhileAttacking;
             set => _stopMovementWhileAttacking = value;
+        }
+
+        public bool ApplyForceOnAttack
+        {
+            get => _applyForceOnAttack;
+            set => _applyForceOnAttack = value;
+        }
+
+        public ForceMode ForceMode
+        {
+            get => _forceMode;
+            set => _forceMode = value;
+        }
+
+        public Vector3 AttackForce
+        {
+            get => _attackForce;
+            set => _attackForce = value;
         }
 
         #endregion

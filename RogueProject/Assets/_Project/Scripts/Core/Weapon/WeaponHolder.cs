@@ -11,6 +11,8 @@ namespace _Project.Scripts.Core.Weapon
     {
         #region Fields
 
+        [SerializeField] private Rigidbody _mainRigidBody;
+        [Space]
         [Title("Weapon Settings")] 
         [SerializeField] private WeaponInfo _startWeaponInfo;
         [SerializeField, ReadOnly] private WeaponInfo _currentWeaponInfo;
@@ -79,7 +81,7 @@ namespace _Project.Scripts.Core.Weapon
             
             if (_equippedWeapons.TryGetValue(info, out var weaponBehaviour))
             {
-                weaponBehaviour.Equip(_weaponAnimationClipPlayableMixer,info.WeaponData);
+                weaponBehaviour.Equip(_weaponAnimationClipPlayableMixer,info.WeaponData, _mainRigidBody);
                 _currentWeaponInfo = info;
                 return;
             }
@@ -88,7 +90,7 @@ namespace _Project.Scripts.Core.Weapon
             var newEquippableWeaponTransform = newEquippableWeapon.transform;
             _weaponPosition.SetPosition(ref newEquippableWeaponTransform);
             _weaponPosition.SetRotation(ref newEquippableWeaponTransform);
-            newEquippableWeapon.Equip(_weaponAnimationClipPlayableMixer,info.WeaponData);
+            newEquippableWeapon.Equip(_weaponAnimationClipPlayableMixer,info.WeaponData, _mainRigidBody);
             _currentWeaponInfo = info;
             _equippedWeapons.TryAdd(info, newEquippableWeapon);
             OnEquip?.Invoke(newEquippableWeapon);

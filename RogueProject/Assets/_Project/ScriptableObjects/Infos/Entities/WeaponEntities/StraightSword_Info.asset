@@ -20,11 +20,14 @@ MonoBehaviour:
         <DamageDealer>k__BackingField: {fileID: 0}
         <Damage>k__BackingField:
           rid: -2
-        <UseForceOnDamage>k__BackingField: 0
+        <UseForceOnGetDamage>k__BackingField: 0
         <ForceMode>k__BackingField: 0
         <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
       _isChargable: 0
       _chargeTime: 0
+      _applyForceOnAttack: 1
+      _attackForce: {x: 0, y: 0, z: 2}
+      _forceMode: 1
       _stopMovementWhileAttacking: 1
       _attackActionDelayTime: 0.65
       _attackActionTime: 0.15
@@ -49,11 +52,14 @@ MonoBehaviour:
         <DamageDealer>k__BackingField: {fileID: 0}
         <Damage>k__BackingField:
           rid: -2
-        <UseForceOnDamage>k__BackingField: 0
+        <UseForceOnGetDamage>k__BackingField: 0
         <ForceMode>k__BackingField: 0
         <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
       _isChargable: 0
       _chargeTime: 0
+      _applyForceOnAttack: 1
+      _attackForce: {x: 0, y: 0, z: 2}
+      _forceMode: 1
       _stopMovementWhileAttacking: 1
       _attackActionDelayTime: 0.65
       _attackActionTime: 0.15

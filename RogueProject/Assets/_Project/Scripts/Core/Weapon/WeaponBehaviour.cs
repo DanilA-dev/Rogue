@@ -22,6 +22,8 @@ namespace _Project.Scripts.Core.Weapon
     {
         #region Fields
 
+        [SerializeField] private Rigidbody _mainRigidBody;
+        [Space]
         [SerializeField] private bool _loadConfigFromInfo;
         [SerializeField] private DamageCollider _damageCollider;
         [SerializeField] private WeaponData _weaponData;
@@ -41,13 +43,17 @@ namespace _Project.Scripts.Core.Weapon
             get => _loadConfigFromInfo;
             set => _loadConfigFromInfo = value;
         }
-        public WeaponData WeaponData => _weaponData;
+        public WeaponData WeaponData
+        {
+            get => _weaponData;
+            set => _weaponData = value;
+        }
 
         public bool StopMovementOnAttack { get; set; } = true;
         public WeaponAttackConfig LastAttackConfig => _lastAttackConfig;
         public WeaponState CurrentState => _currentState;
 
-        public CountdownTimer AttacksFlowTimer => _attacksFlowTimer;
+        public Rigidbody MainRigidBody => _mainRigidBody;
 
         #endregion
 
@@ -85,7 +91,8 @@ namespace _Project.Scripts.Core.Weapon
         
         #region Public
 
-        public void Equip(AnimationClipPlayableMixer playableHandler, WeaponData loadedEquippableWeaponData)
+        public void Equip(AnimationClipPlayableMixer playableHandler,
+            WeaponData loadedEquippableWeaponData, Rigidbody mainRigidBody)
         {
             gameObject.SetActive(true);
             _animationClipPlayableMixer = playableHandler;
@@ -93,7 +100,7 @@ namespace _Project.Scripts.Core.Weapon
                 ? loadedEquippableWeaponData 
                 : _weaponData;
 
-
+            _mainRigidBody = mainRigidBody;
             _attacksFlowTimer?.Stop();
             _attacksFlowTimer?.Reset(_weaponData.AttacksTransitionWindowTime);
             _lastAttackConfig = _weaponData.WeaponAttacks[0];
@@ -103,14 +110,16 @@ namespace _Project.Scripts.Core.Weapon
         
         public void Unequip()
         {
+            _attacksFlowTimer?.Stop();
+            _lastAttackConfig = null;
             ChangeState(WeaponState.Idle);
             gameObject.SetActive(false);
         }
 
         public void Use()
         {
-            if(_weaponData.WeaponAttacks.Length == 1 &&
-               _currentState != WeaponState.Idle)
+            if (_weaponData.WeaponAttacks.Length == 1 &&
+                _currentState != WeaponState.Idle)
                 return;
 
             if (_attacksFlowTimer.IsRunning)
@@ -123,7 +132,7 @@ namespace _Project.Scripts.Core.Weapon
                 _attacksFlowTimer.Start();
             }
 
-            if (_attacksFlowTimer.IsRunning && _currentState != WeaponState.Idle)
+            if (_attacksFlowTimer.IsRunning)
             {
                 _attackIndex++;
                 ChangeState(WeaponState.Idle);

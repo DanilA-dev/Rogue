@@ -129,6 +129,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 854309203507552371, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754661190073081247, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.373
+      objectReference: {fileID: 0}
     - target: {fileID: 3689354540510106120, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -143,7 +151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3689354540510106120, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.818686
+      value: -18.04
       objectReference: {fileID: 0}
     - target: {fileID: 3689354540510106120, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
       propertyPath: m_LocalRotation.w
@@ -176,6 +184,10 @@ PrefabInstance:
     - target: {fileID: 3689354540510106121, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
       propertyPath: m_Name
       value: EnemyGoblin1_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689354540510106121, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4702447687362334992, guid: 36d56e48e9149284d8c54b941b0d6192, type: 3}
       propertyPath: _weaponData._weaponAttacks.Array.data[0]._weaponAnimation._layer

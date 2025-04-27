@@ -66,7 +66,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456966870965895341}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 17f346f682dfafe46a4c1e3359e905cd, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -369,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c21864fdd934104b35bb4e7b2dae660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainRigidBody: {fileID: 5140777596550749075}
   _startWeaponInfo: {fileID: 0}
   _currentWeaponInfo: {fileID: 0}
   _weaponPosition:

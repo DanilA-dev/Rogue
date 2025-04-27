@@ -19,11 +19,7 @@ namespace _Project.Scripts.Core
             if(_equippableWeapon == null)
                 return;
 
-            _inputRouter.LmbPressed += (isPressed) =>
-            {
-                if(isPressed)
-                    _equippableWeapon.UseWeapon();
-            };
+            _inputRouter.LmbPressed += OnLMBPressed;
         }
 
         public override void OnInputDisable()
@@ -31,13 +27,19 @@ namespace _Project.Scripts.Core
             if(_equippableWeapon == null)
                 return;
             
-            _inputRouter.LmbPressed -= (isPressed) =>
-            {
-                if(isPressed)
-                    _equippableWeapon.UseWeapon();
-            };
+            _inputRouter.LmbPressed -= OnLMBPressed;
         }
         
+        #endregion
+
+        #region Listeners
+
+        private void OnLMBPressed(bool isPressed)
+        {
+            if(isPressed)
+                _equippableWeapon.UseWeapon();
+        }
+
         #endregion
         
         

@@ -54,7 +54,7 @@ namespace D_Dev.UtilScripts.DamagableSystem
                 return;
             
             var damageValue = damageInfo.Damage.ApplyDamage(ref _healthValue);
-            if (damageInfo.UseForceOnDamage)
+            if (damageInfo.UseForceOnGetDamage)
             {
                 if (_rigidbody != null)
                 {
