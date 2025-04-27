@@ -26,13 +26,47 @@ namespace _Project.Scripts.Core.Weapon
         #endregion
 
         #region Properties
-        public DamageInfo DamageInfo => _damageInfo;
-        public float AttackActionTime => _attackActionTime;
-        public float CooldownTime => _cooldownTime;
-        public bool IsChargable => _isChargable;
-        public AnimationPlayableClipConfig WeaponAnimation => _weaponAnimation;
-        public float ChargeTime => _chargeTime;
-        public float AttackActionDelayTime => _attackActionDelayTime;
+        public DamageInfo DamageInfo
+        {
+            get => _damageInfo;
+            set => _damageInfo = value;
+        }
+
+        public float AttackActionTime
+        {
+            get => _attackActionTime;
+            set => _attackActionTime = value;
+        }
+
+        public float CooldownTime
+        {
+            get => _cooldownTime;
+            set => _cooldownTime = value;
+        }
+
+        public bool IsChargable
+        {
+            get => _isChargable;
+            set => _isChargable = value;
+        }
+
+        public AnimationPlayableClipConfig WeaponAnimation
+        {
+            get => _weaponAnimation;
+            set => _weaponAnimation = value;
+        }
+
+        public float ChargeTime
+        {
+            get => _chargeTime;
+            set => _chargeTime = value;
+        }
+
+        public float AttackActionDelayTime
+        {
+            get => _attackActionDelayTime;
+            set => _attackActionDelayTime = value;
+        }
 
         public bool StopMovementWhileAttacking
         {

@@ -9,31 +9,23 @@ namespace _Project.Scripts.Core.Weapon
     {
         #region Fields
 
-        [HideIf(nameof(_useRandomAttackConfigs))]
-        [SerializeField] private WeaponAttackConfig _weaponAttackConfig;
-        [SerializeField] private bool _useRandomAttackConfigs;
-        [ShowIf(nameof(_useRandomAttackConfigs))]
-        [SerializeField] private List<WeaponAttackConfig> _randomWeaponAttackConfigs;
+        [SerializeField] private float _attacksTransitionWindowTime;
+        [SerializeField] private WeaponAttackConfig[] _weaponAttacks;
 
         #endregion
 
         #region Properties
 
-        public List<WeaponAttackConfig> RandomWeaponAttackConfigs
+        public WeaponAttackConfig[] WeaponAttacks
         {
-            get => _randomWeaponAttackConfigs;
-            set => _randomWeaponAttackConfigs = value;
+            get => _weaponAttacks;
+            set => _weaponAttacks = value;
         }
 
-        #endregion
-
-        #region Public
-
-        public WeaponAttackConfig GetAttackConfig()
+        public float AttacksTransitionWindowTime
         {
-            return _useRandomAttackConfigs
-                ? _randomWeaponAttackConfigs[Random.Range(0, _randomWeaponAttackConfigs.Count)]
-                : _weaponAttackConfig;
+            get => _attacksTransitionWindowTime;
+            set => _attacksTransitionWindowTime = value;
         }
 
         #endregion

@@ -17,7 +17,6 @@ namespace _Project.Scripts.Core.Enemies.States
         public override void OnEnter()
         {
             _enemyBehaviour.EnemyMover.MoveSpeed = 0;
-            _enemyBehaviour.View.PlayIdleAnimation();
         }
 
         public override void OnUpdate()

@@ -44,6 +44,22 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
                 _playableGraph.RootLayerMixer.ConnectInput(_layer, _targetLayerMixerPlayable, 0, 0);
         }
 
+        private void OnDisable()
+        {
+            if(_blendInCoroutine != null)
+                StopCoroutine(_blendInCoroutine);
+            
+            if(_blendOutCoroutine != null)
+                StopCoroutine(_blendOutCoroutine);
+            
+            foreach (var pair in _playablesPair)
+            {
+                if (pair.Value.Playable.IsValid())
+                    _playableGraph.PlayableGraph.DestroyPlayable(pair.Value.Playable);
+            }
+            _playablesPair.Clear();
+        }
+
         private void Start()
         {
             if (_hasStartAnimations && _onStartAnimations.Length > 0)
@@ -56,6 +72,12 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
 
         public void Play(AnimationPlayableClipConfig newPlayableConfig)
         {
+            if(newPlayableConfig == null)
+                return;
+            
+            if(!_targetLayerMixerPlayable.IsValid())
+                return;
+            
             if(_playablesPair.Count == 1 && _lastPlayedConfig == newPlayableConfig)
                 return;
             
@@ -89,7 +111,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             if (_playablesPair.Count > 0 || _layer != 0)
             {
                 BlendIn(newPlayableConfig);
-                BlendOut(_lastPlayedConfig);
+                BlendOut(newPlayableConfig);
             }
             else
                 _targetLayerMixerPlayable.SetInputWeight(newAnimationLayer, newPlayableConfig.TargetWeight);
@@ -157,28 +179,25 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             }));
         }
         
-        private void BlendOut(AnimationPlayableClipConfig config)
+        private void BlendOut(AnimationPlayableClipConfig lastConfig)
         {
-            if (config == null)
-                config = _currentPlayableClipConfig;
-            
-            var clip = config.GetAnimationClip();
-            var crossFadeTime = config.UseAutoFadeTimeBasedOnClipLength
+            var clip = lastConfig.GetAnimationClip();
+            var crossFadeTime = lastConfig.UseAutoFadeTimeBasedOnClipLength
                 ? Mathf.Clamp(clip.length * 0.1f, 0.1f, clip.length * 0.5f)
-                : config.CrossFadeTime;
-            var delayTime = config.UseAutoFadeTimeBasedOnClipLength
+                : lastConfig.CrossFadeTime;
+            var delayTime = lastConfig.UseAutoFadeTimeBasedOnClipLength
                 ? clip.length - crossFadeTime
-                : config.FadeDelay;
+                : lastConfig.FadeDelay;
             
-            if(config.Layer <= 0 && config.IsStatic)
+            if(lastConfig.Layer <= 0 && lastConfig.IsStatic)
                 return;
             
-            _blendInCoroutine = StartCoroutine(BlendCoroutine(crossFadeTime, config.TargetWeight,blend =>
+            _blendOutCoroutine = StartCoroutine(BlendCoroutine(crossFadeTime, lastConfig.TargetWeight,blend =>
             {
                 float weight = Mathf.Lerp(1f, 0, blend);
-                _targetLayerMixerPlayable.SetInputWeight(config.Layer + 1, weight);
+                _targetLayerMixerPlayable.SetInputWeight(lastConfig.Layer + 1, weight);
                 
-            }, delayTime, () => DisconnectOneShot(config)));
+            }, delayTime, () => DisconnectOneShot(lastConfig)));
         }
         
         #endregion

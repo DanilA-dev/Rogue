@@ -7,7 +7,7 @@ namespace _Project.Scripts.Core.Weapon
         {
         }
 
-        public override void OnExit()
+        public override void OnEnter()
         {
             _weaponBehaviour.StopMovementOnAttack = false;
         }

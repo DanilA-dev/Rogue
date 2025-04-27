@@ -24,7 +24,6 @@ namespace _Project.Scripts.Core.Enemies.States
 
         public override void OnEnter()
         {
-            _enemyBehaviour.View.PlayPatrolAnimation();
             _targetPosition = _path[_enemyBehaviour.PatrolPointIndex];
             _mover.MoveSpeed = _enemyBehaviour.PatrolMovementSpeed;
             _mover.StoppingDistance = _enemyBehaviour.StoppingDistance;
@@ -37,6 +36,8 @@ namespace _Project.Scripts.Core.Enemies.States
 
             _mover.Target = _targetPosition;
             _mover.Move();
+            _enemyBehaviour.View.PlayPatrolAnimation();
+
         }
 
         #endregion

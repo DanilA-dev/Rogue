@@ -1,6 +1,7 @@
 using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
+using D_Dev.UtilScripts.TimerSystem;
 using Danil_dev.Scripts.Runtime.UtilScripts.DamagableSystem.DamagableCollider;
 using UnityEngine;
 
@@ -29,7 +30,8 @@ namespace _Project.Scripts.Core.Weapon
 
         private WeaponAttackConfig _lastAttackConfig;
         private bool _isTransitionsInitialized;
-            
+        private int _attackIndex;
+        private CountdownTimer _attacksFlowTimer;
         #endregion
 
         #region Properties
@@ -41,15 +43,11 @@ namespace _Project.Scripts.Core.Weapon
         }
         public WeaponData WeaponData => _weaponData;
 
-        public float FullActionStateTime => _weaponData.GetAttackConfig().AttackActionDelayTime +
-                                            _weaponData.GetAttackConfig().AttackActionTime +
-                                            _weaponData.GetAttackConfig().CooldownTime;
-
         public bool StopMovementOnAttack { get; set; } = true;
-        
         public WeaponAttackConfig LastAttackConfig => _lastAttackConfig;
-        
         public WeaponState CurrentState => _currentState;
+
+        public CountdownTimer AttacksFlowTimer => _attacksFlowTimer;
 
         #endregion
 
@@ -57,6 +55,8 @@ namespace _Project.Scripts.Core.Weapon
 
         protected override void InitStates()
         {
+            _attacksFlowTimer = new CountdownTimer(_weaponData.AttacksTransitionWindowTime);
+            
             AddState(WeaponState.Equipping,new EquippingWeaponState(this));
             AddState(WeaponState.Idle, new IdleWeaponState(this));
             AddState(WeaponState.AttackStart, new AttackStartWeaponState(this));
@@ -69,12 +69,20 @@ namespace _Project.Scripts.Core.Weapon
             
             if(_loadConfigFromInfo)
                 return;
-            
-            InitAttackTransitions(_weaponData.GetAttackConfig());
+
+            _lastAttackConfig = _weaponData.WeaponAttacks[0];
+            InitAttackTransitions(_lastAttackConfig);
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            _attacksFlowTimer?.Tick(Time.deltaTime);
         }
 
         #endregion
 
+        
         #region Public
 
         public void Equip(AnimationClipPlayableMixer playableHandler, WeaponData loadedEquippableWeaponData)
@@ -86,7 +94,9 @@ namespace _Project.Scripts.Core.Weapon
                 : _weaponData;
 
 
-            _lastAttackConfig = _weaponData.GetAttackConfig();
+            _attacksFlowTimer?.Stop();
+            _attacksFlowTimer?.Reset(_weaponData.AttacksTransitionWindowTime);
+            _lastAttackConfig = _weaponData.WeaponAttacks[0];
             ClearTransitions();
             InitAttackTransitions(_lastAttackConfig);
         }
@@ -99,10 +109,30 @@ namespace _Project.Scripts.Core.Weapon
 
         public void Use()
         {
-            if(_currentState != WeaponState.Idle)
+            if(_weaponData.WeaponAttacks.Length == 1 &&
+               _currentState != WeaponState.Idle)
                 return;
 
-            _lastAttackConfig = _weaponData.GetAttackConfig();
+            if (_attacksFlowTimer.IsRunning)
+                return;
+            
+            if (_currentState != WeaponState.Idle &&
+                _weaponData.WeaponAttacks.Length > 1 &&
+                !_attacksFlowTimer.IsRunning)
+            {
+                _attacksFlowTimer.Start();
+            }
+
+            if (_attacksFlowTimer.IsRunning && _currentState != WeaponState.Idle)
+            {
+                _attackIndex++;
+                ChangeState(WeaponState.Idle);
+                ClearTransitions();
+                _lastAttackConfig = _weaponData.WeaponAttacks[_attackIndex % _weaponData.WeaponAttacks.Length];
+            }
+            else
+                _lastAttackConfig = _weaponData.WeaponAttacks[0];
+            
             _damageCollider.DamageInfo = _lastAttackConfig.DamageInfo;
             
             ClearTransitions();
@@ -130,7 +160,25 @@ namespace _Project.Scripts.Core.Weapon
             
             _animationClipPlayableMixer?.Play(_lastAttackConfig.WeaponAnimation);
         }
+
+        public void StopLastAttackConfigAnimation()
+        {
+            if(_lastAttackConfig == null)
+                return;
             
+            _animationClipPlayableMixer?.Stop(_lastAttackConfig.WeaponAnimation);
+        }
+
+        public float FullActionStateTime()
+        {
+            if (_lastAttackConfig == null)
+                return 0;
+            
+            return _lastAttackConfig.AttackActionDelayTime +
+                   _lastAttackConfig.AttackActionTime +
+                   _lastAttackConfig.CooldownTime;
+        }
+        
         #endregion
 
         #region Private

@@ -157,7 +157,7 @@ namespace _Project.Scripts.Core.Enemies
                 EnemyState.Attack,
             }, EnemyState.ChasePlayer, new GroupAndCondition(new IStateCondition[]
             {
-                new DelayCondition(_weaponBehaviour.FullActionStateTime),
+                new DelayCondition(_weaponBehaviour.FullActionStateTime()),
                 new FuncCondition(() => _enemyVision.Target != null && !IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
             }));
         }
