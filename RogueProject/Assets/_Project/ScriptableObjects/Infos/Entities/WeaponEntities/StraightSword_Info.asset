@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EntityPrefab>k__BackingField: {fileID: 1170135344080618636, guid: cfa0930fa7929d940a9f0a4f6c27f1ef, type: 3}
   <WeaponData>k__BackingField:
-    _attacksTransitionWindowTime: 0.3
+    _attacksTransitionWindowTime: 1.5
     _weaponAttacks:
     - _damageInfo:
         <DamageDealer>k__BackingField: {fileID: 0}
@@ -29,9 +29,9 @@ MonoBehaviour:
       _attackForce: {x: 0, y: 0, z: 2}
       _forceMode: 1
       _stopMovementWhileAttacking: 1
-      _attackActionDelayTime: 0.65
+      _attackStartTime: 0.65
       _attackActionTime: 0.15
-      _cooldownTime: 1
+      _cooldownTime: 0.1
       _weaponAnimation:
         _layer: 0
         _isStatic: 0
@@ -61,9 +61,9 @@ MonoBehaviour:
       _attackForce: {x: 0, y: 0, z: 2}
       _forceMode: 1
       _stopMovementWhileAttacking: 1
-      _attackActionDelayTime: 0.65
+      _attackStartTime: 0.65
       _attackActionTime: 0.15
-      _cooldownTime: 1
+      _cooldownTime: 0.1
       _weaponAnimation:
         _layer: 1
         _isStatic: 0

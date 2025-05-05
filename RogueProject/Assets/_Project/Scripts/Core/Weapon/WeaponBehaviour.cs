@@ -1,9 +1,12 @@
+using System;
 using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using D_Dev.UtilScripts.TimerSystem;
 using Danil_dev.Scripts.Runtime.UtilScripts.DamagableSystem.DamagableCollider;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _Project.Scripts.Core.Weapon
 {
@@ -30,10 +33,16 @@ namespace _Project.Scripts.Core.Weapon
         [Space]
         [SerializeField] private AnimationClipPlayableMixer _animationClipPlayableMixer;
 
+        [FoldoutGroup("Events")]
+        public UnityEvent OnEquip;
+        [FoldoutGroup("Events")]
+        public UnityEvent OnUnequip;
+
         private WeaponAttackConfig _lastAttackConfig;
+        
         private bool _isTransitionsInitialized;
         private int _attackIndex;
-        private CountdownTimer _attacksFlowTimer;
+        private CountdownTimer _attackTransitionTimer;
         #endregion
 
         #region Properties
@@ -61,7 +70,8 @@ namespace _Project.Scripts.Core.Weapon
 
         protected override void InitStates()
         {
-            _attacksFlowTimer = new CountdownTimer(_weaponData.AttacksTransitionWindowTime);
+            _attackTransitionTimer = new CountdownTimer(_weaponData.AttacksTransitionWindowTime);
+            _attackTransitionTimer.OnTimerEnd += ResetAttackIndex;
             
             AddState(WeaponState.Equipping,new EquippingWeaponState(this));
             AddState(WeaponState.Idle, new IdleWeaponState(this));
@@ -80,10 +90,12 @@ namespace _Project.Scripts.Core.Weapon
             InitAttackTransitions(_lastAttackConfig);
         }
 
+        private void OnDisable() => _attackTransitionTimer.OnTimerEnd -= ResetAttackIndex;
+
         protected override void Update()
         {
             base.Update();
-            _attacksFlowTimer?.Tick(Time.deltaTime);
+            _attackTransitionTimer?.Tick(Time.deltaTime);
         }
 
         #endregion
@@ -101,65 +113,35 @@ namespace _Project.Scripts.Core.Weapon
                 : _weaponData;
 
             _mainRigidBody = mainRigidBody;
-            _attacksFlowTimer?.Stop();
-            _attacksFlowTimer?.Reset(_weaponData.AttacksTransitionWindowTime);
             _lastAttackConfig = _weaponData.WeaponAttacks[0];
             ClearTransitions();
             InitAttackTransitions(_lastAttackConfig);
+            _attackTransitionTimer?.Reset(_weaponData.AttacksTransitionWindowTime);
+            OnEquip?.Invoke();
         }
         
         public void Unequip()
         {
-            _attacksFlowTimer?.Stop();
             _lastAttackConfig = null;
             ChangeState(WeaponState.Idle);
-            gameObject.SetActive(false);
+            OnUnequip?.Invoke();
         }
 
         public void Use()
         {
-            if (_weaponData.WeaponAttacks.Length == 1 &&
-                _currentState != WeaponState.Idle)
-                return;
-
-            if (_attacksFlowTimer.IsRunning)
+            if(_currentState != WeaponState.Idle)
                 return;
             
-            if (_currentState != WeaponState.Idle &&
-                _weaponData.WeaponAttacks.Length > 1 &&
-                !_attacksFlowTimer.IsRunning)
-            {
-                _attacksFlowTimer.Start();
-            }
-
-            if (_attacksFlowTimer.IsRunning)
-            {
-                _attackIndex++;
-                ChangeState(WeaponState.Idle);
-                ClearTransitions();
-                _lastAttackConfig = _weaponData.WeaponAttacks[_attackIndex % _weaponData.WeaponAttacks.Length];
-            }
-            else
-                _lastAttackConfig = _weaponData.WeaponAttacks[0];
-            
-            _damageCollider.DamageInfo = _lastAttackConfig.DamageInfo;
-            
-            ClearTransitions();
-            InitAttackTransitions(_lastAttackConfig);
-            
-            ChangeState(_lastAttackConfig.IsChargable
-                ? WeaponState.ChargeStart
-                : WeaponState.AttackStart);
+            _lastAttackConfig = _weaponData.WeaponAttacks[_attackIndex % _weaponData.WeaponAttacks.Length];
+            _attackTransitionTimer?.Start();
+            _attackIndex++;
+            ChangeState(WeaponState.AttackStart);
         }
 
         
         public void PlayEquippableWeaponAnimation(WeaponState state)
         {
-            // var anim = _equippableWeaponConfig.GetAnimation(state);
-            // if(anim == null)
-            //     return;
-            //
-            // _playableHandler?.Play(anim);
+            
         }
 
         public void PlayAttackConfigAnimation()
@@ -169,21 +151,14 @@ namespace _Project.Scripts.Core.Weapon
             
             _animationClipPlayableMixer?.Play(_lastAttackConfig.WeaponAnimation);
         }
-
-        public void StopLastAttackConfigAnimation()
-        {
-            if(_lastAttackConfig == null)
-                return;
-            
-            _animationClipPlayableMixer?.Stop(_lastAttackConfig.WeaponAnimation);
-        }
+       
 
         public float FullActionStateTime()
         {
             if (_lastAttackConfig == null)
                 return 0;
             
-            return _lastAttackConfig.AttackActionDelayTime +
+            return _lastAttackConfig.AttackStartTime +
                    _lastAttackConfig.AttackActionTime +
                    _lastAttackConfig.CooldownTime;
         }
@@ -191,6 +166,11 @@ namespace _Project.Scripts.Core.Weapon
         #endregion
 
         #region Private
+        
+        private void ResetAttackIndex()
+        {
+            _attackIndex = 0;
+        }
 
         private void ClearTransitions()
         {
@@ -208,7 +188,7 @@ namespace _Project.Scripts.Core.Weapon
                 return;
             
             AddTransition(new [] { WeaponState.AttackStart }, WeaponState.AttackAction,
-                new DelayCondition(attackConfig.AttackActionDelayTime));
+                new DelayCondition(attackConfig.AttackStartTime));
             
             AddTransition(new [] { WeaponState.AttackAction }, WeaponState.Cooldown,
                 new DelayCondition(attackConfig.AttackActionTime));

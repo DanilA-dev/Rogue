@@ -23,7 +23,7 @@ namespace _Project.Scripts.Core.Weapon
         [SerializeField] private ForceMode _forceMode;
         [Space]
         [SerializeField] private bool _stopMovementWhileAttacking = true;
-        [SerializeField] private float _attackActionDelayTime;
+        [SerializeField] private float _attackStartTime;
         [SerializeField] private float _attackActionTime;
         [SerializeField] private float _cooldownTime;
         [Space]
@@ -68,10 +68,10 @@ namespace _Project.Scripts.Core.Weapon
             set => _chargeTime = value;
         }
 
-        public float AttackActionDelayTime
+        public float AttackStartTime
         {
-            get => _attackActionDelayTime;
-            set => _attackActionDelayTime = value;
+            get => _attackStartTime;
+            set => _attackStartTime = value;
         }
 
         public bool StopMovementWhileAttacking
