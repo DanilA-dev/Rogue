@@ -23,6 +23,7 @@ MonoBehaviour:
         <UseForceOnGetDamage>k__BackingField: 0
         <ForceMode>k__BackingField: 0
         <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
+      _staminaCost: 20
       _isChargable: 0
       _chargeTime: 0
       _applyForceOnAttack: 1
@@ -55,6 +56,7 @@ MonoBehaviour:
         <UseForceOnGetDamage>k__BackingField: 0
         <ForceMode>k__BackingField: 0
         <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
+      _staminaCost: 20
       _isChargable: 0
       _chargeTime: 0
       _applyForceOnAttack: 1

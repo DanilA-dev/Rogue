@@ -11,9 +11,7 @@ namespace _Project.Scripts.Core.Player.States
 
         #region Constructors
 
-        public MovePlayerState(PlayerControllerBehaviour playerController) : base(playerController)
-        {
-        }
+        public MovePlayerState(PlayerControllerBehaviour playerController) : base(playerController) {}
 
         #endregion
 
@@ -30,7 +28,6 @@ namespace _Project.Scripts.Core.Player.States
                 return;
             
             _playerController.Mover.Move();
-            _playerController.View.PlayRun();
             var dir = _playerController.Mover.Target;
             var speed = _playerController.RotateMoveSpeed;
             _playerController.RotateTowards(dir, Vector3.up, speed);

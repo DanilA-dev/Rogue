@@ -12,6 +12,7 @@ namespace _Project.Scripts.Core.Weapon
 
         [SerializeField] private DamageInfo _damageInfo;
         [Space]
+        [SerializeField] private float _staminaCost;
         [SerializeField] private bool _isChargable;
         [ShowIf(nameof(_isChargable))]
         [SerializeField] private float _chargeTime;
@@ -96,6 +97,12 @@ namespace _Project.Scripts.Core.Weapon
         {
             get => _attackForce;
             set => _attackForce = value;
+        }
+
+        public float StaminaCost
+        {
+            get => _staminaCost;
+            set => _staminaCost = value;
         }
 
         #endregion

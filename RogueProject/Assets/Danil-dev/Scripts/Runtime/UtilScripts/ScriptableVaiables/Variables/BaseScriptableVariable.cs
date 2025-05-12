@@ -7,7 +7,7 @@ namespace D_Dev.UtilScripts.ScriptableVaiables
     {
         #region Fields
 
-        [SerializeField] private T _variable;
+        [SerializeField] private T _value;
 
         public event Action<T> OnVariableUpdate;
         
@@ -15,13 +15,13 @@ namespace D_Dev.UtilScripts.ScriptableVaiables
 
         #region Properties
 
-        public T Variable
+        public T Value
         {
-            get => _variable;
+            get => _value;
             set
             {
-                _variable = value;
-                OnVariableUpdate?.Invoke(_variable);
+                _value = value;
+                OnVariableUpdate?.Invoke(_value);
             }
         }
 

@@ -156,34 +156,36 @@ MonoBehaviour:
     OnStateExit:
       m_PersistentCalls:
         m_Calls: []
+  - <State>k__BackingField: 0
+    OnStateEnter:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStateExit:
+      m_PersistentCalls:
+        m_Calls: []
   OnAnyStateEnter:
     m_PersistentCalls:
       m_Calls: []
   OnAnyStateExit:
     m_PersistentCalls:
       m_Calls: []
+  _mainRigidBody: {fileID: 0}
+  _staminaVariable: {fileID: 11400000, guid: 30d14c46bc8a7d3408ae3f37ccf4ba30, type: 2}
   _loadConfigFromInfo: 1
   _damageCollider: {fileID: 8845828949915558425}
-  _equippableWeaponConfig:
-    _damageInfo:
-      <DamageDealer>k__BackingField: {fileID: 0}
-      <Damage>k__BackingField:
-        rid: -2
-      <UseForceOnDamage>k__BackingField: 0
-      <ForceMode>k__BackingField: 0
-      <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
-    _isChargable: 0
-    _chargeTime: 0
-    _attackActionDelayTime: 0
-    _attackActionTime: 0
-    _cooldownTime: 0
-    _animations: []
-  _equippableWeaponView: {fileID: 0}
+  _weaponData:
+    _attacksTransitionWindowTime: 0
+    _weaponAttacks: []
+  _animationClipPlayableMixer: {fileID: 0}
+  OnEquip:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnequip:
+    m_PersistentCalls:
+      m_Calls: []
   references:
     version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    RefIds: []
 --- !u!1 &1275718915814230737
 GameObject:
   m_ObjectHideFlags: 0

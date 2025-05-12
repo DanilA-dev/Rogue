@@ -19,6 +19,7 @@ namespace _Project.Scripts.Core.Weapon
 
         public override void OnEnter()
         {
+            _weaponBehaviour.StaminaVariable.Value -= _weaponBehaviour.LastAttackConfig.StaminaCost;
             var attackConfig = _weaponBehaviour.LastAttackConfig;
             var mainRigidbody = _weaponBehaviour.MainRigidBody;
             

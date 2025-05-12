@@ -190,7 +190,7 @@ MonoBehaviour:
   _damagableObject: {fileID: 312791083777510423}
   _weaponHolder: {fileID: 4764944347595774760}
   _view: {fileID: 1539542473964005791}
-  _rigidbody: {fileID: 0}
+  _rigidbody: {fileID: 5140777596550749075}
   _targetSensor:
     _trigger: {fileID: 732765198344493203}
     _checkObstacleLinecast: 1
@@ -250,7 +250,7 @@ MonoBehaviour:
         - m_Target: {fileID: 11400000, guid: 13dda8762b38b60409a708740dca54d4, type: 2}
           m_TargetAssemblyTypeName: D_Dev.UtilScripts.ScriptableVaiables.BaseScriptableVariable`1[[System.Single,
             mscorlib
-          m_MethodName: set_Variable
+          m_MethodName: set_Value
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -266,7 +266,42 @@ MonoBehaviour:
         - m_Target: {fileID: 11400000, guid: 13dda8762b38b60409a708740dca54d4, type: 2}
           m_TargetAssemblyTypeName: D_Dev.UtilScripts.ScriptableVaiables.BaseScriptableVariable`1[[System.Single,
             mscorlib
-          m_MethodName: set_Variable
+          m_MethodName: set_Value
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - <StatName>k__BackingField: {fileID: 11400000, guid: fd962b5763f9930449d7936430fc39df, type: 2}
+    <StatValue>k__BackingField:
+      _value: 100
+    OnStatInit:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 30d14c46bc8a7d3408ae3f37ccf4ba30, type: 2}
+          m_TargetAssemblyTypeName: D_Dev.UtilScripts.ScriptableVaiables.BaseScriptableVariable`1[[System.Single,
+            mscorlib
+          m_MethodName: set_Value
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    OnStatUpdate:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: 30d14c46bc8a7d3408ae3f37ccf4ba30, type: 2}
+          m_TargetAssemblyTypeName: D_Dev.UtilScripts.ScriptableVaiables.BaseScriptableVariable`1[[System.Single,
+            mscorlib
+          m_MethodName: set_Value
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -374,7 +409,7 @@ MonoBehaviour:
   _currentWeaponInfo: {fileID: 0}
   _weaponPosition:
     _positionType: 1
-    _parent: {fileID: 4186948833552723717}
+    _parent: {fileID: 4180618808860320291}
     _vectorPos: {x: 0, y: 0, z: 0}
     _localPosTransform: 0
     _transformPos: {fileID: 4186948833552723717}
@@ -638,11 +673,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _runtimeAnimatorType: 1
-  _animationMixer: {fileID: 0}
+  _animationMixer: {fileID: 5104346629063456363}
   _animator: {fileID: 0}
   OnAnimationChange:
     m_PersistentCalls:
       m_Calls: []
+  _aimBlendTreeSpeedMultiplier: 15
   _idle:
     _animationState: Default_Idle
     _isRandomizeClip: 0
@@ -663,7 +699,6 @@ MonoBehaviour:
     _layer: 0
     _crossFadeTime: 0.25
     _animationSpeed: 1
-  _locomotionMixer: {fileID: 527701252172665828}
   _clipPlayableMixer: {fileID: 5700863053961054057}
   _deathAnimation:
     _layer: 20
@@ -696,38 +731,6 @@ MonoBehaviour:
     _useAutoFadeTimeBasedOnClipLength: 0
     _crossFadeTime: 0.1
     _fadeDelay: 0.3
-    _animationSpeed: 1
-  _idleAnimation:
-    _layer: 0
-    _isStatic: 0
-    _applyRootMotion: 0
-    _targetWeight: 1
-    _isRandomizeClip: 0
-    _animationClip: {fileID: 7400000, guid: e29cc44dbb97c4c409cf943eb7fb9b6a, type: 2}
-    _animationClips: []
-    _isLooping: 1
-    _avatarMask: {fileID: 0}
-    _isAdditive: 0
-    _useFootIK: 1
-    _useAutoFadeTimeBasedOnClipLength: 0
-    _crossFadeTime: 0.2
-    _fadeDelay: 0.15
-    _animationSpeed: 1
-  _runAnimation:
-    _layer: 1
-    _isStatic: 0
-    _applyRootMotion: 0
-    _targetWeight: 1
-    _isRandomizeClip: 0
-    _animationClip: {fileID: 7400000, guid: bdd1dae8d014dec42b3d2fb2ccbf608e, type: 2}
-    _animationClips: []
-    _isLooping: 1
-    _avatarMask: {fileID: 0}
-    _isAdditive: 0
-    _useFootIK: 1
-    _useAutoFadeTimeBasedOnClipLength: 0
-    _crossFadeTime: 0.2
-    _fadeDelay: 0.15
     _animationSpeed: 1
 --- !u!1 &3798791173450944483
 GameObject:
@@ -3023,7 +3026,7 @@ Animator:
   m_GameObject: {fileID: 4183285703927332931}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 664a44012a599ec4dba6f44e9edf7a3e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -5803,7 +5806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 547898743642544828}
-  - component: {fileID: 527701252172665828}
+  - component: {fileID: 5104346629063456363}
   m_Layer: 6
   m_Name: LocomotionMixer
   m_TagString: Untagged
@@ -5826,7 +5829,7 @@ Transform:
   m_Father: {fileID: 3328940025524136122}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &527701252172665828
+--- !u!114 &5104346629063456363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5835,7 +5838,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6201000932857347367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cf6875377984797a4ac95fe0d403aa0, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c7e09eb72c4457b94ff62aabfdb69a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _layer: 0
@@ -5845,6 +5848,3 @@ MonoBehaviour:
   _tryFoundOnGameObject: 0
   _graphObject: {fileID: 0}
   _tryFoundOnParent: 0
-  _connectToSeperateMixer: 1
-  _hasStartAnimations: 0
-  _onStartAnimations: []

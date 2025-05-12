@@ -21,18 +21,18 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
     {
         #region Fields
 
-        [SerializeField] private RuntimeAnimatorType _runtimeAnimatorType;
+        [SerializeField] protected RuntimeAnimatorType _runtimeAnimatorType;
         [ShowIf(nameof(_runtimeAnimatorType), RuntimeAnimatorType.AnimatorPlayable)]
-        [SerializeField] private AnimationAnimatorPlayableMixer _animationMixer;
+        [SerializeField] protected AnimationAnimatorPlayableMixer _animationMixer;
         [ShowIf(nameof(_runtimeAnimatorType), RuntimeAnimatorType.RegularAnimator)]
-        [SerializeField] private Animator _animator;
+        [SerializeField] protected Animator _animator;
         
         [FoldoutGroup("Events")]
         public UnityEvent<string> OnAnimationChange;
         
-        private Dictionary<AnimationClip, int> _animations = new();
-        private Dictionary<string, int> _animationParams = new();
-        private AnimatorOverrideController _overrideController;
+        protected Dictionary<AnimationClip, int> _animations = new();
+        protected Dictionary<string, int> _animationParams = new();
+        protected AnimatorOverrideController _overrideController;
 
         #endregion
 
@@ -185,7 +185,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
             if(_runtimeAnimatorType == RuntimeAnimatorType.RegularAnimator)
                 _animator?.SetBool(hash, value);
             else
-                _animationMixer.AnimatorPlayable.SetBool(hash, value);
+                _animationMixer?.AnimatorPlayable.SetBool(hash, value);
         }
         
         private void SetAnimatorFloat(int hash, float value)
@@ -193,7 +193,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
             if(_runtimeAnimatorType == RuntimeAnimatorType.RegularAnimator)
                 _animator?.SetFloat(hash, value);
             else
-                _animationMixer.AnimatorPlayable.SetFloat(hash, value);
+                _animationMixer?.AnimatorPlayable.SetFloat(hash, value);
         }
         
         private void SetAnimatorInt(int hash, int value)
@@ -201,7 +201,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
             if(_runtimeAnimatorType == RuntimeAnimatorType.RegularAnimator)
                 _animator?.SetInteger(hash, value);
             else
-                _animationMixer.AnimatorPlayable.SetInteger(hash, value);
+                _animationMixer?.AnimatorPlayable.SetInteger(hash, value);
         }
 
         private void SetAnimatorTrigger(int hash)
@@ -209,7 +209,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView
             if(_runtimeAnimatorType == RuntimeAnimatorType.RegularAnimator)
                 _animator?.SetTrigger(hash);
             else
-                _animationMixer.AnimatorPlayable.SetTrigger(hash);
+                _animationMixer?.AnimatorPlayable.SetTrigger(hash);
         }
         
         #endregion

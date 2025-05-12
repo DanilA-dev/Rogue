@@ -2,6 +2,7 @@ using System;
 using D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandler;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
+using D_Dev.UtilScripts.ScriptableVaiables;
 using D_Dev.UtilScripts.TimerSystem;
 using Danil_dev.Scripts.Runtime.UtilScripts.DamagableSystem.DamagableCollider;
 using Sirenix.OdinInspector;
@@ -26,6 +27,7 @@ namespace _Project.Scripts.Core.Weapon
         #region Fields
 
         [SerializeField] private Rigidbody _mainRigidBody;
+        [SerializeField] private FloatScriptableVariable _staminaVariable;
         [Space]
         [SerializeField] private bool _loadConfigFromInfo;
         [SerializeField] private DamageCollider _damageCollider;
@@ -64,6 +66,8 @@ namespace _Project.Scripts.Core.Weapon
 
         public Rigidbody MainRigidBody => _mainRigidBody;
 
+        public FloatScriptableVariable StaminaVariable => _staminaVariable;
+
         #endregion
 
         #region Overrides
@@ -99,7 +103,6 @@ namespace _Project.Scripts.Core.Weapon
         }
 
         #endregion
-
         
         #region Public
 
@@ -133,6 +136,9 @@ namespace _Project.Scripts.Core.Weapon
                 return;
             
             _lastAttackConfig = _weaponData.WeaponAttacks[_attackIndex % _weaponData.WeaponAttacks.Length];
+            if(_staminaVariable.Value < _lastAttackConfig.StaminaCost)
+                return;
+            
             _attackTransitionTimer?.Start();
             _attackIndex++;
             ChangeState(WeaponState.AttackStart);

@@ -17,7 +17,7 @@ namespace _Project.Scripts.Core.Player.States
         public override void OnEnter()
         {
             _targets = _playerController.Sensor.Trigger.Colliders;
-            // _playerController.View.ToggleAimLocomotion(true);
+            _playerController.View.ToggleAimLocomotion(true);
         }
 
         public override void OnUpdate()
@@ -27,13 +27,13 @@ namespace _Project.Scripts.Core.Player.States
             
             _playerController.Mover.Move();
             RotateTowardsNearestTarget();
-            //_playerController.View.EvaluateAimLocomotionSpeed(_playerController.Mover.Velocity);
+            _playerController.View.EvaluateAimLocomotionSpeed(_playerController.Mover.Target);
         }
 
         public override void OnExit()
         {
-            //_playerController.View.ToggleAimLocomotion(false);
-            _playerController.TargetVariable.Variable.SetActive(false);
+            _playerController.View.ToggleAimLocomotion(false);
+            _playerController.TargetVariable.Value.SetActive(false);
         }
 
         private void RotateTowardsNearestTarget()
@@ -51,8 +51,8 @@ namespace _Project.Scripts.Core.Player.States
                     var targetObjectPos = new Vector3(target.transform.position.x + _playerController.TargetObjectPositionOffset.x,
                         target.transform.position.y + _playerController.TargetObjectPositionOffset.y,
                         target.transform.position.z + _playerController.TargetObjectPositionOffset.z);
-                    _playerController.TargetVariable.Variable.SetActive(true);
-                    _playerController.TargetVariable.Variable.transform.position = targetObjectPos;
+                    _playerController.TargetVariable.Value.SetActive(true);
+                    _playerController.TargetVariable.Value.transform.position = targetObjectPos;
                     _playerController.RotateTowards(dir, Vector3.up, speed, constrainX:true, constrainZ:true);
                 }
             }
