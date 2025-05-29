@@ -95,7 +95,8 @@ MonoBehaviour:
         <ForceMode>k__BackingField: 0
         <ForceDirectionOffset>k__BackingField: {x: 0, y: 0, z: 0}
     - rid: 1123452982145843201
-      type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes, asm: D-Dev.DamagableSystem}
+      type: {class: SimpleDamage, ns: D_Dev.UtilScripts.DamagableSystem.DamageTypes,
+        asm: D-Dev.DamagableSystem}
       data:
         _damageAmount:
           _value: 5
@@ -113,14 +114,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2253765749701625990}
   _colliderChecker:
-    _checkLayer: 1
+    _checkLayer: 0
     _checkLayerMask:
       serializedVersion: 2
-      m_Bits: 64
-    _checkTag: 1
-    _checkTags:
-    - {fileID: 11400000, guid: 6e060c8edd718b64b86033dba2f25fb1, type: 2}
-    _ignoreTrigger: 1
+      m_Bits: 0
+    _checkTag: 0
+    _checkTags: []
+    _ignoreTrigger: 0
     _ignoreColliders: 0
     _ignoredColliders: []
     _ignoreLayer: 0

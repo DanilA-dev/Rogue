@@ -39,8 +39,8 @@ namespace _Project.Scripts.Core.Player
             var velocityNormalized = velocity.normalized;
             var targetX = velocity != Vector3.zero ? velocityNormalized.x : 0;
             var targetZ = velocity != Vector3.zero ? velocityNormalized.z : 0;
-            var animInputX = _animationMixer.AnimatorPlayable.GetFloat(INPUT_X);
-            var animInputY = _animationMixer.AnimatorPlayable.GetFloat(INPUT_Y);
+            var animInputX = GetFloat(INPUT_X);
+            var animInputY = GetFloat(INPUT_Y);
             var x = Mathf.Lerp(animInputX, targetX, _aimBlendTreeSpeedMultiplier * Time.deltaTime);
             var y = Mathf.Lerp(animInputY, targetZ, _aimBlendTreeSpeedMultiplier * Time.deltaTime);
             SetFloat(INPUT_X, x);

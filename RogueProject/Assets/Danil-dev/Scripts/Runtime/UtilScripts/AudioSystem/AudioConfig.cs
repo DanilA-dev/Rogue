@@ -31,7 +31,9 @@ namespace D_dev.Scripts.Runtime.UtilScripts.AudioSystem
         [ShowIf(nameof(_isRandomClip))]
         [SerializeField] private AudioClip[] _clips;
         [Title("Audio Settings")]
+        [HideIf(nameof(_isRandomVolume))]
         [Range(0, 1),SerializeField] private float _volume;
+        [HideIf(nameof(_isRandomPitch))]
         [SerializeField] private float _pitch;
         [SerializeField] private bool _isRandomVolume;
         [SerializeField] private bool _isRandomPitch;

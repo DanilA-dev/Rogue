@@ -1,0 +1,19 @@
+{
+    "name": "D-Dev.StatsRegenSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6d0199508f23afb4692c5fcd34c5ce08",
+        "GUID:b59af2f7183c8e247b483975b05e400f",
+        "GUID:3b38e9961eb41724fb98188d658154ff",
+        "GUID:bca94c6d884a7ab4f89267dd3bf8bd41"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

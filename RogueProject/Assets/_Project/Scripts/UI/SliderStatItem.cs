@@ -15,7 +15,7 @@ namespace _Project.Scripts.UI
 
         #region Monobehaviour
 
-        private void OnEnable() => _variable.OnVariableUpdate += OnVariableValueUpdate;
+        private void OnEnable() => _variable.OnValueUpdate += OnVariableValueUpdate;
 
         private void Start()
         {
@@ -26,7 +26,7 @@ namespace _Project.Scripts.UI
             }
         }
 
-        private void OnDisable() => _variable.OnVariableUpdate -= OnVariableValueUpdate;
+        private void OnDisable() => _variable.OnValueUpdate -= OnVariableValueUpdate;
 
         #endregion
 

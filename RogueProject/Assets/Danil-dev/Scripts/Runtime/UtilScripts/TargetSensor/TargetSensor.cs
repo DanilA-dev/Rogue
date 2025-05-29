@@ -65,6 +65,14 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.TargetSensor
             _trigger.OnExit.RemoveListener(OnTargetExit);
         }
         
+        public bool IsTargetFound()
+        {
+            if (!_checkObstacleLinecast)
+                return Target != null;
+            else
+                return Target != null && _obstacleLinecaster.IsIntersect();
+        }
+        
         public bool IsTargetFound(out Collider target)
         {
             target = Target;
@@ -72,14 +80,6 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.TargetSensor
                 return target != null;
             else
                 return target != null && _obstacleLinecaster.IsIntersect();
-        }
-        
-        public bool IsTargetFound()
-        {
-            if (!_checkObstacleLinecast)
-                return Target != null;
-            else
-                return Target != null && _obstacleLinecaster.IsIntersect();
         }
 
         #endregion

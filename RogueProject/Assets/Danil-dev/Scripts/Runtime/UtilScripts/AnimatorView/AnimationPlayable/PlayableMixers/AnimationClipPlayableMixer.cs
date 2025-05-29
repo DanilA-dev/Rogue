@@ -58,7 +58,7 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             }
             _playablesPair.Clear();
         }
-
+        
         private void Start()
         {
             if (_hasStartAnimations && _onStartAnimations.Length > 0)
@@ -177,25 +177,28 @@ namespace D_Dev.Scripts.Runtime.UtilScripts.AnimatorView.AnimationPlayableHandle
             }));
         }
         
-        private void BlendOut(AnimationPlayableClipConfig lastConfig)
+        private void BlendOut(AnimationPlayableClipConfig config)
         {
-            var clip = lastConfig.GetAnimationClip();
-            var crossFadeTime = lastConfig.UseAutoFadeTimeBasedOnClipLength
-                ? Mathf.Clamp(clip.length * 0.1f, 0.1f, clip.length * 0.5f)
-                : lastConfig.CrossFadeTime;
-            var delayTime = lastConfig.UseAutoFadeTimeBasedOnClipLength
-                ? clip.length - crossFadeTime
-                : lastConfig.FadeDelay;
-            
-            if(lastConfig.Layer <= 0 && lastConfig.IsStatic)
+            if(config == null)
                 return;
             
-            _blendOutCoroutine = StartCoroutine(BlendCoroutine(crossFadeTime, lastConfig.TargetWeight,blend =>
+            var clip = config.GetAnimationClip();
+            var crossFadeTime = config.UseAutoFadeTimeBasedOnClipLength
+                ? Mathf.Clamp(clip.length * 0.1f, 0.1f, clip.length * 0.5f)
+                : config.CrossFadeTime;
+            var delayTime = config.UseAutoFadeTimeBasedOnClipLength
+                ? clip.length - crossFadeTime
+                : config.FadeDelay;
+            
+            if(config.Layer <= 0 && config.IsStatic)
+                return;
+            
+            _blendInCoroutine = StartCoroutine(BlendCoroutine(crossFadeTime, config.TargetWeight,blend =>
             {
                 float weight = Mathf.Lerp(1f, 0, blend);
-                _targetLayerMixerPlayable.SetInputWeight(lastConfig.Layer + 1, weight);
+                _targetLayerMixerPlayable.SetInputWeight(config.Layer + 1, weight);
                 
-            }, delayTime, () => DisconnectOneShot(lastConfig)));
+            }, delayTime, () => DisconnectOneShot(config)));
         }
         
         #endregion

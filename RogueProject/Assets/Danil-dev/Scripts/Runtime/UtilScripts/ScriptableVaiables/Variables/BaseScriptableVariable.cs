@@ -9,7 +9,7 @@ namespace D_Dev.UtilScripts.ScriptableVaiables
 
         [SerializeField] private T _value;
 
-        public event Action<T> OnVariableUpdate;
+        public event Action<T> OnValueUpdate;
         
         #endregion
 
@@ -21,7 +21,7 @@ namespace D_Dev.UtilScripts.ScriptableVaiables
             set
             {
                 _value = value;
-                OnVariableUpdate?.Invoke(_value);
+                OnValueUpdate?.Invoke(_value);
             }
         }
 

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4514954205295447601}
   - component: {fileID: 312791083777510423}
   - component: {fileID: 6028508248699521088}
+  - component: {fileID: 7405392761489071744}
   m_Layer: 6
   m_Name: BasePlayerCharacter_Prefab
   m_TagString: Untagged
@@ -89,17 +90,15 @@ MonoBehaviour:
   _inputRouter: {fileID: 11400000, guid: b299fe18b864a6a448ae3ab79bd7d358, type: 2}
   _inputReceiverModules:
   - rid: 1123452685490847754
-  - rid: 2247855309054017536
+  - rid: -2
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 1123452685490847754
       type: {class: InputMoverReceiverModule, ns: _Project.Scripts.Core, asm: Game.InputReceiver}
       data: 
-    - rid: 2247855309054017536
-      type: {class: InputWeaponHolderReceiverModule, ns: _Project.Scripts.Core, asm: Game.InputReceiver}
-      data:
-        _equippableWeapon: {fileID: 4764944347595774760}
 --- !u!114 &724749709405138123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,41 +190,6 @@ MonoBehaviour:
   _weaponHolder: {fileID: 4764944347595774760}
   _view: {fileID: 1539542473964005791}
   _rigidbody: {fileID: 5140777596550749075}
-  _targetSensor:
-    _trigger: {fileID: 732765198344493203}
-    _checkObstacleLinecast: 1
-    _obstacleLinecaster:
-      _origin:
-        _raycastPointType: 1
-        _raycastVectorPoint: {x: 0, y: 0, z: 0}
-        _raycastTransformPoint: {fileID: 5683103482665553827}
-        _localTransformDirection: 0
-      _direction:
-        _raycastPointType: 0
-        _raycastVectorPoint: {x: 0, y: 0, z: 0}
-        _raycastTransformPoint: {fileID: 0}
-        _localTransformDirection: 0
-      _queryTriggerInteraction: 1
-      _colliderChecker:
-        _checkLayer: 1
-        _checkLayerMask:
-          serializedVersion: 2
-          m_Bits: 64
-        _checkTag: 1
-        _checkTags:
-        - {fileID: 11400000, guid: 6e060c8edd718b64b86033dba2f25fb1, type: 2}
-        _ignoreTrigger: 1
-        _ignoreColliders: 0
-        _ignoredColliders: []
-        _ignoreLayer: 0
-        _ignoreLayerMask:
-          serializedVersion: 2
-          m_Bits: 0
-        _ignoreTag: 0
-        _ignoreTags: []
-        _debugColliders: 0
-  _targetVariable: {fileID: 11400000, guid: 56a93fcf05c549445b1167a3962db133, type: 2}
-  _targetObjectPositionOffset: {x: 0, y: 0.15, z: 0}
   _rotateMoveSpeed: 500
   _rotateAimSpeed: 500
 --- !u!114 &4514954205295447601
@@ -360,6 +324,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tags:
   - {fileID: 11400000, guid: 47ac4af9118d440409d81a5ddd559f8c, type: 2}
+--- !u!114 &7405392761489071744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456966870965895341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e721d43bfed54866be0d4c6ec24c4c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variable: {fileID: 11400000, guid: 90b196c22453efb47b1e08b734675c4a, type: 2}
+  _object: {fileID: 456966870965895341}
+  _attachOnAwake: 1
+  _attachOnStart: 0
 --- !u!1 &618269775110587866
 GameObject:
   m_ObjectHideFlags: 0

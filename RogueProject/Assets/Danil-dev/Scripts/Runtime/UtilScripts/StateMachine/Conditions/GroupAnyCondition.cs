@@ -1,4 +1,4 @@
-using System.Linq;
+﻿using System.Linq;
 
 namespace D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine
 {

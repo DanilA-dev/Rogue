@@ -1,7 +1,6 @@
 using _Project.Scripts.Core.Enemies.States;
 using _Project.Scripts.Core.Weapon;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
-using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.TargetSensor;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -107,10 +106,7 @@ namespace _Project.Scripts.Core.Enemies
             _enemyMover = GetComponent<IMover>();
             
             AddState(EnemyState.Idle, new IdleEnemyState(this));
-            AddState(EnemyState.Patrol, new PatrolEnemyState(this));
-            AddState(EnemyState.ChasePlayer, new ChasePlayerEnemyState(this));
             AddState(EnemyState.Attack, new AttackEnemyState(this));
-            AddState(EnemyState.Retreat, new RetreatEnemyState(this));
             AddState(EnemyState.Dead, new DeadEnemyState(this));
 
             InitTransitions();
@@ -123,43 +119,7 @@ namespace _Project.Scripts.Core.Enemies
 
         private void InitTransitions()
         {
-            AddTransition(new[] { EnemyState.Idle }, EnemyState.Patrol, new DelayCondition(_idleTime));
-            AddTransition(new [] { EnemyState.Patrol}, EnemyState.Idle, new FuncCondition(() 
-                => IsTargetReached(PatrolPoints[PatrolPointIndex].position, _stoppingDistance)));
             
-            AddTransition(new []
-            {
-                EnemyState.Idle,
-                EnemyState.Patrol,
-                
-            }, EnemyState.ChasePlayer, new FuncCondition(IsTargetFound));
-            
-            AddTransition(new []
-            {
-                EnemyState.ChasePlayer,
-                EnemyState.Attack,
-                
-            }, EnemyState.Idle, new FuncCondition(() => !IsTargetFound()));
-            
-            AddTransition(new []
-            {
-                EnemyState.Idle,
-                EnemyState.Patrol,
-                EnemyState.ChasePlayer,
-            }, EnemyState.Attack, new GroupAndCondition(new []
-            {
-                new FuncCondition(IsTargetFound),
-                new FuncCondition(() => _enemyVision.Target != null && IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
-            }));
-
-            AddTransition(new []
-            {
-                EnemyState.Attack,
-            }, EnemyState.ChasePlayer, new GroupAndCondition(new IStateCondition[]
-            {
-                new DelayCondition(_weaponBehaviour.FullActionStateTime()),
-                new FuncCondition(() => _enemyVision.Target != null && !IsTargetReached(_enemyVision.Target.transform.position, _attackRange))
-            }));
         }
         
         private bool IsTargetFound() 

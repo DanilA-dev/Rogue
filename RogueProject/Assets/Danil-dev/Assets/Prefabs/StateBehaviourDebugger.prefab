@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 740970342009226285}
-  - component: {fileID: 791207592786879760}
   m_Layer: 0
   m_Name: StateBehaviourDebugger
   m_TagString: Untagged
@@ -33,20 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &791207592786879760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3176613011048770030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daadf1f7a411433899a096fc8518825a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateMachineBehaviour: {fileID: 0}
-  _text: {fileID: 8219161322931630100}
 --- !u!1 &6996828777503543266
 GameObject:
   m_ObjectHideFlags: 0
