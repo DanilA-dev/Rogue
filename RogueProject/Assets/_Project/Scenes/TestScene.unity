@@ -3018,12 +3018,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2246870445093473854, guid: 914182b0e1e986f4f8283fc61a9d263b, type: 3}
       propertyPath: _menuInfos.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2246870445093473854, guid: 914182b0e1e986f4f8283fc61a9d263b, type: 3}
       propertyPath: '_menuInfos.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: 5b0a1ba9c6230e64194e6f091263fcfe, type: 2}
+    - target: {fileID: 2246870445093473854, guid: 914182b0e1e986f4f8283fc61a9d263b, type: 3}
+      propertyPath: '_menuInfos.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2fe7ea74ec1e34f478c57779cec80459, type: 2}
     - target: {fileID: 3812011159553958919, guid: 914182b0e1e986f4f8283fc61a9d263b, type: 3}
       propertyPath: m_RootOrder
       value: 1

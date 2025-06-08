@@ -28,12 +28,10 @@ namespace _Project.Scripts.Core.Combat.ActionsInfo
         #region Properties
         
         public string ActionName => _actionName;
-
         public string ActionDescription => _actionDescription;
-
         public Sprite ActionIcon => _actionIcon;
-
         public AnimationPlayableClipConfig ActionAnimation => _actionAnimation;
+        public ICombatAction CombatAction => _combatAction;
 
         #endregion
 

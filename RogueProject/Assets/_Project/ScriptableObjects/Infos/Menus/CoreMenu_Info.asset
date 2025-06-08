@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f5dd28871c43cab726ddf879627531, type: 3}
   m_Name: CoreMenu_Info
   m_EditorClassIdentifier: 
-  <Canvas>k__BackingField: 0
+  <Canvas>k__BackingField: 1
   <MenuPrefab>k__BackingField: {fileID: 3637781033910597978, guid: aed90836dee0ef746962ff9c324fd6a8, type: 3}

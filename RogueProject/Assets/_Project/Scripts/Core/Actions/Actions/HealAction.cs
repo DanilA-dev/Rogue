@@ -6,31 +6,21 @@ using UnityEngine;
 namespace _Project.Scripts.Core.Combat
 {
     [System.Serializable]
-    public class HealAction : ICombatAction
+    public class HealAction : BaseAction
     {
         #region Fields
 
-        [SerializeField] private int _actionPoints;
-        [SerializeField] private int _cooldown;
         [SerializeField] private IntValue _healAmount;
         [SerializeField] private StringScriptableVariable _healthStatVariable;
 
         #endregion
 
-        #region Properties
-
-        public int ActionPoints => _actionPoints;
-        public int Cooldown => _cooldown;
-
-        #endregion
-
         #region Public
 
-        public void DoAction(GameObject target)
+
+        public override void DoAction(GameObject target)
         {
-            if(target == null)
-                return;
-            
+            base.DoAction(target);
             if(target.TryGetComponent(out StatsContainer statsContainer))
             {
                 var healthStat = statsContainer.GetStat(_healthStatVariable);
@@ -40,6 +30,5 @@ namespace _Project.Scripts.Core.Combat
         }
 
         #endregion
-        
     }
 }

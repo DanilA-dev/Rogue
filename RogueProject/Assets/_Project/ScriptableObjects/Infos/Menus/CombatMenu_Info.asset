@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f5dd28871c43cab726ddf879627531, type: 3}
   m_Name: CombatMenu_Info
   m_EditorClassIdentifier: 
-  <Canvas>k__BackingField: 0
-  <MenuPrefab>k__BackingField: {fileID: 0}
+  <Canvas>k__BackingField: 1
+  <MenuPrefab>k__BackingField: {fileID: 3637781033910597978, guid: 93a41eca20c74074999d2d9105aded1c, type: 3}

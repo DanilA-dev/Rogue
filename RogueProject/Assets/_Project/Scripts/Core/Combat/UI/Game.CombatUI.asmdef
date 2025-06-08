@@ -1,12 +1,13 @@
 {
-    "name": "D-Dev.Menu",
+    "name": "Game.CombatUI",
     "rootNamespace": "",
     "references": [
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:cb1a05c32f5d5744bb2273b8970ae954",
+        "GUID:c8cbf2befde76e34294d6d97ebd283d2",
+        "GUID:6143e81ffe34c26409ac1984eb69ffdb",
         "GUID:605f1a751ab411e4caebb830a5ad05fd",
-        "GUID:0c083109b251161418234030b436a9b6"
+        "GUID:d9b1239432653b14fb8118cc00de3702",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
