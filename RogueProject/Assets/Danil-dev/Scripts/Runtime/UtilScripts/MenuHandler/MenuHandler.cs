@@ -56,6 +56,7 @@ namespace D_Dev.UtilScripts.MenuHandler
         {
             if(_createdMenus.TryGetValue(menuInfo, out var menu))
                 menu.Close();
+            
         }
 
         public void CloseAllMenus()
