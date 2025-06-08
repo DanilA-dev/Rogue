@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
+using D_dev.Scripts.EventHandler;
 using D_Dev.UtilScripts.ScriptableVaiables;
 using D_Dev.UtilScripts.ValueSystem;
 using Sirenix.OdinInspector;
@@ -43,13 +44,29 @@ namespace _Project.Scripts.Core.Combat
         public List<ICombatAction> CombatActions { get; private set; } = new();
         
         #endregion
+
+        #region Monobehaviour
+
+        private void Awake()
+        {
+            CustomEventHandler.AddListener(CustomEventType.CombatTrigger, StartCombat);
+        }
+
+        private void OnDestroy()
+        {
+            CustomEventHandler.RemoveListener(CustomEventType.CombatTrigger, StartCombat);
+        }
+
+        #endregion
         
         #region Public
 
-        public void StartCombat()
+        private void StartCombat()
         {
             SetCombatCamera();
             SetUnitsToPositions();
+            
+            CustomEventHandler.Invoke(CustomEventType.CombatEnter);
         }
         
 

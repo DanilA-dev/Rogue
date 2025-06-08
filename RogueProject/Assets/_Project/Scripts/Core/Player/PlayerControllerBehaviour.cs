@@ -1,5 +1,6 @@
 using _Project.Scripts.Core.Player.States;
 using _Project.Scripts.Core.Weapon;
+using D_dev.Scripts.EventHandler;
 using D_Dev.Scripts.Runtime.UtilScripts.SimpleStateMachine;
 using D_Dev.Scripts.Runtime.UtilScripts.StateMachineBehaviour;
 using D_Dev.UtilScripts.DamagableSystem;
@@ -13,7 +14,7 @@ namespace _Project.Scripts.Core.Player
     {
         Idle = 0,
         Move = 1,
-        AimMove = 2,
+        Combat = 2,
         Dead = 3,
     }
     
@@ -42,7 +43,6 @@ namespace _Project.Scripts.Core.Player
         public float RotateMoveSpeed => _rotateMoveSpeed;
         public float RotateAimSpeed => _rotateAimSpeed;
         public PlayerView View => _view;
-
         public WeaponHolder WeaponHolder => _weaponHolder;
 
         #endregion
@@ -53,11 +53,14 @@ namespace _Project.Scripts.Core.Player
         {
             TryGetComponent(out _mover);
             _damagableObject.OnDeath.AddListener((() => ChangeState(PlayerState.Dead)));
+            
+            CustomEventHandler.AddListener(CustomEventType.CombatEnter, () => ChangeState(PlayerState.Combat));
         }
       
         private void OnDisable()
         {
             _damagableObject.OnDeath.RemoveListener((() => ChangeState(PlayerState.Dead)));
+            CustomEventHandler.RemoveListener(CustomEventType.CombatEnter, () => ChangeState(PlayerState.Combat));
         }
 
         #endregion
@@ -69,6 +72,7 @@ namespace _Project.Scripts.Core.Player
             AddState(PlayerState.Idle, new IdlePlayerState(this));
             AddState(PlayerState.Move, new MovePlayerState(this));
             AddState(PlayerState.Dead, new DeadPlayerState(this));
+            AddState(PlayerState.Combat, new CombatPlayerState(this));
             ChangeState(_startState);
             
             AddTransition(new [] { PlayerState.Idle }, PlayerState.Move, new FuncCondition(IsMoving));
@@ -93,17 +97,6 @@ namespace _Project.Scripts.Core.Player
 
         private bool IsMoving() => _mover != null && _mover.Target != Vector3.zero;
 
-        public bool IsCurrentWeaponAttackStopMove()
-        {
-            var isStopMovement = _weaponHolder.CurrentWeaponItem != null &&
-                                 _weaponHolder.CurrentWeaponItem.CurrentState != WeaponState.Idle &&
-                                 _weaponHolder.CurrentWeaponItem.StopMovementOnAttack;
-
-            if(isStopMovement)
-                _mover.Stop();
-            
-            return isStopMovement;
-        }
 
         #endregion
     }

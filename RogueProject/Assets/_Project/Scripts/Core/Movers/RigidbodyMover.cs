@@ -47,14 +47,14 @@ namespace _Project.Scripts.Core
             MoveSpeed = Mathf.MoveTowards(MoveSpeed, Target == Vector3.zero 
                 ? 0 
                 : _movementMaxForce, _movementAcceleration * Time.deltaTime);
-            _rigidbody.velocity = Target * MoveSpeed;
+            _rigidbody.linearVelocity = Target * MoveSpeed;
             OnMove?.Invoke(Target * MoveSpeed);
         }
         
         public void Stop()
         {
             MoveSpeed = 0;
-            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.linearVelocity = Vector3.zero;
         }
 
         #endregion

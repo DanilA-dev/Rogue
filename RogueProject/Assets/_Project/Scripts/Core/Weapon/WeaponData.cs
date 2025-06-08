@@ -1,3 +1,4 @@
+using _Project.Scripts.Core.Combat.ActionsInfo;
 using UnityEngine;
 
 namespace _Project.Scripts.Core.Weapon
@@ -7,23 +8,16 @@ namespace _Project.Scripts.Core.Weapon
     {
         #region Fields
 
-        [SerializeField] private float _attacksTransitionWindowTime;
-        [SerializeField] private WeaponAttackConfig[] _weaponAttacks;
+        [SerializeField] private ActionInfo[] _weaponAction;
 
         #endregion
 
         #region Properties
 
-        public WeaponAttackConfig[] WeaponAttacks
+        public ActionInfo[] WeaponAction
         {
-            get => _weaponAttacks;
-            set => _weaponAttacks = value;
-        }
-
-        public float AttacksTransitionWindowTime
-        {
-            get => _attacksTransitionWindowTime;
-            set => _attacksTransitionWindowTime = value;
+            get => _weaponAction;
+            set => _weaponAction = value;
         }
 
         #endregion

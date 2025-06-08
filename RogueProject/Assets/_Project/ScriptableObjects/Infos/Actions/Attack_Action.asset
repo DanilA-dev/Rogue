@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0edfdfe076c4708aa674c99e975aee7, type: 3}
+  m_Name: Attack_Action
+  m_EditorClassIdentifier: 
+  _actionName: Slash
+  _actionDescription: 
+  _actionIcon: {fileID: 21300000, guid: 714c890266318ea4ea951d5f0c1b8cec, type: 3}
+  _actionAnimation:
+    _layer: 0
+    _isStatic: 0
+    _applyRootMotion: 0
+    _targetWeight: 0
+    _isRandomizeClip: 0
+    _animationClip: {fileID: 0}
+    _animationClips: []
+    _isLooping: 0
+    _avatarMask: {fileID: 0}
+    _isAdditive: 0
+    _useFootIK: 0
+    _useAutoFadeTimeBasedOnClipLength: 0
+    _crossFadeTime: 0
+    _fadeDelay: 0
+    _animationSpeed: 1
+  _actionDelayTime: 0
+  _combatAction:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

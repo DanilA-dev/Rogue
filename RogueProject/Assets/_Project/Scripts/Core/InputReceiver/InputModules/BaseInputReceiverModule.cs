@@ -1,4 +1,4 @@
-using Danil_dev.Scripts.Runtime.UtilScripts.InputSystem;
+using D_dev.Scripts.Runtime.UtilScripts.InputSystem;
 using UnityEngine;
 
 namespace _Project.Scripts.Core

@@ -24,9 +24,6 @@ namespace _Project.Scripts.Core.Player.States
 
         public override void OnUpdate()
         {
-            if(_playerController.IsCurrentWeaponAttackStopMove())
-                return;
-            
             _playerController.Mover.Move();
             var dir = _playerController.Mover.Target;
             var speed = _playerController.RotateMoveSpeed;
