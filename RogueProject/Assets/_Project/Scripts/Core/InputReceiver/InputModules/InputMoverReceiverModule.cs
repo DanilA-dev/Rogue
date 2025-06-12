@@ -31,27 +31,25 @@ namespace _Project.Scripts.Core
         {
             if(_mover == null)
                 return;
-            
-            _inputRouter.Move += (direction) =>
-            {
-                var movement = new Vector3(direction.x, 0, direction.y);
-               _mover.Target = movement;
-               MovementDirection = movement;
-            };
+    
+            _inputRouter.Move += OnMove;
         }
 
         public override void OnInputDisable()
         {
             if(_mover == null)
                 return;
-            
-            _inputRouter.Move -= (direction) =>
-            {
-                var movement = new Vector3(direction.x, 0, direction.y);
-                _mover.Target = movement;
-                MovementDirection = movement;
-            };
+    
+            _inputRouter.Move -= OnMove;
         }
+
+        private void OnMove(Vector2 direction)
+        {
+            var movement = new Vector3(direction.x, 0, direction.y);
+            _mover.Target = movement;
+            MovementDirection = movement;
+        }
+
             
         #endregion
     }

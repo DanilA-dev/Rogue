@@ -24,22 +24,15 @@ namespace _Project.Scripts.Core.Weapon
         
         #endregion
 
+        #region Properties
 
-        #region Monobehaviour
-
-        private void Start()
-        {
-            TrySetStartWeapon();
-        }
+        public WeaponInfo CurrentWeaponInfo => _currentWeaponInfo;
 
         #endregion
 
-        #region Public
+        #region Monobehaviour
 
-        public void UseWeapon()
-        {
-          
-        }
+        private void Start() => TrySetStartWeapon();
 
         #endregion
         
@@ -60,11 +53,13 @@ namespace _Project.Scripts.Core.Weapon
                 Debug.LogError($"Can't create equippable weapon, info is null");
                 return;
             }
-
-            
+            _currentWeaponInfo = info;
+            var weaponObject = Instantiate(_currentWeaponInfo.EntityPrefab);
+            var weaponTransform = weaponObject.transform;
+            _weaponPosition.SetPosition(ref weaponTransform);
+            _weaponPosition.SetRotation(ref weaponTransform);
         }
 
         #endregion
-
     }
 }

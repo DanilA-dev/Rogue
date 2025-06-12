@@ -1,11 +1,9 @@
 {
-    "name": "Game.Characters",
+    "name": "Game.CameraAssigner",
     "rootNamespace": "",
     "references": [
-        "GUID:6143e81ffe34c26409ac1984eb69ffdb",
-        "GUID:14b522e660fda2f48b507d96db8a82ed",
-        "GUID:7b69a8ff26bc0024fa6e42def227750b",
-        "GUID:8f7d4ec3caeccbb4e81592a534a0fdf6"
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:6d0199508f23afb4692c5fcd34c5ce08"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

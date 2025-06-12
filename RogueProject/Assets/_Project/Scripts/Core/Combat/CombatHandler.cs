@@ -49,12 +49,12 @@ namespace _Project.Scripts.Core.Combat
 
         private void Awake()
         {
-            CustomEventHandler.AddListener(CustomEventType.CombatTrigger, StartCombat);
+            CustomEventHandler.AddListener(CustomEventType.CombatInitiated, StartCombat);
         }
 
         private void OnDestroy()
         {
-            CustomEventHandler.RemoveListener(CustomEventType.CombatTrigger, StartCombat);
+            CustomEventHandler.RemoveListener(CustomEventType.CombatInitiated, StartCombat);
         }
 
         #endregion
@@ -66,7 +66,7 @@ namespace _Project.Scripts.Core.Combat
             SetCombatCamera();
             SetUnitsToPositions();
             
-            CustomEventHandler.Invoke(CustomEventType.CombatEnter);
+            CustomEventHandler.Invoke(CustomEventType.CombatStart);
         }
         
 

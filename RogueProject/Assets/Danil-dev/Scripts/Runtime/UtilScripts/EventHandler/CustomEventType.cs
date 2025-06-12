@@ -5,8 +5,9 @@ namespace D_dev.Scripts.EventHandler
         AppBoot = 0,
         OpenMenu = 1,
         CloseMenu = 2,
-        CombatTrigger = 3,
-        CombatEnter = 4,
-        CombatExit = 5,
+        CombatInitiated = 3,
+        CombatTriggered = 4,
+        CombatStart = 5,
+        CombatExit = 6,
     }
 }

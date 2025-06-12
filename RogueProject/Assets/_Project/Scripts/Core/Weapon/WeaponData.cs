@@ -8,16 +8,16 @@ namespace _Project.Scripts.Core.Weapon
     {
         #region Fields
 
-        [SerializeField] private ActionInfo[] _weaponAction;
+        [SerializeField] private ActionInfo[] _weaponActions;
 
         #endregion
 
         #region Properties
 
-        public ActionInfo[] WeaponAction
+        public ActionInfo[] WeaponActions
         {
-            get => _weaponAction;
-            set => _weaponAction = value;
+            get => _weaponActions;
+            set => _weaponActions = value;
         }
 
         #endregion

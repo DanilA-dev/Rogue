@@ -54,13 +54,13 @@ namespace _Project.Scripts.Core.Player
             TryGetComponent(out _mover);
             _damagableObject.OnDeath.AddListener((() => ChangeState(PlayerState.Dead)));
             
-            CustomEventHandler.AddListener(CustomEventType.CombatEnter, () => ChangeState(PlayerState.Combat));
+            CustomEventHandler.AddListener(CustomEventType.CombatStart, () => ChangeState(PlayerState.Combat));
         }
       
         private void OnDisable()
         {
             _damagableObject.OnDeath.RemoveListener((() => ChangeState(PlayerState.Dead)));
-            CustomEventHandler.RemoveListener(CustomEventType.CombatEnter, () => ChangeState(PlayerState.Combat));
+            CustomEventHandler.RemoveListener(CustomEventType.CombatStart, () => ChangeState(PlayerState.Combat));
         }
 
         #endregion
